@@ -6,6 +6,7 @@
     "start": "next start"
   },
   "dependencies": {
+    "@supabase/supabase-js": "^1.29.1",
     "date-fns": "^2.11.1",
     "gray-matter": "^4.0.2",
     "next": "latest",
