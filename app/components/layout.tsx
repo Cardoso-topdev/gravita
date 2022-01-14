@@ -4,8 +4,9 @@ import styles from './layout.module.css'
 import utilStyles from '../styles/utils.module.css'
 import Link from 'next/link'
 
-const name = 'Gravita app'
-export const siteTitle = 'Gravitas app'
+const name = 'Gravita app';
+
+export const siteTitle = 'Gravitas app';
 
 export default function Layout({ children, home }) {
   return (
