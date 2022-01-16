@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Button, Box, Flex } from '@chakra-ui/react';
+import { Button, Box, Flex, useToast } from '@chakra-ui/react';
 import { object, string, SchemaOf } from 'yup';
 import { useRouter } from 'next/router';
 import { supabase } from 'lib/base';
@@ -9,20 +9,23 @@ import { colors } from 'theme/colors';
 
 interface Form {
   email: string;
-  password: string;
+  password1: string;
+  password2: string;
 }
 
 const DEFAULT: Form = {
   email: '',
-  password: '',
+  password1: '',
+  password2: '',
 };
 
 const SCHEMA: SchemaOf<Form> = object({
   email: string().required().email(),
-  password: string().min(6),
+  password1: string().min(6),
+  password2: string().min(6),
 });
 
-export const Login = (): JSX.Element => {
+export const Signup = (): JSX.Element => {
   const { errors, disabled, handleChange, handleSubmit } = useFormValidation(
     DEFAULT,
     SCHEMA
@@ -30,13 +33,20 @@ export const Login = (): JSX.Element => {
 
   const [serverError, setServerError] = useState<string>('');
 
+  const toast = useToast();
+
   const router = useRouter();
 
   const onSubmit = async (data: Form): Promise<void> => {
+    if (data.password1 !== data.password2) {
+      toast({ title: 'Ensure your passwords match' });
 
-    const { user, session, error } = await supabase.auth.signIn({
+      return;
+    }
+
+    const { user, session, error } = await supabase.auth.signUp({
       email: data.email,
-      password: data.password,
+      password: data.password1,
     });
 
     if (error) {
@@ -62,10 +72,18 @@ export const Login = (): JSX.Element => {
           />
           <FormInput
             id="password1"
-            error={errors.password}
+            error={errors.password1}
             onChange={handleChange}
             label="Enter password"
-            name="password"
+            name="password1"
+            type="password"
+          />
+          <FormInput
+            id="password2"
+            error={errors.password2}
+            onChange={handleChange}
+            label="Re-enter password"
+            name="password2"
             type="password"
           />
           <Box
@@ -78,7 +96,7 @@ export const Login = (): JSX.Element => {
             {serverError}
           </Box>
           <Button disabled={disabled} mt="10px" type="submit">
-            Login
+            Sign up
           </Button>
         </form>
       </Box>

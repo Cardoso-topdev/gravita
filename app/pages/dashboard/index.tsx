@@ -1,13 +1,8 @@
+import { WithAuthentication } from 'hoc/WithAuthentication';
+import { Dash } from 'components/Dash';
+
+const PrivateRoute = WithAuthentication(Dash);
+
 export default function Dashboard() {
-  return (
-    <div
-      style={{
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-      }}
-    >
-      <h1> This is a dashboard </h1>
-    </div>
-  );
+  return <PrivateRoute />;
 }

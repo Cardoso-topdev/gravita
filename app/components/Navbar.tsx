@@ -1,8 +1,14 @@
-import { Box, Flex, Image } from '@chakra-ui/react';
+import { Box, Button, Flex, Image } from '@chakra-ui/react';
 import Link from 'next/link';
+import { supabase } from 'lib/base';
+import { useAuthContext } from 'context/AuthContext';
 import { ToggleColorModeButton } from './ToggleColorModeButton';
 
 export const Navbar = (): JSX.Element => {
+  const { session } = useAuthContext();
+  
+  const handleSignout = () => supabase.auth.signOut();
+
   return (
     <Flex
       h={{ base: 'auto', lg: '100px' }}
@@ -11,19 +17,26 @@ export const Navbar = (): JSX.Element => {
       direction={{ base: 'column', lg: 'row' }}
       justifyContent={{ base: 'flex-start', lg: 'space-between' }}
     >
-      <Box mt='5px'>
-        <Link href="/">
-          <Image display="inline" w="25px" src='/images/logo.png' />
+      <Box mt="5px">
+        <Link href="/" passHref>
+          <Image alt="logo" display="inline" w="25px" src="/images/logo.png" />
         </Link>
       </Box>
       <Box
         d="flex"
-        w='10%'
-        justifyContent="space-between"
+        w="30%"
+        justifyContent="space-evenly"
         alignItems={{ base: 'flex-start', lg: 'center' }}
         flexDirection={{ base: 'column', lg: 'row' }}
       >
-        <Link href="/login">Login</Link>
+        {session ? (
+          <Button onClick={handleSignout}> Logout </Button>
+        ) : (
+          <>
+            <Link href="/login">Login</Link>
+            <Link href="/signup">Signup</Link>
+          </>
+        )}
         <ToggleColorModeButton />
       </Box>
     </Flex>

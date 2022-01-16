@@ -2,7 +2,7 @@ import { useState, useCallback } from 'react';
 import { ObjectSchema, ValidationError } from 'yup';
 import { ChangeEvent, FormEvent } from 'react';
 import * as R from 'ramda';
-import { firstCapDataLike } from '../utils/common';
+import { firstCapDataLike, debounce } from '../utils/common';
 
 type Fields = Record<string, any>;
 
@@ -26,12 +26,29 @@ export const useFormValidation = <T, K extends { [key: string]: any }>(
 
   const [isSubmitting, setSubmitting] = useState(false);
 
+  const handleValidateAll = useCallback<
+    (values: Fields, options?: Opts) => void
+  >(
+    async (values: Fields, options: Opts = { abortEarly: false }) => {
+      try {
+        await schema.validate(values, options);
+
+        setDisabled(false);
+      } catch (error) {
+        setDisabled(true);
+      }
+    },
+    [setDisabled, schema]
+  );
+
   const handleValidateOne = useCallback<
     (path: string, value: Fields) => Promise<void>
   >(
     async (path: string, value: Fields) => {
       try {
         await schema.validateAt(path, value);
+
+        await handleValidateAll(value);
       } catch (error) {
         if (error instanceof ValidationError) {
           setErrors((prevValues) => ({
@@ -41,34 +58,10 @@ export const useFormValidation = <T, K extends { [key: string]: any }>(
         }
       }
     },
-    [schema]
+    [schema, handleValidateAll]
   );
 
-  const handleValidateAll = useCallback(
-    async (values: Fields, options: Opts = { abortEarly: false }) => {
-      try {
-        await schema.validate(values, options);
-
-        setDisabled(false);
-      } catch (error) {
-        setDisabled(true);
-
-        if (error instanceof ValidationError) {
-          const errs = R.pipe<ValidationError[], any[], any[], Fields, Fields>(
-            R.prop('inner'),
-            R.map((e) => ({ [e.path]: R.head(e.errors) })),
-            R.reduce(R.mergeWith(R.concat), {}),
-            R.mapObjIndexed(firstCapDataLike)
-          )(error);
-
-          setErrors(errs);
-        }
-      }
-    },
-    [setDisabled, schema]
-  );
-
-  const handleChange = useCallback(
+  const handleChange = debounce(
     async ({ target }: ChangeEvent<HTMLInputElement>) => {
       setIsDirty(true);
 
@@ -85,7 +78,7 @@ export const useFormValidation = <T, K extends { [key: string]: any }>(
         return newValues;
       });
     },
-    [setValues, setIsDirty, setErrors, handleValidateOne]
+    500,
   );
 
   const handleSubmit = (onSubmit: OnSubmitFunc) => async (e: FormEvent) => {
@@ -93,14 +86,9 @@ export const useFormValidation = <T, K extends { [key: string]: any }>(
 
     setSubmitting(true);
 
-    try {
-      await handleValidateAll(values);
+    await onSubmit(values);
 
-      await onSubmit(values);
-    } catch (error) {
-    } finally {
-      setSubmitting(false);
-    }
+    setSubmitting(false);
   };
 
   return {
