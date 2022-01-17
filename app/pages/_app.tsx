@@ -1,12 +1,15 @@
 import { ChakraProvider } from '@chakra-ui/react';
-import { Navbar } from '../components/Navbar';
+import { AuthContextProvider } from 'context/AuthContext';
+import { Navbar } from 'components/Navbar';
 import '../styles/global.css';
 
 export default function App({ Component, pageProps }) {
   return (
     <ChakraProvider>
-      <Navbar />
-      <Component {...pageProps} />
+      <AuthContextProvider>
+        <Navbar />
+        <Component {...pageProps} />
+      </AuthContextProvider>
     </ChakraProvider>
   );
 }

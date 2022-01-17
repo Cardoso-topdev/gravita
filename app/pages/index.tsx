@@ -1,30 +1,13 @@
 import Head from 'next/head';
-import Layout, { siteTitle } from '../components/Layout';
-import { supabase } from '../lib/base';
-import { User } from '../lib/types';
+import Layout, { title } from '../components/layout/Layout';
 
-export default function Home({ data }) {
+export default function Home() {
   return (
     <Layout home>
       <Head>
-        <title>{siteTitle}</title>
+        <title>{title}</title>
       </Head>
-        {data.map((user) => (
-          <div key={user.id}>
-            <p> Dev name: {user.firstName} {user.lastName} </p>
-          </div>
-        ))}
+      <h1> This is landing page </h1>
     </Layout>
   );
-}
-
-export async function getStaticProps() {
-  const { data, error } = await supabase.from<User>('devs').select();
-
-  return {
-    props: {
-      data,
-      error,
-    },
-  };
 }
