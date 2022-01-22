@@ -1,5 +1,6 @@
 import Head from 'next/head';
 import Layout, { title } from '../components/layout/Layout';
+import { ChatApp } from 'components/chat/ChatApp';
 
 export default function Home() {
   return (

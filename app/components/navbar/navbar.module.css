@@ -1,3 +1,4 @@
-.border {
+.container {
     border-bottom: 1px solid #E2E8F0;
+    position: sticky;
 }
