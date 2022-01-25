@@ -1,21 +1,12 @@
 import { FC } from 'react';
-import {
-  Box,
-  Flex,
-  Icon,
-  Text,
-  HStack,
-  VStack,
-  Progress,
-  useToast,
-} from '@chakra-ui/react';
+import { Box, Flex, Icon, Text, VStack, useToast } from '@chakra-ui/react';
 import { BsFillSuitDiamondFill, BsHandThumbsUp } from 'react-icons/bs';
 import { colors } from 'theme/colors';
 import { IconButton } from './IconButton';
-import { supabase } from 'lib/base';
+import { getVotePercentages, insertVote } from 'lib/base';
 import { useAuthContext } from 'context/AuthContext';
-import { Emoji } from './Emoji';
 import { Stat } from './Stat';
+import { useData } from 'hooks/useData';
 
 interface Props {
   title: string;
@@ -24,15 +15,16 @@ interface Props {
 export const Card: FC<Props> = ({ title }) => {
   const { session } = useAuthContext();
 
+  const { data, loading } = useData(getVotePercentages);
+
   const toast = useToast();
 
-  const handleVote = async (type: string): Promise<void> => {
+  const handleVote = async (voteType: string): Promise<void> => {
     if (!session) {
       return;
     }
-    const { error } = await supabase
-      .from('votes')
-      .insert([{ type, userId: session.user.id }]);
+
+    const { error } = await insertVote(voteType, session.user.id);
 
     if (error) {
       toast({
@@ -57,11 +49,11 @@ export const Card: FC<Props> = ({ title }) => {
           {title}
         </Text>
         <Stat value={60} />
-  {/*       <Icon
+        <Icon
           as={BsFillSuitDiamondFill}
-          color={colors.secondaryDark}
-          style={{ position: 'sticky', marginTop: 120, zIndex: -1 }}
-        /> */}
+          color={colors.white}
+          style={{ position: 'sticky', marginTop: 132, zIndex: 1 }}
+        />
       </VStack>
       <Box bg={colors.secondaryDark} w={200} h={50} borderRadius={90}>
         <IconButton
