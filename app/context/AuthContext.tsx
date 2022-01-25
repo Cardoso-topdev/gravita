@@ -20,10 +20,12 @@ export const AuthContextProvider: FC<PropsWithChildren<{}>> = ({
   );
 
   useEffect(() => {
-    if(session) {
-      setLoading(false);
+    if (!session) {
+      return;
     }
-  }, [session])
+    setLoading(false);
+
+  }, [session]);
 
   useEffect(() => {
     const sub = supabase.auth.onAuthStateChange((event, sess) => {
@@ -33,7 +35,10 @@ export const AuthContextProvider: FC<PropsWithChildren<{}>> = ({
     return sub.data.unsubscribe;
   }, [setSession]);
 
-  const value = useMemo<AuthContext>(() => ({ session, loading }), [session, loading]);
+  const value = useMemo<AuthContext>(
+    () => ({ session, loading }),
+    [session, loading]
+  );
 
-  return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>
+  return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 };

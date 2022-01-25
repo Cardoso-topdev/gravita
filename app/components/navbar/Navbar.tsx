@@ -11,7 +11,7 @@ export const Navbar = (): JSX.Element => {
   const handleSignout = () => supabase.auth.signOut();
 
   return (
-    <Box className={styles.border}>
+    <Box className={styles.container}>
       <Flex
         h={{ base: 'auto', lg: '70px' }}
         p="10px 40px"

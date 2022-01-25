@@ -7,10 +7,10 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@chakra-ui/icons": "^1.1.1",
     "@chakra-ui/react": "^1.7.4",
     "@emotion/react": "^11.7.1",
     "@emotion/styled": "^11.6.0",
+    "@stream-io/stream-chat-css": "^2.0.1",
     "@supabase/supabase-js": "^1.29.1",
     "contentful": "^9.1.5",
     "date-fns": "^2.11.1",
@@ -24,6 +24,8 @@
     "react-icons": "^4.3.1",
     "remark": "^14.0.1",
     "remark-html": "^15.0.0",
+    "stream-chat": "^5.1.2",
+    "stream-chat-react": "^6.12.2",
     "urql": "^2.0.6",
     "yup": "^0.32.11"
   },
