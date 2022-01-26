@@ -1,5 +1,5 @@
 export const colors = {
   red: 'red',
-  teal: 'teal',
-  gray400: 'gray.400'
+  teal: '#A2E0D9',
+  gray400: 'gray.400',
 } as const;
