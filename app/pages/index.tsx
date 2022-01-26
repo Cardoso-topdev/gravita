@@ -19,7 +19,7 @@ export default function Home({ items }) {
       </Heading>
       <Login />
       <Flex display="inline-flex">
-        <Text mt="250px" fontSize="12px" display="inline-flex">
+        <Text mt="250px" fontSize="12px" display="inline-flex" color="white">
           Don&apos;t have an account?{' '}
           <Link href="/signup" passHref>
             <Text color={colors.teal} marginLeft="5px" cursor="pointer">
