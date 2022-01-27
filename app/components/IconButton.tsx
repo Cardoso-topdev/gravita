@@ -1,5 +1,5 @@
 import { FC, FunctionComponent, SVGProps } from 'react';
-import { Button, Icon, IconProps } from '@chakra-ui/react';
+import { Icon, Button, IconProps } from '@chakra-ui/react';
 
 interface Props extends IconProps {
   icon: FunctionComponent<SVGProps<SVGAElement>>;
@@ -7,7 +7,7 @@ interface Props extends IconProps {
 
 export const IconButton: FC<Props> = ({ icon, ...rest }) => {
   return (
-    <Button variant="ghost" _focus={{ boxShadow: 'none'}}>
+    <Button variant="ghost">
       <Icon {...rest} as={icon} />
     </Button>
   );
