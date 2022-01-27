@@ -11,7 +11,7 @@ export default function Home({ items }) {
       <Head>
         <title>{title}</title>
       </Head>
-        <h1 style={{ textAlign: 'center'}}>{welcomeText} </h1>
+      <h1 style={{ textAlign: 'center' }}>{welcomeText} </h1>
     </Layout>
   );
 }
