@@ -1,11 +1,13 @@
 import { FC } from 'react';
-import { Text } from '@chakra-ui/react';
+import { Text, TextProps } from '@chakra-ui/react';
 
-interface Props {
+interface Props extends TextProps {
   symbol: string;
   label: string;
 }
 
-export const Emoji: FC<Props> = ({ symbol, label }) => (
-  <Text aria-label={label}>{symbol}</Text>
+export const Emoji: FC<Props> = ({ symbol, label, ...rest }) => (
+  <Text aria-label={label} {...rest}>
+    {symbol}
+  </Text>
 );

@@ -4,7 +4,7 @@ type Loader = boolean;
 type Query<T> = () => Promise<T>;
 
 export const useData = <T>(query: Query<T>, deps?: unknown) => {
-  const [data, setData] = useState<T>();
+  const [data, setData] = useState<T | undefined>();
 
   const [loading, setLoading] = useState<Loader>(false);
 
@@ -27,5 +27,5 @@ export const useData = <T>(query: Query<T>, deps?: unknown) => {
     loadData();
   }, [loadData, deps]);
 
-  return { data, loading, loadData };
+  return [data, loading, loadData] as const;
 };

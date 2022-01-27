@@ -6,7 +6,7 @@ export const supabase = createClient(
   process.env.NEXT_PUBLIC_SUPERBASE_ANON_KEY
 );
 
-type VotePercentages = {
+export type VotePercentages = {
   vote_type: definitions['card_votes']['vote_type']; 
   percentage: number;
 }
