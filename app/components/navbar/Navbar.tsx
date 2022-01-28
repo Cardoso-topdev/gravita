@@ -44,7 +44,7 @@ export const Navbar = (): JSX.Element => {
             </>
           ) : (
             <>
-              <Link href="/login">Login</Link>
+              <Link href="/">Login</Link>
               <Link href="/signup">Signup</Link>
             </>
           )}

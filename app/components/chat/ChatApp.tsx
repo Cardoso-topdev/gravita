@@ -34,7 +34,6 @@ export const ChatApp = () => {
     }
     stream
       .addCurentUser(session)
-      .then(() => setLoading(false))
       .finally(() => setLoading(false));
 
     return () => {

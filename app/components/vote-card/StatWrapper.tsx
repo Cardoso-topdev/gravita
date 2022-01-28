@@ -16,7 +16,7 @@ export const StatWrapper: FC<Props> = ({ votes, statWidth, ...rest }): JSX.Eleme
       {votes?.map((vote) => (
         <WrapItem key={vote.vote_type}>
           <Emoji symbol={EmojiMapper[vote.vote_type]} label={EmojiMapper[vote.vote_type]} mr={1} />
-          <Stat value={vote.percentage} w={statWidth} />
+          <Stat value={vote.percentage} width={statWidth} />
         </WrapItem>
       ))}
     </Wrap>

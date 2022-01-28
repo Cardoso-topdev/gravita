@@ -12,6 +12,7 @@ interface Props extends InputProps {
   label: string;
   name: string;
   onChange: (e: ChangeEvent) => void;
+  labelColor?: string;
 }
 
 export const FormInput: FC<Props> = ({
@@ -19,12 +20,15 @@ export const FormInput: FC<Props> = ({
   label,
   onChange,
   name,
+  labelColor,
   ...rest
 }) => {
   return (
     <FormControl isInvalid={Boolean(error)}>
-      <FormLabel mt={5} htmlFor={name}>{label}</FormLabel>
-      <Input name={name} onChange={onChange} {...rest} />
+      <FormLabel mt={5} htmlFor={name} color={labelColor} fontSize={17}>
+        {label}
+      </FormLabel>
+      <Input name={name} onChange={onChange} {...rest} color="white" />
       <FormErrorMessage> {error} </FormErrorMessage>
     </FormControl>
   );

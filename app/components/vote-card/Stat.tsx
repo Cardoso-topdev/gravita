@@ -5,12 +5,12 @@ import { sizes } from 'theme/sizes';
 
 interface Props {
   value: number;
-  w: number;
+  width: number;
 }
 
-export const Stat: FC<Props> = ({ value, w }): JSX.Element => {
+export const Stat: FC<Props> = ({ value, width }): JSX.Element => {
   return (
-    <Box w={w}>
+    <Box w={width}>
       <Text fontSize={12} fontWeight={700} color={colors.white}>
         {value}%
       </Text>

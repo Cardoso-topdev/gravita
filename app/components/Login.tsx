@@ -25,7 +25,7 @@ const SCHEMA: SchemaOf<Form> = object({
 export const Login = (): JSX.Element => {
   const { errors, disabled, handleChange, handleSubmit } = useFormValidation(
     DEFAULT,
-    SCHEMA
+    SCHEMA,
   );
 
   const [serverError, setServerError] = useState<string>('');
@@ -33,7 +33,6 @@ export const Login = (): JSX.Element => {
   const router = useRouter();
 
   const onSubmit = async (data: Form): Promise<void> => {
-
     const { user, session, error } = await supabase.auth.signIn({
       email: data.email,
       password: data.password,
@@ -48,7 +47,7 @@ export const Login = (): JSX.Element => {
   };
 
   return (
-    <Flex align="center" justify="center">
+    <Flex>
       <Box w="50%">
         <form onSubmit={handleSubmit(onSubmit)}>
           <FormInput
@@ -56,17 +55,21 @@ export const Login = (): JSX.Element => {
             id="email"
             error={errors.email}
             onChange={handleChange}
-            label="Email"
+            label="Email address"
             name="email"
             type="email"
+            variant="flushed"
+            labelColor="white"
           />
           <FormInput
             id="password1"
             error={errors.password}
             onChange={handleChange}
-            label="Enter password"
+            label="Password"
             name="password"
             type="password"
+            variant="flushed"
+            labelColor="white"
           />
           <Box
             display="flex"
@@ -77,8 +80,18 @@ export const Login = (): JSX.Element => {
           >
             {serverError}
           </Box>
-          <Button disabled={disabled} mt="10px" type="submit">
-            Login
+          <Button
+            disabled={disabled}
+            mt="40px"
+            type="submit"
+            width="239px"
+            height="37px"
+            fontSize="12px"
+            fontWeight="700"
+            borderRadius="5px"
+            background={colors.teal}
+          >
+            Start Exploring
           </Button>
         </form>
       </Box>
