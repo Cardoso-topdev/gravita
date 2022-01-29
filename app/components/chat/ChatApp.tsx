@@ -29,9 +29,12 @@ export const ChatApp = () => {
 
   useEffect(() => {
     if (!session) {
+      setLoading(false);
       return;
     }
-    stream.addCurentUser(session).then(() => setLoading(false));
+    stream
+      .addCurentUser(session)
+      .finally(() => setLoading(false));
 
     return () => {
       stream.client.disconnectUser();
