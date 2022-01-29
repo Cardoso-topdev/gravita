@@ -9,6 +9,7 @@ import { colors } from 'theme/colors';
 
 export default function Home({ items }) {
   const { welcomeText } = items;
+
   return (
     <Layout home>
       <Head>
@@ -45,7 +46,9 @@ export const getStaticProps = async () => {
   `;
 
   const { data } = await GqlClient.query(LandingQuery).toPromise();
+
   const items = data?.landingPageCollection?.items[0];
+
   return {
     props: {
       items,

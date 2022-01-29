@@ -3,14 +3,17 @@ import { Sidebar } from './sidebar/Sidebar';
 import { ChatApp } from './chat/ChatApp';
 import { Drawer } from './Drawer';
 import { sizes } from 'theme/sizes';
+import { VoteCard } from './vote-card/VoteCard';
 
-export const Dash: React.FC = () => (
+export const Dash: React.FC = (): JSX.Element => (
   <SimpleGrid templateColumns="repeat(6, 1fr)">
     <GridItem colSpan={1}>
       <Sidebar />
     </GridItem>
     <GridItem colSpan={2}>
-      <Box mt="20px"></Box>
+      <Box m="10px 10px" mt="20px">
+        <VoteCard title='What do you think of Gravita app?' />
+      </Box>
     </GridItem>
     <GridItem colSpan={3}>
       <Drawer openButtonTitle="open" size={sizes.lg}>
