@@ -1,24 +1,20 @@
-import { SimpleGrid, GridItem, Box } from '@chakra-ui/react';
-import { Sidebar } from './sidebar/Sidebar';
+import { SimpleGrid, GridItem } from '@chakra-ui/react';
+import { LeftSidebar, RightSidebar } from './sidebar';
 import { ChatApp } from './chat/ChatApp';
 import { Drawer } from './Drawer';
 import { sizes } from 'theme/sizes';
-import { VoteCard } from './vote-card/VoteCard';
 
 export const Dash: React.FC = (): JSX.Element => (
   <SimpleGrid templateColumns="repeat(6, 1fr)">
     <GridItem colSpan={1}>
-      <Sidebar />
+      <LeftSidebar />
     </GridItem>
-    <GridItem colSpan={2}>
-      <Box m="10px 10px" mt="20px">
-        <VoteCard title='What do you think of Gravita app?' />
-      </Box>
+    <GridItem colSpan={4}></GridItem>
+    <GridItem colSpan={1}>
+      <RightSidebar />
     </GridItem>
-    <GridItem colSpan={3}>
-      <Drawer openButtonTitle="open" size={sizes.lg}>
-        <ChatApp />
-      </Drawer>
-    </GridItem>
+    <Drawer openButtonTitle="open" size={sizes.lg}>
+      <ChatApp />
+    </Drawer>
   </SimpleGrid>
 );

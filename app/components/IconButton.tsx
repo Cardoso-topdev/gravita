@@ -1,14 +1,14 @@
-import { FC, FunctionComponent, SVGProps } from 'react';
-import { Icon, Button, IconProps } from '@chakra-ui/react';
+import { FC, ReactElement } from 'react';
+import { Button, IconProps, ButtonProps } from '@chakra-ui/react';
 
-interface Props extends IconProps {
-  icon: FunctionComponent<SVGProps<SVGAElement>>;
+interface Props extends ButtonProps {
+  icon: ReactElement<IconProps>;
 }
 
 export const IconButton: FC<Props> = ({ icon, ...rest }) => {
   return (
-    <Button variant="ghost">
-      <Icon {...rest} as={icon} />
+    <Button variant="ghost" {...rest}>
+      {icon}
     </Button>
   );
 };

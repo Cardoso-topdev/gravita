@@ -124,8 +124,8 @@ export const VoteCard: FC<Props> = ({ title }): JSX.Element => {
       justify="space-evenly"
       bg={colors.gray700}
       borderRadius={20}
-      h={250}
-      w={380}
+      h={220}
+      w={350}
       p={5}
     >
       <Text fontSize={20} fontWeight={700} color={colors.white}>

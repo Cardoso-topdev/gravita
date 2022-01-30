@@ -33,6 +33,10 @@ class Stream {
   public async addExistingUser(): Promise<void> {
     const session = supabase.auth.session();
 
+    if (!session) {
+      return;
+    }
+
     try {
       const data = await this.getStreamToken(session.user.id);
 
