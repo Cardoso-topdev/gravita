@@ -6,7 +6,10 @@ import { useNewsQuery } from 'generated/graphql';
 import { News } from './News';
 
 export const RightSidebar: FC = () => {
-  const [result] = useNewsQuery({ requestPolicy: 'cache-and-network' });
+  const [result] = useNewsQuery({
+    requestPolicy: 'cache-and-network',
+    variables: { limit: 3 },
+  });
 
   const { fetching, data } = result;
 
@@ -15,13 +18,14 @@ export const RightSidebar: FC = () => {
   }
 
   return (
-    <Flex flexDir="column" w={450} h="100vh" p={10}>
+    <Flex flexDir="column" w={450} h="100vh" p={10} bg={colors.secondaryDark}>
       <Box>
         <Text color={colors.primaryGray} fontWeight={700} fontSize={12}>
           POLLS & SURVEYS
         </Text>
         <VoteCard title="What do you think of Gravita app?" />
       </Box>
+      <Text color={colors.teal} mt={5} fontSize={14} cursor='pointer'> See all news </Text>
       <Box mt={5}>
         <Text color={colors.primaryGray} fontWeight={700} fontSize={12}>
           NEWS & UPDATES

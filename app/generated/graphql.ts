@@ -651,9 +651,20 @@ export type SysFilter = {
   publishedVersion_not_in?: InputMaybe<Array<InputMaybe<Scalars['Float']>>>;
 };
 
+export type LandingPageItemFragment = { __typename?: 'LandingPage', welcomeText?: string | null | undefined, submitButtonText?: string | null | undefined, sys: { __typename?: 'Sys', id: string } };
+
+export type LandingPageQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type LandingPageQuery = { __typename?: 'Query', landingPageCollection?: { __typename?: 'LandingPageCollection', items: Array<{ __typename?: 'LandingPage', welcomeText?: string | null | undefined, submitButtonText?: string | null | undefined, sys: { __typename?: 'Sys', id: string } } | null | undefined> } | null | undefined };
+
 export type NewsItemFragment = { __typename?: 'News', title?: string | null | undefined, content?: string | null | undefined, sys: { __typename?: 'Sys', id: string } };
 
-export type NewsQueryVariables = Exact<{ [key: string]: never; }>;
+export type NewsQueryVariables = Exact<{
+  limit?: InputMaybe<Scalars['Int']>;
+  where?: InputMaybe<NewsFilter>;
+  order?: InputMaybe<Array<InputMaybe<NewsOrder>> | InputMaybe<NewsOrder>>;
+}>;
 
 
 export type NewsQuery = { __typename?: 'Query', newsCollection?: { __typename?: 'NewsCollection', items: Array<{ __typename?: 'News', title?: string | null | undefined, content?: string | null | undefined, sys: { __typename?: 'Sys', id: string } } | null | undefined> } | null | undefined };
@@ -665,6 +676,15 @@ export const SysFragmentDoc = gql`
   id
 }
     `;
+export const LandingPageItemFragmentDoc = gql`
+    fragment LandingPageItem on LandingPage {
+  sys {
+    ...Sys
+  }
+  welcomeText
+  submitButtonText
+}
+    ${SysFragmentDoc}`;
 export const NewsItemFragmentDoc = gql`
     fragment NewsItem on News {
   sys {
@@ -674,9 +694,22 @@ export const NewsItemFragmentDoc = gql`
   content
 }
     ${SysFragmentDoc}`;
+export const LandingPageDocument = gql`
+    query LandingPage {
+  landingPageCollection {
+    items {
+      ...LandingPageItem
+    }
+  }
+}
+    ${LandingPageItemFragmentDoc}`;
+
+export function useLandingPageQuery(options: Omit<Urql.UseQueryArgs<LandingPageQueryVariables>, 'query'> = {}) {
+  return Urql.useQuery<LandingPageQuery>({ query: LandingPageDocument, ...options });
+};
 export const NewsDocument = gql`
-    query News {
-  newsCollection {
+    query News($limit: Int, $where: NewsFilter, $order: [NewsOrder]) {
+  newsCollection(limit: $limit, where: $where, order: $order) {
     items {
       ...NewsItem
     }

@@ -1,11 +1,11 @@
 import Head from 'next/head';
-import { gql } from 'urql';
 import GqlClient from '../lib/contentful/gqlService';
 import Layout, { title } from '../components/layout/Layout';
 import { Login } from 'components/Login';
 import { Flex, Heading, Text } from '@chakra-ui/react';
 import Link from 'next/link';
 import { colors } from 'theme/colors';
+import { LandingPageDocument, LandingPageQuery } from 'generated/graphql';
 
 export default function Home({ items }) {
   const { welcomeText } = items;
@@ -34,20 +34,11 @@ export default function Home({ items }) {
 }
 
 export const getStaticProps = async () => {
-  const LandingQuery = gql`
-    query {
-      landingPageCollection {
-        items {
-          welcomeText
-          submitButtonText
-        }
-      }
-    }
-  `;
+  const { data } = await GqlClient.query<LandingPageQuery>(
+    LandingPageDocument,
+  ).toPromise();
 
-  const { data } = await GqlClient.query(LandingQuery).toPromise();
-
-  const items = data?.landingPageCollection?.items[0];
+  const items = data.landingPageCollection.items[0];
 
   return {
     props: {

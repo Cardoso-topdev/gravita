@@ -7,7 +7,7 @@
     "lint": "next lint",
     "codegen": "npm-run-all generate:*",
     "generate:supabase": "dotenv cross-var openapi-typescript https://xydyjvrofvitnztsncav.supabase.co/rest/v1/?apikey=%SUPABASE_ANON_KEY% --output ./lib/types.ts",
-    "generate:contentful": "graphql-codegen --config codegen.yaml -r dotenv/config"
+    "generate:contentful": "graphql-codegen -r dotenv/config"
   },
   "dependencies": {
     "@chakra-ui/react": "^1.7.4",

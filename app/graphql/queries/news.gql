@@ -6,8 +6,8 @@ fragment NewsItem on News {
   content
 }
 
-query News {
-  newsCollection {
+query News($limit: Int, $where: NewsFilter, $order: [NewsOrder]) {
+  newsCollection(limit: $limit, where: $where, order: $order) {
     items {
       ...NewsItem
     }

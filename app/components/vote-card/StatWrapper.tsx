@@ -1,21 +1,36 @@
 import { FC } from 'react';
-import { Wrap, WrapItem, WrapProps } from '@chakra-ui/react';
+import { Text, Wrap, WrapItem, WrapProps } from '@chakra-ui/react';
 import { Stat } from './Stat';
 import { Emoji } from '../Emoji';
-import { VotePercentages } from 'lib/base';
+import { getVotePercentages } from 'lib/base';
+import { useData } from 'hooks/useData';
 import { EmojiMapper } from 'theme/common';
+import { colors } from 'theme/colors';
 
 interface Props extends WrapProps {
   statWidth?: number;
-  votes: VotePercentages[];
 }
 
-export const StatWrapper: FC<Props> = ({ votes, statWidth, ...rest }): JSX.Element => {
+export const StatWrapper: FC<Props> = ({ statWidth, ...rest }): JSX.Element => {
+  const [votes, loading] = useData(getVotePercentages);
+
+  if (loading) {
+    return (
+      <Text color={colors.white} textAlign="center" fontSize={12}>
+        ...Loading
+      </Text>
+    );
+  }
+
   return (
     <Wrap {...rest}>
-      {votes?.map((vote) => (
+      {votes?.data?.map((vote) => (
         <WrapItem key={vote.vote_type}>
-          <Emoji symbol={EmojiMapper[vote.vote_type]} label={EmojiMapper[vote.vote_type]} mr={1} />
+          <Emoji
+            symbol={EmojiMapper[vote.vote_type]}
+            label={EmojiMapper[vote.vote_type]}
+            mr={1}
+          />
           <Stat value={vote.percentage} width={statWidth} />
         </WrapItem>
       ))}
