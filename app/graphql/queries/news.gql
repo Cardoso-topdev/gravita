@@ -1,0 +1,15 @@
+fragment NewsItem on News {
+  sys {
+    ...Sys
+  }
+  title
+  content
+}
+
+query News {
+  newsCollection {
+    items {
+      ...NewsItem
+    }
+  }
+}
