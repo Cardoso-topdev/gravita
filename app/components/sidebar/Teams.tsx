@@ -1,16 +1,19 @@
 import { FC } from 'react';
-import { VStack, Text, Button } from '@chakra-ui/react';
-import { colors } from 'theme/colors'; 
+import { VStack, Button, StackProps } from '@chakra-ui/react';
+import { colors } from 'theme/colors';
 import { sizes } from 'theme/sizes';
-import styles from './sidebar.module.css';
+import { Title } from './Title';
+import { Text } from './Text';
 
-export const Teams: FC = () => (
-  <VStack align="left" spacing={5}>
-    <Text className={styles.title}> TEAMS </Text>
-    <Text className={styles.text}> Gravita Core</Text>
+interface Props extends StackProps {}
+
+export const Teams: FC<Props> = (props) => (
+  <VStack {...props}>
+    <Title title="TEAMS" />
+    <Text> Gravita Core</Text>
     <Button
-      className={styles.button}
-      colorScheme={colors.teal}
+      alignSelf="flex-start"
+      color={colors.teal}
       size={sizes.xs}
       variant="link"
     >

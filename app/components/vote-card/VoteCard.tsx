@@ -8,10 +8,9 @@ import {
   useToast,
 } from '@chakra-ui/react';
 import { colors } from 'theme/colors';
-import { getVotePercentages, insertVote } from 'lib/base';
+import { insertVote } from 'lib/base';
 import { definitions } from 'lib/types';
 import { useAuthContext } from 'context/AuthContext';
-import { useData } from 'hooks/useData';
 import { StatWrapper } from './StatWrapper';
 import { VoteOptions } from './VoteOptions';
 
@@ -29,8 +28,6 @@ export const VoteCard: FC<Props> = ({ title }): JSX.Element => {
   const [view, setView] = useState<Screen>();
 
   const { session } = useAuthContext();
-
-  const [votes, loading] = useData(getVotePercentages);
 
   const toast = useToast();
 
@@ -92,7 +89,7 @@ export const VoteCard: FC<Props> = ({ title }): JSX.Element => {
       case 2:
         return (
           <>
-            <StatWrapper w={380} votes={votes.data} statWidth={79} />
+            <StatWrapper w={370} statWidth={70} />
             <Divider />
             <Button
               fontSize={12}
@@ -108,9 +105,9 @@ export const VoteCard: FC<Props> = ({ title }): JSX.Element => {
         return (
           <HStack>
             <Button bg={colors.teal} onClick={handleView.bind(null, 1)} w={165}>
-              Vote{' '}
+              Vote
             </Button>
-            <Button variant="outline" w={165}>
+            <Button variant="outline" w={165} color={colors.white}>
               Details
             </Button>
           </HStack>
@@ -124,20 +121,14 @@ export const VoteCard: FC<Props> = ({ title }): JSX.Element => {
       justify="space-evenly"
       bg={colors.gray700}
       borderRadius={20}
-      h={250}
-      w={380}
+      h={220}
+      w={350}
       p={5}
     >
       <Text fontSize={20} fontWeight={700} color={colors.white}>
         {title}
       </Text>
-      {loading ? (
-        <Text textAlign="center" color={colors.white}>
-          ...Loading
-        </Text>
-      ) : (
-        renderView(view)
-      )}
+      {renderView(view)}
     </Flex>
   );
 };

@@ -1,0 +1,15 @@
+fragment LandingPageItem on LandingPage {
+  sys {
+    ...Sys
+  }
+  welcomeText
+  submitButtonText
+}
+
+query LandingPage {
+  landingPageCollection {
+    items {
+      ...LandingPageItem
+    }
+  }
+}

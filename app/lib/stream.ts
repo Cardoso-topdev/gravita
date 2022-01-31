@@ -1,6 +1,6 @@
-import { Session } from '@supabase/supabase-js';
 import { StreamChat } from 'stream-chat';
 import { request } from 'utils/response';
+import { supabase } from './base';
 
 export type Channel = {
   type: string;
@@ -22,7 +22,7 @@ class Stream {
 
   constructor() {
     this._client = StreamChat.getInstance(
-      process.env.NEXT_PUBLIC_REACT_APP_STREAM_KEY
+      process.env.NEXT_PUBLIC_REACT_APP_STREAM_KEY,
     );
   }
 
@@ -30,7 +30,13 @@ class Stream {
     return this._client;
   }
 
-  public async addCurentUser(session: Session): Promise<void> {
+  public async addExistingUser(): Promise<void> {
+    const session = supabase.auth.session();
+
+    if (!session) {
+      return;
+    }
+
     try {
       const data = await this.getStreamToken(session.user.id);
 
@@ -39,7 +45,7 @@ class Stream {
           id: session.user.id,
           name: session.user.email.charAt(0).toLocaleUpperCase(),
         },
-        data.token
+        data.token,
       );
     } catch (error) {
       console.error(error);

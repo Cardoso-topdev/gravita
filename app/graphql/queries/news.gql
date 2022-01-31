@@ -1,0 +1,15 @@
+fragment NewsItem on News {
+  sys {
+    ...Sys
+  }
+  title
+  content
+}
+
+query News($limit: Int, $where: NewsFilter, $order: [NewsOrder]) {
+  newsCollection(limit: $limit, where: $where, order: $order) {
+    items {
+      ...NewsItem
+    }
+  }
+}
