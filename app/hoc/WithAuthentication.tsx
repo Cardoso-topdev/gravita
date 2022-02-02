@@ -15,10 +15,10 @@ export function WithAuthentication<P extends {}>(
       }
     }, [session]);
 
-    if (loading) {
+    if (!loading) {
+      return <Component {...props} />;
+    } else {
       return <Loader />;
     }
-
-    return <Component {...props} />;
   };
 }
