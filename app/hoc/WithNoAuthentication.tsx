@@ -3,15 +3,15 @@ import Router from 'next/router';
 import { Loader } from 'components/Loader';
 import { useAuthContext } from 'context/AuthContext';
 
-export function WithAuthentication<P extends {}>(
+export function WithNoAuthentication<P extends {}>(
   Component: React.ComponentType<P>
 ) {
   return function AuthHoc(props: P) {
     const { session, loading } = useAuthContext();
 
     useEffect(() => {
-      if (!session) {
-        Router.push('/');
+      if (session) {
+        Router.push('/dashboard');
       }
     }, [session]);
 
@@ -22,7 +22,3 @@ export function WithAuthentication<P extends {}>(
     }
   };
 }
-
-// export const getServerSideProps = async () => {
-
-// }

@@ -6,10 +6,10 @@ import { Flex, Heading, Text } from '@chakra-ui/react';
 import Link from 'next/link';
 import { colors } from 'theme/colors';
 import { LandingPageDocument, LandingPageQuery } from 'generated/graphql';
+import { WithNoAuthentication } from 'hoc/WithNoAuthentication';
 
-export default function Home({ items }) {
+const HomePage = ({ items }) => {
   const { welcomeText } = items;
-
   return (
     <Layout home>
       <Head>
@@ -31,6 +31,12 @@ export default function Home({ items }) {
       </Flex>
     </Layout>
   );
+}
+
+const NoAuthenticatedHome = WithNoAuthentication(HomePage);
+
+export default function Home({ items }) {
+  return <NoAuthenticatedHome items={items} />;
 }
 
 export const getStaticProps = async () => {

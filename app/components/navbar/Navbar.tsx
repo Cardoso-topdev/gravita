@@ -30,7 +30,7 @@ export const Navbar = (): JSX.Element => {
         style={{ borderBottomColor: '1px solid #E2E8F0' }}
       >
         <Box mt="5px">
-          <Link href="/" passHref>
+          <Link href="/dashboard" passHref>
             <Image
               alt="logo"
               display="inline"
