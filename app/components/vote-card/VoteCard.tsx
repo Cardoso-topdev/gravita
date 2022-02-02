@@ -107,7 +107,7 @@ export const VoteCard: FC<Props> = ({ title }): JSX.Element => {
             <Button bg={colors.teal} onClick={handleView.bind(null, 1)} w={165}>
               Vote
             </Button>
-            <Button variant="outline" w={165} color={colors.white}>
+            <Button variant="outline" color={colors.white} w={165}>
               Details
             </Button>
           </HStack>

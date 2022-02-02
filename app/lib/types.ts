@@ -163,7 +163,7 @@ export interface definitions {
      */
     created_at?: string;
     /** Format: uuid */
-    user_id?: string;
+    user_id: string;
   };
   card_votes_percentages: {
     /**
