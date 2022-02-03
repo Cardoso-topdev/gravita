@@ -1,23 +1,33 @@
-import { Box, Avatar, Flex, Image, Text, Button, Menu, MenuButton, MenuList, MenuItem } from '@chakra-ui/react';
 import Link from 'next/link';
+import { Box, Avatar, Flex, Image, Text, Button, Menu, MenuButton, MenuList, MenuItem } from '@chakra-ui/react';
 import { supabase } from 'lib/base';
 import { useAuthContext } from 'context/AuthContext';
-import styles from './navbar.module.css';
 import { ToggleColorModeButton } from './ToggleColorModeButton';
 import { NotificationButton } from './NotificationButton';
+import { useEffect, useRef } from 'react';
+import { useColorMode, Icon } from '@chakra-ui/react';
+import styles from './navbar.module.css';
 
 export const Navbar = (): JSX.Element => {
   const { session } = useAuthContext();
+  const mountRef = useRef(false)
+  const { colorMode } = useColorMode();
 
   const handleSignout = () => supabase.auth.signOut();
   const onNotificationClick = () => {
     console.log("onNotificationClicked");
   };
 
-  return session && (
+  useEffect(() => {
+    mountRef.current = true
+    return () => {
+      mountRef.current = false
+    }
+  }, [])
+
+  return session && mountRef.current && (
     <Box
       className={styles.container}
-      zIndex={1}
     >
       <Flex
         h={{ base: 'auto', lg: '65px' }}
@@ -31,9 +41,8 @@ export const Navbar = (): JSX.Element => {
           <Link href="/dashboard" passHref>
             <Image
               alt="logo"
-              display="inline"
-              h="auto"
-              src="/images/logo.png"
+              src={colorMode === 'light' ? "/images/logo-light.png" : "/images/logo.png"}
+              className={styles.navLogo}
             />
           </Link>
         </Box>
