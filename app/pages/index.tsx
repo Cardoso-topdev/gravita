@@ -7,27 +7,31 @@ import Link from 'next/link';
 import { colors } from 'theme/colors';
 import { LandingPageDocument, LandingPageQuery } from 'generated/graphql';
 import { WithNoAuthentication } from 'hoc/WithNoAuthentication';
+import styles from '../styles/homepage.module.css';
 
 const HomePage = ({ items }) => {
   const { welcomeText } = items;
   return (
     <Layout home>
       <Head>
-        <title>{title}</title>
+        <title className={styles.title}>{title}</title>
       </Head>
       <Heading as="h1" size="2xl" color="white" width="60%">
         {welcomeText}
       </Heading>
       <Login />
-      <Flex display="inline-flex">
-        <Text mt="250px" fontSize="12px" display="inline-flex" color="white">
+      <Flex
+        className={styles.fatherTiger}
+        display="inline-flex"
+      >
+        <Text fontSize="12px" display="inline-flex" color="white">
           Don&apos;t have an account?{' '}
-          <Link href="/signup" passHref>
-            <Text color={colors.teal} marginLeft="5px" cursor="pointer">
-              Sign up here
-            </Text>
-          </Link>
         </Text>
+        <Link href="/signup" passHref>
+          <Text fontSize="12px" color={colors.teal} marginLeft="5px" cursor="pointer">
+            Sign up here
+          </Text>
+        </Link>
       </Flex>
     </Layout>
   );

@@ -7,7 +7,7 @@ export function WithNoAuthentication<P extends {}>(
   Component: React.ComponentType<P>
 ) {
   return function AuthHoc(props: P) {
-    const { session, loading } = useAuthContext();
+    const { session } = useAuthContext();
 
     useEffect(() => {
       if (session) {
@@ -15,10 +15,6 @@ export function WithNoAuthentication<P extends {}>(
       }
     }, [session]);
 
-    if (!loading) {
-      return <Component {...props} />;
-    } else {
-      return <Loader />;
-    }
+    return <Component {...props} />;
   };
 }
