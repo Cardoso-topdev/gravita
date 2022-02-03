@@ -2,3 +2,37 @@
   border-bottom: 1px solid #e2e8f0;
   position: sticky;
 }
+
+.navIcon {
+  width: 24px!important;
+  height: 24px!important;
+  margin-right: 18px;
+  cursor: pointer;
+}
+
+.notifyIcon {
+  width: 28px!important;
+  height: 28px!important;
+  margin-right: 18px;
+  cursor: pointer;
+}
+
+.navIconContainer{
+  display: flex;
+  align-items: center;
+}
+
+.navMenuBtn {
+  width: 44px!important;
+  padding: 0!important;
+  background-color: transparent!important;
+}
+
+.navMenuBtn:hover {
+  background: transparent!important;
+}
+
+.userAvatar {
+  height: 40px!important;
+  width: 40px!important;
+}

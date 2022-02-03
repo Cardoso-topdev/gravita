@@ -1,15 +1,14 @@
-import { useState } from 'react';
 import { Box, Avatar, Flex, Image, Text, Button, Menu, MenuButton, MenuList, MenuItem } from '@chakra-ui/react';
 import Link from 'next/link';
 import { supabase } from 'lib/base';
 import { useAuthContext } from 'context/AuthContext';
-import { ToggleColorModeButton } from '../ToggleColorModeButton';
 import styles from './navbar.module.css';
-import { NotificationButton } from 'components/NotificationButton';
+import { BellIcon } from '@chakra-ui/icons'
+import { ToggleColorModeButton } from './ToggleColorModeButton';
 
 export const Navbar = (): JSX.Element => {
   const { session } = useAuthContext();
-  const [isProfileDropdownOpen, toggleProfileDropdown] = useState<Boolean>(false);
+  console.log('session: ', session)
 
   const handleSignout = () => supabase.auth.signOut();
   const onNotificationClick = () => {
@@ -50,22 +49,23 @@ export const Navbar = (): JSX.Element => {
         >
           {session ? (
             <>
-              <Text>Howdy Mike!</Text>
-              <Box>
+              <Text>Howdy {session.user.email.substring(0, session.user.email.indexOf('@'))}!</Text>
+              <Box
+                className={styles.navIconContainer}
+              >
                 <ToggleColorModeButton />
-                <NotificationButton onNotificationClick={onNotificationClick}/>
+                <BellIcon
+                  className={styles.notifyIcon}
+                  onClick={onNotificationClick}
+                />
                 <Menu>
                   <MenuButton
+                    className={styles.navMenuBtn}
                     as={Button}
-                    w="44px"
-                    p="0"
-                    isActive={isProfileDropdownOpen}
-                    background={'transparent'}
                   >
                     <Avatar
                       name='Dan Abrahmov'
-                      h="40px"
-                      w="40px"
+                      className={styles.userAvatar}
                       src='https://bit.ly/dan-abramov'
                     />
                   </MenuButton>
@@ -78,8 +78,6 @@ export const Navbar = (): JSX.Element => {
                   </MenuList>
                 </Menu>
               </Box>
-              {/* <Link href="/dashboard">Dashboard</Link>
-              <Button onClick={handleSignout}> Logout </Button> */}
             </>
           ) : (
             <>
