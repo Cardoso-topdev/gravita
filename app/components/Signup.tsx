@@ -44,7 +44,7 @@ export const Signup = (): JSX.Element => {
       return;
     }
 
-    const { user, session, error } = await supabase.auth.signUp({
+    const { error } = await supabase.auth.signUp({
       email: data.email,
       password: data.password1,
     });

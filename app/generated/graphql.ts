@@ -452,6 +452,7 @@ export type News = Entry & {
   __typename?: 'News';
   content?: Maybe<Scalars['String']>;
   contentfulMetadata: ContentfulMetadata;
+  createdAt?: Maybe<Scalars['DateTime']>;
   linkedFrom?: Maybe<NewsLinkingCollections>;
   sys: Sys;
   title?: Maybe<Scalars['String']>;
@@ -460,6 +461,12 @@ export type News = Entry & {
 
 /** [See type definition](https://app.contentful.com/spaces/61crxrrbpkjj/content_types/news) */
 export type NewsContentArgs = {
+  locale?: InputMaybe<Scalars['String']>;
+};
+
+
+/** [See type definition](https://app.contentful.com/spaces/61crxrrbpkjj/content_types/news) */
+export type NewsCreatedAtArgs = {
   locale?: InputMaybe<Scalars['String']>;
 };
 
@@ -494,6 +501,15 @@ export type NewsFilter = {
   content_not_contains?: InputMaybe<Scalars['String']>;
   content_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
   contentfulMetadata?: InputMaybe<ContentfulMetadataFilter>;
+  createdAt?: InputMaybe<Scalars['DateTime']>;
+  createdAt_exists?: InputMaybe<Scalars['Boolean']>;
+  createdAt_gt?: InputMaybe<Scalars['DateTime']>;
+  createdAt_gte?: InputMaybe<Scalars['DateTime']>;
+  createdAt_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>;
+  createdAt_lt?: InputMaybe<Scalars['DateTime']>;
+  createdAt_lte?: InputMaybe<Scalars['DateTime']>;
+  createdAt_not?: InputMaybe<Scalars['DateTime']>;
+  createdAt_not_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>;
   sys?: InputMaybe<SysFilter>;
   title?: InputMaybe<Scalars['String']>;
   title_contains?: InputMaybe<Scalars['String']>;
@@ -520,6 +536,8 @@ export type NewsLinkingCollectionsEntryCollectionArgs = {
 export enum NewsOrder {
   ContentAsc = 'content_ASC',
   ContentDesc = 'content_DESC',
+  CreatedAtAsc = 'createdAt_ASC',
+  CreatedAtDesc = 'createdAt_DESC',
   SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
   SysFirstPublishedAtDesc = 'sys_firstPublishedAt_DESC',
   SysIdAsc = 'sys_id_ASC',
@@ -658,7 +676,7 @@ export type LandingPageQueryVariables = Exact<{ [key: string]: never; }>;
 
 export type LandingPageQuery = { __typename?: 'Query', landingPageCollection?: { __typename?: 'LandingPageCollection', items: Array<{ __typename?: 'LandingPage', welcomeText?: string | null | undefined, submitButtonText?: string | null | undefined, sys: { __typename?: 'Sys', id: string } } | null | undefined> } | null | undefined };
 
-export type NewsItemFragment = { __typename?: 'News', title?: string | null | undefined, content?: string | null | undefined, sys: { __typename?: 'Sys', id: string } };
+export type NewsItemFragment = { __typename?: 'News', title?: string | null | undefined, content?: string | null | undefined, createdAt?: any | null | undefined, sys: { __typename?: 'Sys', id: string } };
 
 export type NewsQueryVariables = Exact<{
   limit?: InputMaybe<Scalars['Int']>;
@@ -667,7 +685,7 @@ export type NewsQueryVariables = Exact<{
 }>;
 
 
-export type NewsQuery = { __typename?: 'Query', newsCollection?: { __typename?: 'NewsCollection', items: Array<{ __typename?: 'News', title?: string | null | undefined, content?: string | null | undefined, sys: { __typename?: 'Sys', id: string } } | null | undefined> } | null | undefined };
+export type NewsQuery = { __typename?: 'Query', newsCollection?: { __typename?: 'NewsCollection', items: Array<{ __typename?: 'News', title?: string | null | undefined, content?: string | null | undefined, createdAt?: any | null | undefined, sys: { __typename?: 'Sys', id: string } } | null | undefined> } | null | undefined };
 
 export type SysFragment = { __typename?: 'Sys', id: string };
 
@@ -692,6 +710,7 @@ export const NewsItemFragmentDoc = gql`
   }
   title
   content
+  createdAt
 }
     ${SysFragmentDoc}`;
 export const LandingPageDocument = gql`
