@@ -36,3 +36,16 @@
   height: 40px!important;
   width: 40px!important;
 }
+.hasNewNotifications {
+  width: 13px;
+  height: 13px;
+  background: #D25252;
+  border-radius: 50%;
+  position: absolute;
+  top: 0;
+  right: 18px;
+}
+.notifyIconWrapper{
+  position: relative;
+  cursor: pointer;
+}

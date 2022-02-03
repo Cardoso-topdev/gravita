@@ -3,8 +3,8 @@ import Link from 'next/link';
 import { supabase } from 'lib/base';
 import { useAuthContext } from 'context/AuthContext';
 import styles from './navbar.module.css';
-import { BellIcon } from '@chakra-ui/icons'
 import { ToggleColorModeButton } from './ToggleColorModeButton';
+import { NotificationButton } from './NotificationButton';
 
 export const Navbar = (): JSX.Element => {
   const { session } = useAuthContext();
@@ -53,9 +53,9 @@ export const Navbar = (): JSX.Element => {
                 className={styles.navIconContainer}
               >
                 <ToggleColorModeButton />
-                <BellIcon
-                  className={styles.notifyIcon}
-                  onClick={onNotificationClick}
+                <NotificationButton
+                  hasNewNotification={true}
+                  onNotificationClick={onNotificationClick}
                 />
                 <Menu>
                   <MenuButton
