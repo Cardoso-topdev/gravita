@@ -1,4 +1,5 @@
 import { FC } from 'react';
+import Link from 'next/link';
 import { Box, Flex, Text } from '@chakra-ui/react';
 import { colors } from 'theme/colors';
 import { VoteCard } from '../vote-card/VoteCard';
@@ -25,12 +26,19 @@ export const RightSidebar: FC = () => {
         </Text>
         <VoteCard title="What do you think of Gravita app?" />
       </Box>
-      <Text color={colors.teal} mt={5} fontSize={14} cursor='pointer'> See all news </Text>
+      <Text color={colors.teal} mt={2} fontSize={14} cursor="pointer">
+        See all
+      </Text>
       <Box mt={5}>
         <Text color={colors.primaryGray} fontWeight={700} fontSize={12}>
           NEWS & UPDATES
         </Text>
         <News data={data} />
+        <Link href="/news" passHref>
+          <Text color={colors.teal} mt={2} fontSize={14} cursor="pointer">
+            See all news
+          </Text>
+        </Link>
       </Box>
     </Flex>
   );

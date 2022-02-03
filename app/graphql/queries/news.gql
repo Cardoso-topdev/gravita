@@ -4,6 +4,7 @@ fragment NewsItem on News {
   }
   title
   content
+  createdAt
 }
 
 query News($limit: Int, $where: NewsFilter, $order: [NewsOrder]) {
