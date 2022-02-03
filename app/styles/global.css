@@ -25,3 +25,19 @@ img {
   max-width: 100%;
   display: block;
 }
+
+h1, .f-32 {
+  font-size: 32px!important;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  transition: background-color 5000s ease-in-out 0s;
+  -webkit-text-fill-color: #fff !important;
+}
+
+input {
+  caret-color: #fff;
+}

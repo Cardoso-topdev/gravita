@@ -1,6 +1,7 @@
 .container {
   border-bottom: 1px solid #e2e8f0;
   position: sticky;
+  z-index: 1;
 }
 
 .navIcon {
@@ -8,6 +9,12 @@
   height: 24px!important;
   margin-right: 18px;
   cursor: pointer;
+}
+
+.navLogo {
+  width: 151px;
+  height: 34px;
+  display: inline;
 }
 
 .notifyIcon {
