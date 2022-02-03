@@ -33,10 +33,12 @@ export const Login = (): JSX.Element => {
   const router = useRouter();
 
   const onSubmit = async (data: Form): Promise<void> => {
-    const { user, session, error } = await supabase.auth.signIn({
+    const { error } = await supabase.auth.signIn({
       email: data.email,
       password: data.password,
     });
+
+    console.log(error)
 
     if (error) {
       setServerError(error.message);

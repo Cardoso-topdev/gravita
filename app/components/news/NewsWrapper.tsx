@@ -1,5 +1,14 @@
 import { FC } from 'react';
-import { Box, Button, Heading, Center } from '@chakra-ui/react';
+import {
+  Box,
+  Button,
+  Center,
+  Heading,
+  HStack,
+  Flex,
+  Select,
+  Text,
+} from '@chakra-ui/react';
 import { NewsQuery } from 'generated/graphql';
 import { NewsCard } from './NewsCard';
 import { typography } from 'theme/typography';
@@ -12,9 +21,15 @@ interface Props {
 export const NewsWrapper: FC<Props> = ({ news }) => {
   return (
     <Box p={{ base: 10, lg: 20 }}>
-      <Heading {...typography.pageHeading} mb={10}>
-        News & Updates
-      </Heading>
+      <Flex align="center" justify="space-between" mb={5}>
+        <Heading {...typography.pageHeading}>News & Updates</Heading>
+        <HStack>
+          <Text fontSize={14}>Sort by:</Text> 
+          <Select fontSize={14} fontWeight={700} placeholder="Recent" variant="unstyled" w={100}>
+            <option value="option1">Recent</option>
+          </Select>
+        </HStack>
+      </Flex>
       {news.items.map((item) => (
         <NewsCard
           borderRadius={10}
