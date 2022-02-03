@@ -8,7 +8,6 @@ import { ToggleColorModeButton } from './ToggleColorModeButton';
 
 export const Navbar = (): JSX.Element => {
   const { session } = useAuthContext();
-  console.log('session: ', session)
 
   const handleSignout = () => supabase.auth.signOut();
   const onNotificationClick = () => {
