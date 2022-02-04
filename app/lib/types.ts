@@ -142,6 +142,133 @@ export interface paths {
       };
     };
   };
+  "/profiles": {
+    get: {
+      parameters: {
+        query: {
+          id?: parameters["rowFilter.profiles.id"];
+          email?: parameters["rowFilter.profiles.email"];
+          /** Filtering Columns */
+          select?: parameters["select"];
+          /** Ordering */
+          order?: parameters["order"];
+          /** Limiting and Pagination */
+          offset?: parameters["offset"];
+          /** Limiting and Pagination */
+          limit?: parameters["limit"];
+        };
+        header: {
+          /** Limiting and Pagination */
+          Range?: parameters["range"];
+          /** Limiting and Pagination */
+          "Range-Unit"?: parameters["rangeUnit"];
+          /** Preference */
+          Prefer?: parameters["preferCount"];
+        };
+      };
+      responses: {
+        /** OK */
+        200: {
+          schema: definitions["profiles"][];
+        };
+        /** Partial Content */
+        206: unknown;
+      };
+    };
+    post: {
+      parameters: {
+        body: {
+          /** profiles */
+          profiles?: definitions["profiles"];
+        };
+        query: {
+          /** Filtering Columns */
+          select?: parameters["select"];
+        };
+        header: {
+          /** Preference */
+          Prefer?: parameters["preferReturn"];
+        };
+      };
+      responses: {
+        /** Created */
+        201: unknown;
+      };
+    };
+    delete: {
+      parameters: {
+        query: {
+          id?: parameters["rowFilter.profiles.id"];
+          email?: parameters["rowFilter.profiles.email"];
+        };
+        header: {
+          /** Preference */
+          Prefer?: parameters["preferReturn"];
+        };
+      };
+      responses: {
+        /** No Content */
+        204: never;
+      };
+    };
+    patch: {
+      parameters: {
+        query: {
+          id?: parameters["rowFilter.profiles.id"];
+          email?: parameters["rowFilter.profiles.email"];
+        };
+        body: {
+          /** profiles */
+          profiles?: definitions["profiles"];
+        };
+        header: {
+          /** Preference */
+          Prefer?: parameters["preferReturn"];
+        };
+      };
+      responses: {
+        /** No Content */
+        204: never;
+      };
+    };
+  };
+  "/rpc/handle_new_user": {
+    post: {
+      parameters: {
+        body: {
+          args: { [key: string]: unknown };
+        };
+        header: {
+          /** Preference */
+          Prefer?: parameters["preferParams"];
+        };
+      };
+      responses: {
+        /** OK */
+        200: unknown;
+      };
+    };
+  };
+  "/rpc/talk_to_kanye": {
+    post: {
+      parameters: {
+        body: {
+          args: {
+            /** Format: text */
+            name: string;
+          };
+        };
+        header: {
+          /** Preference */
+          Prefer?: parameters["preferParams"];
+        };
+      };
+      responses: {
+        /** OK */
+        200: unknown;
+      };
+    };
+  };
 }
 
 export interface definitions {
@@ -173,6 +300,16 @@ export interface definitions {
     vote_type?: "great" | "good" | "bad" | "shit";
     /** Format: bigint */
     percentage?: number;
+  };
+  profiles: {
+    /**
+     * Format: uuid
+     * @description Note:
+     * This is a Primary Key.<pk/>
+     */
+    id: string;
+    /** Format: text */
+    email?: string;
   };
 }
 
@@ -225,6 +362,12 @@ export interface parameters {
   "rowFilter.card_votes_percentages.vote_type": string;
   /** Format: bigint */
   "rowFilter.card_votes_percentages.percentage": string;
+  /** @description profiles */
+  "body.profiles": definitions["profiles"];
+  /** Format: uuid */
+  "rowFilter.profiles.id": string;
+  /** Format: text */
+  "rowFilter.profiles.email": string;
 }
 
 export interface operations {}

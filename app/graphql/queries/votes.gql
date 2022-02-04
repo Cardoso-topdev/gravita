@@ -1,0 +1,16 @@
+fragment VoteItem on Votes {
+  sys {
+    ...Sys
+  }
+  createdAt
+  status 
+  title
+}
+
+query Votes($limit: Int, $where: VotesFilter, $order: [VotesOrder]) {
+  votesCollection(limit: $limit, where: $where, order: $order) {
+    items {
+      ...VoteItem
+    }
+  }
+}

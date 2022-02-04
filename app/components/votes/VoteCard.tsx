@@ -16,6 +16,8 @@ import { VoteOptions } from './VoteOptions';
 
 interface Props {
   title: string;
+  status: string; 
+  createdAt: string;
 }
 
 enum Screen {

@@ -559,6 +559,8 @@ export type Query = {
   landingPageCollection?: Maybe<LandingPageCollection>;
   news?: Maybe<News>;
   newsCollection?: Maybe<NewsCollection>;
+  votes?: Maybe<Votes>;
+  votesCollection?: Maybe<VotesCollection>;
 };
 
 
@@ -622,6 +624,23 @@ export type QueryNewsCollectionArgs = {
   where?: InputMaybe<NewsFilter>;
 };
 
+
+export type QueryVotesArgs = {
+  id: Scalars['String'];
+  locale?: InputMaybe<Scalars['String']>;
+  preview?: InputMaybe<Scalars['Boolean']>;
+};
+
+
+export type QueryVotesCollectionArgs = {
+  limit?: InputMaybe<Scalars['Int']>;
+  locale?: InputMaybe<Scalars['String']>;
+  order?: InputMaybe<Array<InputMaybe<VotesOrder>>>;
+  preview?: InputMaybe<Scalars['Boolean']>;
+  skip?: InputMaybe<Scalars['Int']>;
+  where?: InputMaybe<VotesFilter>;
+};
+
 export type Sys = {
   __typename?: 'Sys';
   environmentId: Scalars['String'];
@@ -669,6 +688,109 @@ export type SysFilter = {
   publishedVersion_not_in?: InputMaybe<Array<InputMaybe<Scalars['Float']>>>;
 };
 
+/** [See type definition](https://app.contentful.com/spaces/61crxrrbpkjj/content_types/votes) */
+export type Votes = Entry & {
+  __typename?: 'Votes';
+  contentfulMetadata: ContentfulMetadata;
+  createdAt?: Maybe<Scalars['DateTime']>;
+  linkedFrom?: Maybe<VotesLinkingCollections>;
+  status?: Maybe<Scalars['String']>;
+  sys: Sys;
+  title?: Maybe<Scalars['String']>;
+};
+
+
+/** [See type definition](https://app.contentful.com/spaces/61crxrrbpkjj/content_types/votes) */
+export type VotesCreatedAtArgs = {
+  locale?: InputMaybe<Scalars['String']>;
+};
+
+
+/** [See type definition](https://app.contentful.com/spaces/61crxrrbpkjj/content_types/votes) */
+export type VotesLinkedFromArgs = {
+  allowedLocales?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+
+/** [See type definition](https://app.contentful.com/spaces/61crxrrbpkjj/content_types/votes) */
+export type VotesStatusArgs = {
+  locale?: InputMaybe<Scalars['String']>;
+};
+
+
+/** [See type definition](https://app.contentful.com/spaces/61crxrrbpkjj/content_types/votes) */
+export type VotesTitleArgs = {
+  locale?: InputMaybe<Scalars['String']>;
+};
+
+export type VotesCollection = {
+  __typename?: 'VotesCollection';
+  items: Array<Maybe<Votes>>;
+  limit: Scalars['Int'];
+  skip: Scalars['Int'];
+  total: Scalars['Int'];
+};
+
+export type VotesFilter = {
+  AND?: InputMaybe<Array<InputMaybe<VotesFilter>>>;
+  OR?: InputMaybe<Array<InputMaybe<VotesFilter>>>;
+  contentfulMetadata?: InputMaybe<ContentfulMetadataFilter>;
+  createdAt?: InputMaybe<Scalars['DateTime']>;
+  createdAt_exists?: InputMaybe<Scalars['Boolean']>;
+  createdAt_gt?: InputMaybe<Scalars['DateTime']>;
+  createdAt_gte?: InputMaybe<Scalars['DateTime']>;
+  createdAt_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>;
+  createdAt_lt?: InputMaybe<Scalars['DateTime']>;
+  createdAt_lte?: InputMaybe<Scalars['DateTime']>;
+  createdAt_not?: InputMaybe<Scalars['DateTime']>;
+  createdAt_not_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>;
+  status?: InputMaybe<Scalars['String']>;
+  status_contains?: InputMaybe<Scalars['String']>;
+  status_exists?: InputMaybe<Scalars['Boolean']>;
+  status_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  status_not?: InputMaybe<Scalars['String']>;
+  status_not_contains?: InputMaybe<Scalars['String']>;
+  status_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  sys?: InputMaybe<SysFilter>;
+  title?: InputMaybe<Scalars['String']>;
+  title_contains?: InputMaybe<Scalars['String']>;
+  title_exists?: InputMaybe<Scalars['Boolean']>;
+  title_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  title_not?: InputMaybe<Scalars['String']>;
+  title_not_contains?: InputMaybe<Scalars['String']>;
+  title_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+export type VotesLinkingCollections = {
+  __typename?: 'VotesLinkingCollections';
+  entryCollection?: Maybe<EntryCollection>;
+};
+
+
+export type VotesLinkingCollectionsEntryCollectionArgs = {
+  limit?: InputMaybe<Scalars['Int']>;
+  locale?: InputMaybe<Scalars['String']>;
+  preview?: InputMaybe<Scalars['Boolean']>;
+  skip?: InputMaybe<Scalars['Int']>;
+};
+
+export enum VotesOrder {
+  CreatedAtAsc = 'createdAt_ASC',
+  CreatedAtDesc = 'createdAt_DESC',
+  StatusAsc = 'status_ASC',
+  StatusDesc = 'status_DESC',
+  SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
+  SysFirstPublishedAtDesc = 'sys_firstPublishedAt_DESC',
+  SysIdAsc = 'sys_id_ASC',
+  SysIdDesc = 'sys_id_DESC',
+  SysPublishedAtAsc = 'sys_publishedAt_ASC',
+  SysPublishedAtDesc = 'sys_publishedAt_DESC',
+  SysPublishedVersionAsc = 'sys_publishedVersion_ASC',
+  SysPublishedVersionDesc = 'sys_publishedVersion_DESC',
+  TitleAsc = 'title_ASC',
+  TitleDesc = 'title_DESC'
+}
+
 export type LandingPageItemFragment = { __typename?: 'LandingPage', welcomeText?: string | null | undefined, submitButtonText?: string | null | undefined, sys: { __typename?: 'Sys', id: string } };
 
 export type LandingPageQueryVariables = Exact<{ [key: string]: never; }>;
@@ -688,6 +810,17 @@ export type NewsQueryVariables = Exact<{
 export type NewsQuery = { __typename?: 'Query', newsCollection?: { __typename?: 'NewsCollection', items: Array<{ __typename?: 'News', title?: string | null | undefined, content?: string | null | undefined, createdAt?: any | null | undefined, sys: { __typename?: 'Sys', id: string } } | null | undefined> } | null | undefined };
 
 export type SysFragment = { __typename?: 'Sys', id: string };
+
+export type VoteItemFragment = { __typename?: 'Votes', createdAt?: any | null | undefined, status?: string | null | undefined, title?: string | null | undefined, sys: { __typename?: 'Sys', id: string } };
+
+export type VotesQueryVariables = Exact<{
+  limit?: InputMaybe<Scalars['Int']>;
+  where?: InputMaybe<VotesFilter>;
+  order?: InputMaybe<Array<InputMaybe<VotesOrder>> | InputMaybe<VotesOrder>>;
+}>;
+
+
+export type VotesQuery = { __typename?: 'Query', votesCollection?: { __typename?: 'VotesCollection', items: Array<{ __typename?: 'Votes', createdAt?: any | null | undefined, status?: string | null | undefined, title?: string | null | undefined, sys: { __typename?: 'Sys', id: string } } | null | undefined> } | null | undefined };
 
 export const SysFragmentDoc = gql`
     fragment Sys on Sys {
@@ -711,6 +844,16 @@ export const NewsItemFragmentDoc = gql`
   title
   content
   createdAt
+}
+    ${SysFragmentDoc}`;
+export const VoteItemFragmentDoc = gql`
+    fragment VoteItem on Votes {
+  sys {
+    ...Sys
+  }
+  createdAt
+  status
+  title
 }
     ${SysFragmentDoc}`;
 export const LandingPageDocument = gql`
@@ -738,4 +881,17 @@ export const NewsDocument = gql`
 
 export function useNewsQuery(options: Omit<Urql.UseQueryArgs<NewsQueryVariables>, 'query'> = {}) {
   return Urql.useQuery<NewsQuery>({ query: NewsDocument, ...options });
+};
+export const VotesDocument = gql`
+    query Votes($limit: Int, $where: VotesFilter, $order: [VotesOrder]) {
+  votesCollection(limit: $limit, where: $where, order: $order) {
+    items {
+      ...VoteItem
+    }
+  }
+}
+    ${VoteItemFragmentDoc}`;
+
+export function useVotesQuery(options: Omit<Urql.UseQueryArgs<VotesQueryVariables>, 'query'> = {}) {
+  return Urql.useQuery<VotesQuery>({ query: VotesDocument, ...options });
 };

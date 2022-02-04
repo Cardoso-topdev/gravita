@@ -2,7 +2,7 @@ import { FC } from 'react';
 import Link from 'next/link';
 import { Box, Flex, Text } from '@chakra-ui/react';
 import { colors } from 'theme/colors';
-import { VoteCard } from '../vote-card/VoteCard';
+import { VoteCard } from '../votes/VoteCard';
 import { useNewsQuery } from 'generated/graphql';
 import { News } from './News';
 
