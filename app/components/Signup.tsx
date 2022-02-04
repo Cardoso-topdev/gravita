@@ -5,8 +5,6 @@ import { useRouter } from 'next/router';
 import { supabase } from 'lib/base';
 import { FormInput } from './FormInput';
 import { useFormValidation } from 'hooks/useFormValidation';
-import { colors } from 'theme/colors';
-
 interface Form {
   email: string;
   password1: string;
@@ -90,7 +88,7 @@ export const Signup = (): JSX.Element => {
             display="flex"
             justifyContent="center"
             alignItems="center"
-            color={colors.red}
+            color="red"
             mt="10px"
           >
             {serverError}

@@ -1,7 +1,5 @@
 import { FC } from 'react';
 import { VStack, Button, StackProps } from '@chakra-ui/react';
-import { colors } from 'theme/colors';
-import { sizes } from 'theme/sizes';
 import { Title } from './Title';
 import { Text } from './Text';
 
@@ -16,8 +14,8 @@ export const Projects: FC<Props> = (props) => (
 
     <Button
       alignSelf="flex-start"
-      color={colors.teal}
-      size={sizes.xs}
+      color="teal"
+      size="xs"
       variant="link"
     >
       + New Project

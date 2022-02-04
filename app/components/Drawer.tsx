@@ -7,8 +7,7 @@ import {
   useDisclosure,
   IconButton,
 } from '@chakra-ui/react';
-import { IoIosClose } from 'react-icons/io';
-import { colors } from 'theme/colors';
+import { IoIosChatbubbles, IoIosClose } from 'react-icons/io';
 import { sizes } from 'theme/sizes';
 
 interface Props extends Omit<DrawerProps, 'onOpen' | 'isOpen' | 'onClose'> {
@@ -25,14 +24,14 @@ export const Drawer: FC<PropsWithChildren<Props>> = ({
     <>
       <IconButton
         aria-label="Open drawer"
-        bg={colors.gray700}
+        bg="gray.700"
         borderRadius={15}
         bottom={150}
-        icon={<IoIosClose color={colors.teal} size={sizes.xxl} />}
+        icon={isOpen ? <IoIosClose color="teal" size={sizes.xxl} /> : <IoIosChatbubbles color="teal" size={sizes.xxl} />}
         onClick={onOpen}
         right={50}
         position="absolute"
-        size={sizes.lg}
+        size="lg"
         zIndex={1}
       />
       <ChackraDrawer isOpen={isOpen} onClose={onClose} {...rest}>

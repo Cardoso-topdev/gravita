@@ -5,7 +5,6 @@ import { useRouter } from 'next/router';
 import { supabase } from 'lib/base';
 import { FormInput } from './FormInput';
 import { useFormValidation } from 'hooks/useFormValidation';
-import { colors } from 'theme/colors';
 import { ViewIcon, ViewOffIcon } from '@chakra-ui/icons';
 import styles from './components.module.css';
 import commonStyles from '../styles/common.module.css';
@@ -93,7 +92,7 @@ export const Login = (): JSX.Element => {
             display="flex"
             justifyContent="center"
             alignItems="center"
-            color={colors.red}
+            color="red"
             mt="10px"
           >
             {serverError}
@@ -101,7 +100,7 @@ export const Login = (): JSX.Element => {
           <Link href="/forgot-password" passHref>
             <Text
               className={styles.forgotPwd + ' ' + commonStyles.fontSize12}
-              color={colors.teal}
+              color="teal"
             >
               Forgot password</Text>
           </Link>
@@ -109,8 +108,8 @@ export const Login = (): JSX.Element => {
             type="submit"
             disabled={disabled}
             className={styles.btnStartExploring + ' ' + commonStyles.fontSize12}
-            background={colors.teal}
-            color={colors.primaryGray}
+            background="teal"
+            color="gray.800"
           >
             Start Exploring
           </Button>

@@ -4,7 +4,6 @@ import Layout, { title } from '../components/layout/Layout';
 import { Login } from 'components/Login';
 import { Flex, Heading, Text } from '@chakra-ui/react';
 import Link from 'next/link';
-import { colors } from 'theme/colors';
 import { LandingPageDocument, LandingPageQuery } from 'generated/graphql';
 import { WithNoAuthentication } from 'hoc/WithNoAuthentication';
 import styles from '../styles/homepage.module.css';
@@ -28,7 +27,7 @@ const HomePage = ({ items }) => {
           Don&apos;t have an account?{' '}
         </Text>
         <Link href="/signup" passHref>
-          <Text fontSize="12px" color={colors.teal} marginLeft="5px" cursor="pointer">
+          <Text fontSize="12px" color="teal" marginLeft="5px" cursor="pointer">
             Sign up here
           </Text>
         </Link>
