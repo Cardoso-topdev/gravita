@@ -41,3 +41,8 @@ input:-webkit-autofill:active {
 input {
   caret-color: #fff;
 }
+
+.str-chat.str-chat-channel.messaging.light,
+.str-chat.str-chat-channel-list.messaging.light {
+  height: calc(100% - 54px - 4rem);
+}

@@ -22,22 +22,36 @@ export const Drawer: FC<PropsWithChildren<Props>> = ({
   const { isOpen, onOpen, onClose } = useDisclosure();
   return (
     <>
+      <ChackraDrawer isOpen={isOpen} onClose={onClose} {...rest}>
+        <DrawerOverlay />
+        <DrawerContent>
+          {children}
+          <IconButton
+            aria-label="Open drawer"
+            bg="gray.700"
+            borderRadius={15}
+            bottom={10}
+            icon={<IoIosClose color="teal" size={sizes.xxl} />}
+            onClick={onClose}
+            right={10}
+            position="absolute"
+            size="lg"
+            zIndex={1}
+          />
+        </DrawerContent>
+      </ChackraDrawer>
       <IconButton
         aria-label="Open drawer"
         bg="gray.700"
         borderRadius={15}
-        bottom={150}
-        icon={isOpen ? <IoIosClose color="teal" size={sizes.xxl} /> : <IoIosChatbubbles color="teal" size={sizes.xxl} />}
+        bottom={10}
+        icon={<IoIosChatbubbles color="teal" size={sizes.xxl} />}
         onClick={onOpen}
-        right={50}
+        right={10}
         position="absolute"
         size="lg"
         zIndex={1}
       />
-      <ChackraDrawer isOpen={isOpen} onClose={onClose} {...rest}>
-        <DrawerOverlay />
-        <DrawerContent>{children}</DrawerContent>
-      </ChackraDrawer>
     </>
   );
 };

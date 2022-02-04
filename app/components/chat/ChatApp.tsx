@@ -23,7 +23,11 @@ const customStyles: CustomStyles = {
 export const ChatApp = () => {
   const { isDark } = useDarkModeSwitch();
   return (
-    <Chat client={stream.client} customStyles={customStyles} darkMode={isDark}>
+    <Chat
+      client={stream.client}
+      customStyles={customStyles}
+      darkMode={isDark}
+    >
       <Flex justifyContent="center" bg="streamGray">
         <ChannelList />
         <Channel>
