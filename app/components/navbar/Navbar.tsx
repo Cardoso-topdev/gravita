@@ -7,6 +7,7 @@ import { NotificationButton } from './NotificationButton';
 import { useEffect, useRef } from 'react';
 import { useColorMode, Icon } from '@chakra-ui/react';
 import styles from './navbar.module.css';
+import { textToCapitalizeWord } from 'utils/common';
 
 export const Navbar = (): JSX.Element => {
   const { session } = useAuthContext();
@@ -57,7 +58,7 @@ export const Navbar = (): JSX.Element => {
         >
           {session ? (
             <>
-              <Text>Howdy {session.user.email.substring(0, session.user.email.indexOf('@'))}!</Text>
+              <Text>Howdy {textToCapitalizeWord(session.user.email.substring(0, session.user.email.indexOf('@')))}!</Text>
               <Box
                 className={styles.navIconContainer}
               >
