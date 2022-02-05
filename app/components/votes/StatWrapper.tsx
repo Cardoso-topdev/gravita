@@ -9,10 +9,11 @@ import { colors } from 'theme/colors';
 
 interface Props extends WrapProps {
   statWidth?: number;
+  title: string
 }
 
-export const StatWrapper: FC<Props> = ({ statWidth, ...rest }): JSX.Element => {
-  const [votes, loading] = useData(getVotePercentages);
+export const StatWrapper: FC<Props> = ({ statWidth, title, ...rest }): JSX.Element => {
+  const [votes, loading] = useData(() => getVotePercentages(title));
 
   if (loading) {
     return (

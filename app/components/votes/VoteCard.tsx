@@ -1,9 +1,11 @@
 import { FC, useState } from 'react';
 import {
   Button,
+  Center,
   Divider,
   Flex,
   HStack,
+  Tag,
   Text,
   useToast,
 } from '@chakra-ui/react';
@@ -16,7 +18,7 @@ import { VoteOptions } from './VoteOptions';
 
 interface Props {
   title: string;
-  status: string; 
+  status: string;
   createdAt: string;
 }
 
@@ -26,7 +28,7 @@ enum Screen {
   default,
 }
 
-export const VoteCard: FC<Props> = ({ title }): JSX.Element => {
+export const VoteCard: FC<Props> = ({ title, status }): JSX.Element => {
   const [view, setView] = useState<Screen>();
 
   const { session } = useAuthContext();
@@ -40,7 +42,7 @@ export const VoteCard: FC<Props> = ({ title }): JSX.Element => {
       return;
     }
 
-    const { error } = await insertVote(voteType, session.user.id);
+    const { error } = await insertVote(voteType, session.user.id, title);
 
     if (error) {
       toast({
@@ -62,7 +64,7 @@ export const VoteCard: FC<Props> = ({ title }): JSX.Element => {
     setView(view);
   };
 
-  const renderView = (view?: Screen): JSX.Element => {
+  const renderView = (view: Screen): JSX.Element => {
     switch (view) {
       case 1:
         return (
@@ -91,7 +93,7 @@ export const VoteCard: FC<Props> = ({ title }): JSX.Element => {
       case 2:
         return (
           <>
-            <StatWrapper w={370} statWidth={70} />
+            <StatWrapper w={370} statWidth={70} title={title} />
             <Divider />
             <Button
               fontSize={12}
@@ -105,14 +107,15 @@ export const VoteCard: FC<Props> = ({ title }): JSX.Element => {
         );
       default:
         return (
-          <HStack>
-            <Button bg={colors.teal} onClick={handleView.bind(null, 1)} w={165}>
+          <Center>
+            <Button
+              bg={colors.teal}
+              onClick={handleView.bind(null, 1)}
+              w="100%"
+            >
               Vote
             </Button>
-            <Button variant="outline" color={colors.white} w={165}>
-              Details
-            </Button>
-          </HStack>
+          </Center>
         );
     }
   };
@@ -126,7 +129,17 @@ export const VoteCard: FC<Props> = ({ title }): JSX.Element => {
       h={220}
       w={350}
       p={5}
+      position="relative"
     >
+      <Tag
+        alignSelf="flex-end"
+        borderRadius={40}
+        bg={colors.secondaryGreen}
+        position="absolute"
+        top={3}
+      >
+        {status}
+      </Tag>
       <Text fontSize={20} fontWeight={700} color={colors.white}>
         {title}
       </Text>

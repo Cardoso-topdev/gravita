@@ -20,6 +20,7 @@ export interface paths {
           vote_type?: parameters["rowFilter.card_votes.vote_type"];
           created_at?: parameters["rowFilter.card_votes.created_at"];
           user_id?: parameters["rowFilter.card_votes.user_id"];
+          title?: parameters["rowFilter.card_votes.title"];
           /** Filtering Columns */
           select?: parameters["select"];
           /** Ordering */
@@ -74,6 +75,7 @@ export interface paths {
           vote_type?: parameters["rowFilter.card_votes.vote_type"];
           created_at?: parameters["rowFilter.card_votes.created_at"];
           user_id?: parameters["rowFilter.card_votes.user_id"];
+          title?: parameters["rowFilter.card_votes.title"];
         };
         header: {
           /** Preference */
@@ -92,6 +94,7 @@ export interface paths {
           vote_type?: parameters["rowFilter.card_votes.vote_type"];
           created_at?: parameters["rowFilter.card_votes.created_at"];
           user_id?: parameters["rowFilter.card_votes.user_id"];
+          title?: parameters["rowFilter.card_votes.title"];
         };
         body: {
           /** card_votes */
@@ -105,40 +108,6 @@ export interface paths {
       responses: {
         /** No Content */
         204: never;
-      };
-    };
-  };
-  "/card_votes_percentages": {
-    get: {
-      parameters: {
-        query: {
-          vote_type?: parameters["rowFilter.card_votes_percentages.vote_type"];
-          percentage?: parameters["rowFilter.card_votes_percentages.percentage"];
-          /** Filtering Columns */
-          select?: parameters["select"];
-          /** Ordering */
-          order?: parameters["order"];
-          /** Limiting and Pagination */
-          offset?: parameters["offset"];
-          /** Limiting and Pagination */
-          limit?: parameters["limit"];
-        };
-        header: {
-          /** Limiting and Pagination */
-          Range?: parameters["range"];
-          /** Limiting and Pagination */
-          "Range-Unit"?: parameters["rangeUnit"];
-          /** Preference */
-          Prefer?: parameters["preferCount"];
-        };
-      };
-      responses: {
-        /** OK */
-        200: {
-          schema: definitions["card_votes_percentages"][];
-        };
-        /** Partial Content */
-        206: unknown;
       };
     };
   };
@@ -249,13 +218,13 @@ export interface paths {
       };
     };
   };
-  "/rpc/talk_to_kanye": {
+  "/rpc/get_votes_by_title": {
     post: {
       parameters: {
         body: {
           args: {
             /** Format: text */
-            name: string;
+            vote_title: string;
           };
         };
         header: {
@@ -290,16 +259,9 @@ export interface definitions {
      */
     created_at?: string;
     /** Format: uuid */
-    user_id: string;
-  };
-  card_votes_percentages: {
-    /**
-     * Format: public.card_vote_types
-     * @enum {string}
-     */
-    vote_type?: "great" | "good" | "bad" | "shit";
-    /** Format: bigint */
-    percentage?: number;
+    user_id?: string;
+    /** Format: text */
+    title: string;
   };
   profiles: {
     /**
@@ -356,12 +318,8 @@ export interface parameters {
   "rowFilter.card_votes.created_at": string;
   /** Format: uuid */
   "rowFilter.card_votes.user_id": string;
-  /** @description card_votes_percentages */
-  "body.card_votes_percentages": definitions["card_votes_percentages"];
-  /** Format: public.card_vote_types */
-  "rowFilter.card_votes_percentages.vote_type": string;
-  /** Format: bigint */
-  "rowFilter.card_votes_percentages.percentage": string;
+  /** Format: text */
+  "rowFilter.card_votes.title": string;
   /** @description profiles */
   "body.profiles": definitions["profiles"];
   /** Format: uuid */

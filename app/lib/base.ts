@@ -11,9 +11,9 @@ export type VotePercentages = {
   percentage: number;
 };
 
-export const getVotePercentages = async () => {
+export const getVotePercentages = async (title: string) => {
   const { data, error } = await supabase.rpc('get_votes_by_title', {
-    vote_title: 'How is our vote feature',
+    vote_title: title,
   });
 
   return { data, error };
@@ -22,10 +22,11 @@ export const getVotePercentages = async () => {
 export const insertVote = async (
   voteType: definitions['card_votes']['vote_type'],
   userId: string,
+  title: string
 ) => {
   const { data, error } = await supabase
     .from<definitions['card_votes']>('card_votes')
-    .insert([{ vote_type: voteType, user_id: userId }]);
+    .insert([{ vote_type: voteType, user_id: userId, title: title }]);
 
   return { data, error };
 };

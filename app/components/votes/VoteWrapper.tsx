@@ -9,7 +9,7 @@ interface Props {
 
 export const VotesWrapper: FC<Props> = ({ votes }) => {
   return (
-    <Wrap p={50}>
+    <Wrap p={50} spacing={10}>
       {votes.items.map((vote) => (
         <WrapItem key={vote.sys.id}>
           <VoteCard
