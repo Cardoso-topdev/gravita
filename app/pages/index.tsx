@@ -5,7 +5,6 @@ import { Login } from 'components/Login';
 import { Flex, Heading, Text } from '@chakra-ui/react';
 import Link from 'next/link';
 import { LandingPageDocument, LandingPageQuery } from 'generated/graphql';
-import { WithNoAuthentication } from 'hoc/WithNoAuthentication';
 import styles from '../styles/homepage.module.css';
 
 const HomePage = ({ items }) => {
@@ -36,11 +35,7 @@ const HomePage = ({ items }) => {
   );
 }
 
-const NoAuthenticatedHome = WithNoAuthentication(HomePage);
-
-export default function Home({ items }) {
-  return <NoAuthenticatedHome items={items} />;
-}
+export default HomePage
 
 export const getStaticProps = async () => {
   const { data } = await GqlClient.query<LandingPageQuery>(
