@@ -1,24 +1,8 @@
-import { GetStaticPropsContext, GetStaticProps } from 'next';
-import gqlClient from 'lib/contentful/gqlService';
-import { VotesDocument, VotesQuery } from 'generated/graphql';
 import { VotesWrapper } from 'components/votes/VoteWrapper';
+import { WithAuthentication } from 'hoc/WithAuthentication';
 
-interface Props {
-  items: VotesQuery['votesCollection'];
+const PrivateVotePage = WithAuthentication(VotesWrapper);
+
+export default function Votes() {
+  return <PrivateVotePage/>
 }
-
-export default function Votes({ items }: Props) {
-  return <VotesWrapper votes={items} />;
-}
-
-export const getStaticProps: GetStaticProps<Props, undefined> = async (
-  ctx: GetStaticPropsContext,
-) => {
-  const { data } = await gqlClient.query<VotesQuery>(VotesDocument).toPromise();
-
-  return {
-    props: {
-      items: data.votesCollection,
-    },
-  };
-};

@@ -3,13 +3,13 @@ import Link from 'next/link';
 import { Box, Flex, Text } from '@chakra-ui/react';
 import { colors } from 'theme/colors';
 import { VoteCard } from '../votes/VoteCard';
-import { useNewsQuery } from 'generated/graphql';
+import { useVotesQuery } from 'generated/graphql';
 import { News } from './News';
 
 export const RightSidebar: FC = () => {
-  const [result] = useNewsQuery({
+  const [result] = useVotesQuery({
     requestPolicy: 'cache-and-network',
-    variables: { limit: 3 },
+    variables: { limit: 1, where: { status: 'open'} },
   });
 
   const { fetching, data } = result;
@@ -17,6 +17,7 @@ export const RightSidebar: FC = () => {
   if (fetching) {
     return <Text>...Loading</Text>;
   }
+  const firstVote = data.votesCollection.items[0];
 
   return (
     <Flex flexDir="column" w={450} h="100vh" p={10} bg={colors.secondaryDark}>
@@ -24,16 +25,22 @@ export const RightSidebar: FC = () => {
         <Text color={colors.primaryGray} fontWeight={700} fontSize={12}>
           POLLS & SURVEYS
         </Text>
-        <VoteCard title="What do you think of Gravita app?" />
+        <VoteCard
+          title={firstVote.title}
+          status={firstVote.status}
+          createdAt={firstVote.createdAt}
+        />
       </Box>
-      <Text color={colors.teal} mt={2} fontSize={14} cursor="pointer">
-        See all
-      </Text>
+      <Link href="/votes" passHref>
+        <Text color={colors.teal} mt={2} fontSize={14} cursor="pointer">
+          See all
+        </Text>
+      </Link>
       <Box mt={5}>
         <Text color={colors.primaryGray} fontWeight={700} fontSize={12}>
           NEWS & UPDATES
         </Text>
-        <News data={data} />
+        <News />
         <Link href="/news" passHref>
           <Text color={colors.teal} mt={2} fontSize={14} cursor="pointer">
             See all news

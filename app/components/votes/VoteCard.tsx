@@ -111,7 +111,7 @@ export const VoteCard: FC<Props> = ({ title, status }): JSX.Element => {
             <Button
               bg={colors.teal}
               onClick={handleView.bind(null, 1)}
-              w="100%"
+              w="90%"
             >
               Vote
             </Button>
@@ -134,7 +134,7 @@ export const VoteCard: FC<Props> = ({ title, status }): JSX.Element => {
       <Tag
         alignSelf="flex-end"
         borderRadius={40}
-        bg={colors.secondaryGreen}
+        bg={status === 'closed' ? 'gray.500' : colors.secondaryGreen}
         position="absolute"
         top={3}
       >
