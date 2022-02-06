@@ -26,7 +26,7 @@ export const Navbar = (): JSX.Element => {
     }
   }, [])
 
-  return session && mountRef.current && (
+  return (
     <Box
       className={styles.container}
     >
