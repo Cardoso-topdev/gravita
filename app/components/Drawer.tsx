@@ -7,8 +7,7 @@ import {
   useDisclosure,
   IconButton,
 } from '@chakra-ui/react';
-import { IoIosClose } from 'react-icons/io';
-import { colors } from 'theme/colors';
+import { IoIosChatbubbles, IoIosClose } from 'react-icons/io';
 import { sizes } from 'theme/sizes';
 
 interface Props extends Omit<DrawerProps, 'onOpen' | 'isOpen' | 'onClose'> {
@@ -23,22 +22,36 @@ export const Drawer: FC<PropsWithChildren<Props>> = ({
   const { isOpen, onOpen, onClose } = useDisclosure();
   return (
     <>
-      <IconButton
-        aria-label="Open drawer"
-        bg={colors.gray700}
-        borderRadius={15}
-        bottom={150}
-        icon={<IoIosClose color={colors.teal} size={sizes.xxl} />}
-        onClick={onOpen}
-        right={50}
-        position="absolute"
-        size={sizes.lg}
-        zIndex={1}
-      />
       <ChackraDrawer isOpen={isOpen} onClose={onClose} {...rest}>
         <DrawerOverlay />
-        <DrawerContent>{children}</DrawerContent>
+        <DrawerContent>
+          {children}
+          <IconButton
+            aria-label="Open drawer"
+            bg="gray.700"
+            borderRadius={15}
+            bottom={10}
+            icon={<IoIosClose color="teal" size={sizes.xxl} />}
+            onClick={onClose}
+            right={10}
+            position="absolute"
+            size="lg"
+            zIndex={1}
+          />
+        </DrawerContent>
       </ChackraDrawer>
+      <IconButton
+        aria-label="Open drawer"
+        bg="gray.700"
+        borderRadius={15}
+        bottom={10}
+        icon={<IoIosChatbubbles color="teal" size={sizes.xxl} />}
+        onClick={onOpen}
+        right={10}
+        position="absolute"
+        size="lg"
+        zIndex={1}
+      />
     </>
   );
 };

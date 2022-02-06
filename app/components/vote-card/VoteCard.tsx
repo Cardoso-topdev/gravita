@@ -7,7 +7,6 @@ import {
   Text,
   useToast,
 } from '@chakra-ui/react';
-import { colors } from 'theme/colors';
 import { insertVote } from 'lib/base';
 import { definitions } from 'lib/types';
 import { useAuthContext } from 'context/AuthContext';
@@ -72,7 +71,7 @@ export const VoteCard: FC<Props> = ({ title }): JSX.Element => {
                 fontSize={12}
                 variant="link"
                 onClick={handleView.bind(null)}
-                color={colors.red1}
+                color="red1"
               >
                 Cancel
               </Button>
@@ -104,10 +103,10 @@ export const VoteCard: FC<Props> = ({ title }): JSX.Element => {
       default:
         return (
           <HStack>
-            <Button bg={colors.teal} onClick={handleView.bind(null, 1)} w={165}>
+            <Button bg="teal" onClick={handleView.bind(null, 1)} w={165}>
               Vote
             </Button>
-            <Button variant="outline" color={colors.white} w={165}>
+            <Button variant="outline" color="white" w={165}>
               Details
             </Button>
           </HStack>
@@ -119,13 +118,13 @@ export const VoteCard: FC<Props> = ({ title }): JSX.Element => {
     <Flex
       flexDir="column"
       justify="space-evenly"
-      bg={colors.gray700}
+      bg="gray.700"
       borderRadius={20}
       h={220}
       w={350}
       p={5}
     >
-      <Text fontSize={20} fontWeight={700} color={colors.white}>
+      <Text fontSize={20} fontWeight={700} color="white">
         {title}
       </Text>
       {renderView(view)}
