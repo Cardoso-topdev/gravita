@@ -3,11 +3,11 @@ import { Button, Box, Flex, FormControl, FormLabel, Input, FormErrorMessage, Inp
 import { object, string, SchemaOf } from 'yup';
 import { useRouter } from 'next/router';
 import { supabase } from 'lib/base';
-import { FormInput } from './FormInput';
+import { FormInput } from '../FormInput';
 import { useFormValidation } from 'hooks/useFormValidation';
 import { ViewIcon, ViewOffIcon } from '@chakra-ui/icons';
-import styles from './components.module.css';
-import commonStyles from '../styles/common.module.css';
+import styles from './login.module.css';
+import commonStyles from '../../styles/common.module.css';
 import Link from 'next/link';
 
 interface Form {

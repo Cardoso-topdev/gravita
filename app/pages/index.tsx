@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import GqlClient from '../lib/contentful/gqlService';
 import Layout, { title } from '../components/layout/Layout';
-import { Login } from 'components/Login';
+import { Login } from 'components/login/Login';
 import { Flex, Heading, Text } from '@chakra-ui/react';
 import Link from 'next/link';
 import { LandingPageDocument, LandingPageQuery } from 'generated/graphql';
