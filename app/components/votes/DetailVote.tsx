@@ -1,9 +1,18 @@
 import { FC } from 'react';
-import { Box, Heading, Text, HStack } from '@chakra-ui/react';
+import {
+  Box,
+  Heading,
+  Text,
+  HStack,
+  SimpleGrid,
+  VStack,
+} from '@chakra-ui/react';
 import { VoteItemFragment } from 'generated/graphql';
 import { typography } from 'theme/typography';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 import { getEndTime } from 'utils/common';
+import { VoteCard } from 'components/votes/VoteCard';
+import { OpenVotes } from './OpenVotes';
 
 interface Props {
   vote: VoteItemFragment;
@@ -11,9 +20,8 @@ interface Props {
 }
 
 export const DetailVote: FC<Props> = ({ vote, count }) => {
-
   return (
-    <Box p={50}>
+    <Box p={30}>
       <Heading {...typography.pageHeading} mb={5}>
         {vote.title}
       </Heading>
@@ -31,7 +39,21 @@ export const DetailVote: FC<Props> = ({ vote, count }) => {
           <Text fontWeight={700}> {count} </Text>
         </HStack>
       </HStack>
-      <Text>{documentToReactComponents(vote.content.json)}</Text>
+      <SimpleGrid minChildWidth='80px' spacing={10}>
+        <Box>
+          <Text>{documentToReactComponents(vote.content.json)}</Text>
+        </Box>
+        <VStack spacing={5} align='left'>
+          <VoteCard
+            defaultView={1}
+            title={vote.title}
+            voteId={vote.sys.id}
+            createdAt={vote.createdAt}
+            status={vote.status}
+          />
+          <OpenVotes />
+        </VStack>
+      </SimpleGrid>
     </Box>
   );
 };

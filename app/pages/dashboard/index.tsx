@@ -5,7 +5,9 @@ import MainLayout from 'components/layout/MainLayout';
 const PrivateDashboard = WithAuthentication(Dash);
 
 export default function Dashboard() {
-  return <MainLayout>
-    <PrivateDashboard />
-  </MainLayout>
+  return (
+    <MainLayout>
+      <PrivateDashboard />
+    </MainLayout>
+  );
 }

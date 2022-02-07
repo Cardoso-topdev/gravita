@@ -2,7 +2,10 @@ import { GetStaticPropsContext, GetStaticProps } from 'next';
 import gqlClient from 'lib/contentful/gqlService';
 import { NewsQuery, NewsDocument } from 'generated/graphql';
 import { NewsWrapper } from 'components/news/NewsWrapper';
+import { WithAuthentication } from 'hoc/WithAuthentication';
 import MainLayout from 'components/layout/MainLayout';
+
+const PrivateNewsPage = WithAuthentication(NewsWrapper);
 
 interface Props {
   items: NewsQuery['newsCollection'];
@@ -11,7 +14,7 @@ interface Props {
 export default function News({ items }: Props) {
   return (
     <MainLayout>
-      <NewsWrapper news={items} />
+      <PrivateNewsPage news={items} />
     </MainLayout>
   );
 }

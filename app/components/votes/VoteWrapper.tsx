@@ -38,7 +38,7 @@ export const VotesWrapper: FC = () => {
   }
 
   return (
-    <Box p={50}>
+    <Box p={{ base: 5, lg: 10 }}>
       <Heading {...typography.pageHeading} mb={5}>
         Voting
       </Heading>

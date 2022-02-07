@@ -9,7 +9,6 @@ import {
   Text,
   useToast,
 } from '@chakra-ui/react';
-import { colors } from 'theme/colors';
 import { insertVote } from 'lib/base/client';
 import { definitions } from 'lib/types';
 import { useAuthContext } from 'context/AuthContext';
@@ -21,6 +20,7 @@ interface Props {
   title: string;
   status: string;
   createdAt: string;
+  defaultView?: number | null;
 }
 
 enum Screen {
@@ -29,8 +29,13 @@ enum Screen {
   default,
 }
 
-export const VoteCard: FC<Props> = ({ title, status, voteId }): JSX.Element => {
-  const [view, setView] = useState<Screen>();
+export const VoteCard: FC<Props> = ({
+  defaultView = null,
+  title,
+  status,
+  voteId,
+}): JSX.Element => {
+  const [view, setView] = useState<Screen | null>(defaultView);
 
   const { session } = useAuthContext();
 
@@ -92,7 +97,7 @@ export const VoteCard: FC<Props> = ({ title, status, voteId }): JSX.Element => {
                 variant="link"
                 onClick={handleView.bind(null, 2)}
               >
-                View all
+                Stats
               </Button>
             </HStack>
           </>
@@ -145,13 +150,13 @@ export const VoteCard: FC<Props> = ({ title, status, voteId }): JSX.Element => {
       <Tag
         alignSelf="flex-end"
         borderRadius={40}
-        bg={status === 'closed' ? 'gray.500' : colors.secondaryGreen}
+        bg={status === 'closed' ? 'gray.500' : 'secondaryGreen'}
         position="absolute"
         top={3}
       >
         {status}
       </Tag>
-      <Text fontSize={20} fontWeight={700} color="white">
+      <Text color="white" fontSize={20} fontWeight={700} mt={2}>
         {title}
       </Text>
       {renderView(view)}
