@@ -10,7 +10,7 @@ export const LeftSidebar: FC = () => {
       borderWidth={1}
       borderLeftColor="white"
       flexDir="column"
-      h="100vh"
+      h="calc(100vh - 66px)"
       p={10}
       w={250}
     >

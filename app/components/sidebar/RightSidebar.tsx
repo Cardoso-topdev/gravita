@@ -18,7 +18,7 @@ export const RightSidebar: FC = () => {
   }
 
   return (
-    <Flex flexDir="column" w={450} h="100vh" p={10} bg="secondaryDark">
+    <Flex flexDir="column" w={450} h="calc(100vh - 66px)" p={10} bg="secondaryDark">
       <Box>
         <Text color="primaryGray" fontWeight={700} fontSize={12}>
           POLLS & SURVEYS
