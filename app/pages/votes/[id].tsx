@@ -8,6 +8,7 @@ import client from 'lib/contentful/gqlService';
 import { VotesDocument, VotesQuery, VoteItemFragment } from 'generated/graphql';
 import { DetailVote } from 'components/votes/DetailVote';
 import { getVotesCount } from 'lib/base/server';
+import MainLayout from 'components/layout/MainLayout';
 
 interface Props {
   vote: VoteItemFragment;
@@ -15,7 +16,9 @@ interface Props {
 }
 
 export default function DetailVotePage({ vote, count }: Props) {
-  return <DetailVote vote={vote} count={count} />;
+  return <MainLayout>
+      <DetailVote vote={vote} count={count} />
+    </MainLayout>;
 }
 
 export const getStaticPaths: GetStaticPaths = async (
