@@ -2,11 +2,11 @@ import { ChakraProvider } from '@chakra-ui/react';
 import { AuthContextProvider } from 'context/AuthContext';
 import { Provider } from 'urql';
 import gqlClient from 'lib/contentful/gqlService';
-import '../styles/global.css';
 import { extendTheme } from "@chakra-ui/react"
 import { colors } from 'theme/colors';
 import { sizes } from 'theme/sizes';
 import { typography } from '@chakra-ui/react';
+import '../styles/global.css';
 
 const theme = extendTheme({
 	colors: colors,
