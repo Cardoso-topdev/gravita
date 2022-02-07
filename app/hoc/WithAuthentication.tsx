@@ -22,3 +22,7 @@ export function WithAuthentication<P extends {}>(
     return <Component {...props} />;
   };
 }
+
+// export const getServerSideProps = async () => {
+
+// }

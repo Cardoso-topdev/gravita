@@ -12,7 +12,6 @@ import {
 import { NewsQuery } from 'generated/graphql';
 import { NewsCard } from './NewsCard';
 import { typography } from 'theme/typography';
-import { colors } from 'theme/colors';
 
 interface Props {
   news: NewsQuery['newsCollection'];
@@ -45,7 +44,7 @@ export const NewsWrapper: FC<Props> = ({ news }) => {
         <Button
           variant="outline"
           w="99%"
-          color={colors.primaryGray}
+          color="primaryGray"
           {...typography.titleSM}
         >
           SEE MORE

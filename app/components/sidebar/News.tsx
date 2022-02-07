@@ -1,7 +1,6 @@
 import { FC } from 'react';
 import { useNewsQuery } from 'generated/graphql';
 import { Heading, Text, Box } from '@chakra-ui/react';
-import { colors } from 'theme/colors';
 
 export const News: FC = () => {
   const [result] = useNewsQuery({
@@ -18,7 +17,7 @@ export const News: FC = () => {
     <>
       {data.newsCollection.items.map((news) => {
         return (
-          <Box key={news.sys.id} mb={5} color={colors.white}>
+          <Box key={news.sys.id} mb={5} color="white">
             <Heading fontWeight={700} fontSize={20}>
               {news.title}
             </Heading>

@@ -5,7 +5,6 @@ import { Emoji } from '../Emoji';
 import { getVotePercentages } from 'lib/base/client';
 import { useData } from 'hooks/useData';
 import { EmojiMapper } from 'theme/common';
-import { colors } from 'theme/colors';
 
 interface Props extends WrapProps {
   statWidth?: number;
@@ -17,7 +16,7 @@ export const StatWrapper: FC<Props> = ({ statWidth, title, ...rest }): JSX.Eleme
 
   if (loading) {
     return (
-      <Text color={colors.white} textAlign="center" fontSize={12}>
+      <Text color="white" textAlign="center" fontSize={12}>
         ...Loading
       </Text>
     );

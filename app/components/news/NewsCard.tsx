@@ -1,6 +1,5 @@
 import { FC } from 'react';
 import { Box, BoxProps, Heading, Text } from '@chakra-ui/react';
-import { colors } from 'theme/colors';
 import { typography } from 'theme/typography';
 import { format } from 'date-fns';
 
@@ -12,9 +11,9 @@ interface Props extends BoxProps {
 
 export const NewsCard: FC<Props> = ({ title, content, createdAt, ...rest }) => {
   return (
-    <Box bg={colors.secondaryDark} color={colors.white} {...rest}>
+    <Box bg="secondaryDark" color="white" {...rest}>
       <Text
-        color={colors.primaryGray}
+        color="primaryGray"
         {...typography.titleSM}
         position="relative"
         top={-2}

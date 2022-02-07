@@ -13,7 +13,6 @@ import {
 import { stream } from 'lib/stream';
 import { useDarkModeSwitch } from 'hooks/useDarkModeSwitch';
 import '@stream-io/stream-chat-css/dist/css/index.css';
-import { colors } from 'theme/colors';
 
 stream.addExistingUser();
 
@@ -24,8 +23,12 @@ const customStyles: CustomStyles = {
 export const ChatApp = () => {
   const { isDark } = useDarkModeSwitch();
   return (
-    <Chat client={stream.client} customStyles={customStyles} darkMode={isDark}>
-      <Flex justifyContent="center" bg={colors.streamGray}>
+    <Chat
+      client={stream.client}
+      customStyles={customStyles}
+      darkMode={isDark}
+    >
+      <Flex justifyContent="center" bg="streamGray">
         <ChannelList />
         <Channel>
           <Window>

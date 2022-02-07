@@ -76,7 +76,7 @@ export const VoteCard: FC<Props> = ({ title, status }): JSX.Element => {
                 fontSize={12}
                 variant="link"
                 onClick={handleView.bind(null)}
-                color={colors.red1}
+                color="red1"
               >
                 Cancel
               </Button>
@@ -124,7 +124,7 @@ export const VoteCard: FC<Props> = ({ title, status }): JSX.Element => {
     <Flex
       flexDir="column"
       justify="space-evenly"
-      bg={colors.gray700}
+      bg="gray.700"
       borderRadius={20}
       h={220}
       w={350}
@@ -140,7 +140,7 @@ export const VoteCard: FC<Props> = ({ title, status }): JSX.Element => {
       >
         {status}
       </Tag>
-      <Text fontSize={20} fontWeight={700} color={colors.white}>
+      <Text fontSize={20} fontWeight={700} color='white'>
         {title}
       </Text>
       {renderView(view)}

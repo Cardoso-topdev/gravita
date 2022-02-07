@@ -20,9 +20,9 @@ export const RightSidebar: FC = () => {
   const firstVote = data.votesCollection.items[0];
 
   return (
-    <Flex flexDir="column" w={450} h="100vh" p={10} bg={colors.secondaryDark}>
+    <Flex flexDir="column" w={450} h="100vh" p={10} bg="secondaryDark">
       <Box>
-        <Text color={colors.primaryGray} fontWeight={700} fontSize={12}>
+        <Text color="primaryGray" fontWeight={700} fontSize={12}>
           POLLS & SURVEYS
         </Text>
         <VoteCard
@@ -37,12 +37,12 @@ export const RightSidebar: FC = () => {
         </Text>
       </Link>
       <Box mt={5}>
-        <Text color={colors.primaryGray} fontWeight={700} fontSize={12}>
+        <Text color="primaryGray" fontWeight={700} fontSize={12}>
           NEWS & UPDATES
         </Text>
         <News />
         <Link href="/news" passHref>
-          <Text color={colors.teal} mt={2} fontSize={14} cursor="pointer">
+          <Text color="teal" mt={2} fontSize={14} cursor="pointer">
             See all news
           </Text>
         </Link>
