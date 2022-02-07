@@ -1,7 +1,7 @@
 import { FC, useState } from 'react';
+import { useRouter } from 'next/router';
 import {
   Button,
-  Center,
   Divider,
   Flex,
   HStack,
@@ -17,6 +17,7 @@ import { StatWrapper } from './StatWrapper';
 import { VoteOptions } from './VoteOptions';
 
 interface Props {
+  voteId: string;
   title: string;
   status: string;
   createdAt: string;
@@ -28,12 +29,18 @@ enum Screen {
   default,
 }
 
-export const VoteCard: FC<Props> = ({ title, status }): JSX.Element => {
+export const VoteCard: FC<Props> = ({ title, status, voteId }): JSX.Element => {
   const [view, setView] = useState<Screen>();
 
   const { session } = useAuthContext();
 
   const toast = useToast();
+
+  const router = useRouter();
+
+  const handleRouteToVoteDetail = (): void => {
+    router.push(`/votes/${voteId}`);
+  };
 
   const handleVote = async (
     voteType: definitions['card_votes']['vote_type'],
@@ -107,15 +114,19 @@ export const VoteCard: FC<Props> = ({ title, status }): JSX.Element => {
         );
       default:
         return (
-          <Center>
-            <Button
-              bg={colors.teal}
-              onClick={handleView.bind(null, 1)}
-              w="90%"
-            >
+          <HStack>
+            <Button bg="teal" onClick={handleView.bind(null, 1)} w={165}>
               Vote
             </Button>
-          </Center>
+            <Button
+              color="white"
+              onClick={handleRouteToVoteDetail}
+              variant="outline"
+              w={165}
+            >
+              Details
+            </Button>
+          </HStack>
         );
     }
   };
@@ -126,8 +137,8 @@ export const VoteCard: FC<Props> = ({ title, status }): JSX.Element => {
       justify="space-evenly"
       bg="gray.700"
       borderRadius={20}
-      h={220}
-      w={350}
+      h={200}
+      w={325}
       p={5}
       position="relative"
     >
@@ -140,7 +151,7 @@ export const VoteCard: FC<Props> = ({ title, status }): JSX.Element => {
       >
         {status}
       </Tag>
-      <Text fontSize={20} fontWeight={700} color='white'>
+      <Text fontSize={20} fontWeight={700} color="white">
         {title}
       </Text>
       {renderView(view)}

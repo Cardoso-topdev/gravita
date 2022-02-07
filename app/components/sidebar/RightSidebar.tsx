@@ -9,7 +9,7 @@ import { News } from './News';
 export const RightSidebar: FC = () => {
   const [result] = useVotesQuery({
     requestPolicy: 'cache-and-network',
-    variables: { limit: 1, where: { status: 'open'} },
+    variables: { limit: 1, where: { status: 'open' } },
   });
 
   const { fetching, data } = result;
@@ -26,9 +26,10 @@ export const RightSidebar: FC = () => {
           POLLS & SURVEYS
         </Text>
         <VoteCard
-          title={firstVote.title}
-          status={firstVote.status}
           createdAt={firstVote.createdAt}
+          status={firstVote.status}
+          title={firstVote.title}
+          voteId={firstVote.sys.id}
         />
       </Box>
       <Link href="/votes" passHref>

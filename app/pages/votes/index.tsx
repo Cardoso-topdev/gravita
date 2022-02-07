@@ -5,7 +5,9 @@ import { WithAuthentication } from 'hoc/WithAuthentication';
 const PrivateVotePage = WithAuthentication(VotesWrapper);
 
 export default function Votes() {
-  return <MainLayout>
-    <PrivateVotePage/>
-  </MainLayout>;
+  return (
+    <MainLayout>
+      <PrivateVotePage />
+    </MainLayout>
+  );
 }

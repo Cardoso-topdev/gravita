@@ -12,13 +12,15 @@ import MainLayout from 'components/layout/MainLayout';
 
 interface Props {
   vote: VoteItemFragment;
-  count: number
+  count: number;
 }
 
 export default function DetailVotePage({ vote, count }: Props) {
-  return <MainLayout>
+  return (
+    <MainLayout>
       <DetailVote vote={vote} count={count} />
-    </MainLayout>;
+    </MainLayout>
+  );
 }
 
 export const getStaticPaths: GetStaticPaths = async (
@@ -29,7 +31,6 @@ export const getStaticPaths: GetStaticPaths = async (
   const paths = data.votesCollection.items.map((vote) => ({
     params: { id: vote.sys.id },
   }));
-
 
   return {
     paths,
@@ -48,13 +49,13 @@ export const getStaticProps: GetStaticProps<Props, undefined> = async (
 
   const vote = data.votesCollection.items[0];
 
-  const { count } = await getVotesCount(vote.title)
+  const { count } = await getVotesCount(vote.title);
 
   return {
     props: {
       vote,
-      count
+      count,
     },
-    revalidate: 10
+    revalidate: 10,
   };
 };

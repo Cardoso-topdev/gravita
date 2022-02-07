@@ -5,13 +5,15 @@ import { useAuthContext } from 'context/AuthContext';
 import { ToggleColorModeButton } from './ToggleColorModeButton';
 import { NotificationButton } from './NotificationButton';
 import { useEffect, useRef } from 'react';
-import { useColorMode, Icon } from '@chakra-ui/react';
+import { useColorMode } from '@chakra-ui/react';
 import styles from './navbar.module.css';
 import { textToCapitalizeWord } from 'utils/common';
 
 export const Navbar = (): JSX.Element => {
   const { session } = useAuthContext();
+
   const mountRef = useRef(false)
+  
   const { colorMode } = useColorMode();
 
   const handleSignout = () => supabase.auth.signOut();

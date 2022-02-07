@@ -9,9 +9,11 @@ interface Props {
 }
 
 export default function News({ items }: Props) {
-  return <MainLayout>
+  return (
+    <MainLayout>
       <NewsWrapper news={items} />
-    </MainLayout>;
+    </MainLayout>
+  );
 }
 
 export const getStaticProps: GetStaticProps<Props, undefined> = async (

@@ -58,6 +58,7 @@ export const VotesWrapper: FC = () => {
         {votes.map((vote) => (
           <WrapItem key={vote.sys.id}>
             <VoteCard
+              voteId={vote.sys.id}
               createdAt={vote.createdAt}
               status={vote.status}
               title={vote.title}
