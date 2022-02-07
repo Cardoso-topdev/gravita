@@ -1,4 +1,11 @@
 import * as R from 'ramda';
+import { getHours, getMinutes } from 'date-fns';
+
+export const getEndTime = (date: string) =>
+  R.converge(
+    (hours, minutes) => `${hours}:${minutes}`,
+    [getHours, getMinutes],
+  )(new Date(date));
 
 export const objOrEmpty = <T extends object>(
   object: T,

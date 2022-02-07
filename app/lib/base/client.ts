@@ -1,5 +1,5 @@
 import { createClient } from '@supabase/supabase-js';
-import { definitions } from './types';
+import { definitions } from '../types';
 
 export const supabase = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_URL,
@@ -10,6 +10,7 @@ export type VotePercentages = {
   vote_type: definitions['card_votes']['vote_type'];
   percentage: number;
 };
+
 
 export const getVotePercentages = async (title: string) => {
   const { data, error } = await supabase.rpc('get_votes_by_title', {
@@ -22,7 +23,7 @@ export const getVotePercentages = async (title: string) => {
 export const insertVote = async (
   voteType: definitions['card_votes']['vote_type'],
   userId: string,
-  title: string
+  title: string,
 ) => {
   const { data, error } = await supabase
     .from<definitions['card_votes']>('card_votes')

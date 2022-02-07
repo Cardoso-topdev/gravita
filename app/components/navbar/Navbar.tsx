@@ -1,6 +1,6 @@
 import { Box, Avatar, Flex, Image, Text, Button, Menu, MenuButton, MenuList, MenuItem } from '@chakra-ui/react';
 import Link from 'next/link';
-import { supabase } from 'lib/base';
+import { supabase } from 'lib/base/client';
 import { useAuthContext } from 'context/AuthContext';
 import styles from './navbar.module.css';
 import { ToggleColorModeButton } from './ToggleColorModeButton';

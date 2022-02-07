@@ -24,6 +24,8 @@ export type Scalars = {
   Dimension: any;
   /** The 'HexColor' type represents color in `rgb:ffffff` string format. */
   HexColor: any;
+  /** The `JSON` scalar type represents JSON values as specified by [ECMA-404](http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf). */
+  JSON: any;
   /** The 'Quality' type represents quality as whole numeric values between `1` and `100`. */
   Quality: any;
 };
@@ -691,8 +693,10 @@ export type SysFilter = {
 /** [See type definition](https://app.contentful.com/spaces/61crxrrbpkjj/content_types/votes) */
 export type Votes = Entry & {
   __typename?: 'Votes';
+  content?: Maybe<VotesContent>;
   contentfulMetadata: ContentfulMetadata;
   createdAt?: Maybe<Scalars['DateTime']>;
+  expiresAt?: Maybe<Scalars['DateTime']>;
   linkedFrom?: Maybe<VotesLinkingCollections>;
   status?: Maybe<Scalars['String']>;
   sys: Sys;
@@ -701,7 +705,19 @@ export type Votes = Entry & {
 
 
 /** [See type definition](https://app.contentful.com/spaces/61crxrrbpkjj/content_types/votes) */
+export type VotesContentArgs = {
+  locale?: InputMaybe<Scalars['String']>;
+};
+
+
+/** [See type definition](https://app.contentful.com/spaces/61crxrrbpkjj/content_types/votes) */
 export type VotesCreatedAtArgs = {
+  locale?: InputMaybe<Scalars['String']>;
+};
+
+
+/** [See type definition](https://app.contentful.com/spaces/61crxrrbpkjj/content_types/votes) */
+export type VotesExpiresAtArgs = {
   locale?: InputMaybe<Scalars['String']>;
 };
 
@@ -731,9 +747,37 @@ export type VotesCollection = {
   total: Scalars['Int'];
 };
 
+export type VotesContent = {
+  __typename?: 'VotesContent';
+  json: Scalars['JSON'];
+  links: VotesContentLinks;
+};
+
+export type VotesContentAssets = {
+  __typename?: 'VotesContentAssets';
+  block: Array<Maybe<Asset>>;
+  hyperlink: Array<Maybe<Asset>>;
+};
+
+export type VotesContentEntries = {
+  __typename?: 'VotesContentEntries';
+  block: Array<Maybe<Entry>>;
+  hyperlink: Array<Maybe<Entry>>;
+  inline: Array<Maybe<Entry>>;
+};
+
+export type VotesContentLinks = {
+  __typename?: 'VotesContentLinks';
+  assets: VotesContentAssets;
+  entries: VotesContentEntries;
+};
+
 export type VotesFilter = {
   AND?: InputMaybe<Array<InputMaybe<VotesFilter>>>;
   OR?: InputMaybe<Array<InputMaybe<VotesFilter>>>;
+  content_contains?: InputMaybe<Scalars['String']>;
+  content_exists?: InputMaybe<Scalars['Boolean']>;
+  content_not_contains?: InputMaybe<Scalars['String']>;
   contentfulMetadata?: InputMaybe<ContentfulMetadataFilter>;
   createdAt?: InputMaybe<Scalars['DateTime']>;
   createdAt_exists?: InputMaybe<Scalars['Boolean']>;
@@ -744,6 +788,15 @@ export type VotesFilter = {
   createdAt_lte?: InputMaybe<Scalars['DateTime']>;
   createdAt_not?: InputMaybe<Scalars['DateTime']>;
   createdAt_not_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>;
+  expiresAt?: InputMaybe<Scalars['DateTime']>;
+  expiresAt_exists?: InputMaybe<Scalars['Boolean']>;
+  expiresAt_gt?: InputMaybe<Scalars['DateTime']>;
+  expiresAt_gte?: InputMaybe<Scalars['DateTime']>;
+  expiresAt_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>;
+  expiresAt_lt?: InputMaybe<Scalars['DateTime']>;
+  expiresAt_lte?: InputMaybe<Scalars['DateTime']>;
+  expiresAt_not?: InputMaybe<Scalars['DateTime']>;
+  expiresAt_not_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>;
   status?: InputMaybe<Scalars['String']>;
   status_contains?: InputMaybe<Scalars['String']>;
   status_exists?: InputMaybe<Scalars['Boolean']>;
@@ -777,6 +830,8 @@ export type VotesLinkingCollectionsEntryCollectionArgs = {
 export enum VotesOrder {
   CreatedAtAsc = 'createdAt_ASC',
   CreatedAtDesc = 'createdAt_DESC',
+  ExpiresAtAsc = 'expiresAt_ASC',
+  ExpiresAtDesc = 'expiresAt_DESC',
   StatusAsc = 'status_ASC',
   StatusDesc = 'status_DESC',
   SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
@@ -811,7 +866,9 @@ export type NewsQuery = { __typename?: 'Query', newsCollection?: { __typename?: 
 
 export type SysFragment = { __typename?: 'Sys', id: string };
 
-export type VoteItemFragment = { __typename?: 'Votes', createdAt?: any | null | undefined, status?: string | null | undefined, title?: string | null | undefined, sys: { __typename?: 'Sys', id: string } };
+export type ContentFragment = { __typename?: 'VotesContent', json: any };
+
+export type VoteItemFragment = { __typename?: 'Votes', createdAt?: any | null | undefined, expiresAt?: any | null | undefined, status?: string | null | undefined, title?: string | null | undefined, sys: { __typename?: 'Sys', id: string }, content?: { __typename?: 'VotesContent', json: any } | null | undefined };
 
 export type VotesQueryVariables = Exact<{
   limit?: InputMaybe<Scalars['Int']>;
@@ -820,7 +877,7 @@ export type VotesQueryVariables = Exact<{
 }>;
 
 
-export type VotesQuery = { __typename?: 'Query', votesCollection?: { __typename?: 'VotesCollection', items: Array<{ __typename?: 'Votes', createdAt?: any | null | undefined, status?: string | null | undefined, title?: string | null | undefined, sys: { __typename?: 'Sys', id: string } } | null | undefined> } | null | undefined };
+export type VotesQuery = { __typename?: 'Query', votesCollection?: { __typename?: 'VotesCollection', items: Array<{ __typename?: 'Votes', createdAt?: any | null | undefined, expiresAt?: any | null | undefined, status?: string | null | undefined, title?: string | null | undefined, sys: { __typename?: 'Sys', id: string }, content?: { __typename?: 'VotesContent', json: any } | null | undefined } | null | undefined> } | null | undefined };
 
 export const SysFragmentDoc = gql`
     fragment Sys on Sys {
@@ -846,16 +903,26 @@ export const NewsItemFragmentDoc = gql`
   createdAt
 }
     ${SysFragmentDoc}`;
+export const ContentFragmentDoc = gql`
+    fragment Content on VotesContent {
+  json
+}
+    `;
 export const VoteItemFragmentDoc = gql`
     fragment VoteItem on Votes {
   sys {
     ...Sys
   }
+  content {
+    ...Content
+  }
   createdAt
+  expiresAt
   status
   title
 }
-    ${SysFragmentDoc}`;
+    ${SysFragmentDoc}
+${ContentFragmentDoc}`;
 export const LandingPageDocument = gql`
     query LandingPage {
   landingPageCollection {

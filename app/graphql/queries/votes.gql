@@ -1,9 +1,17 @@
+fragment Content on VotesContent {
+  json
+}
+
 fragment VoteItem on Votes {
   sys {
     ...Sys
   }
+  content {
+    ...Content
+  }
   createdAt
-  status 
+  expiresAt
+  status
   title
 }
 

@@ -1,6 +1,6 @@
 import { FC, PropsWithChildren, useMemo, useState, useEffect } from 'react';
 import { Session } from '@supabase/supabase-js';
-import { supabase } from 'lib/base';
+import { supabase } from 'lib/base/client';
 import { createCtx } from 'utils/context';
 
 interface AuthContext {
