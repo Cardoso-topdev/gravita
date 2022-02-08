@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Button, Box, Flex, useToast } from '@chakra-ui/react';
 import { object, string, SchemaOf } from 'yup';
 import { useRouter } from 'next/router';
-import { supabase } from 'lib/base';
+import { supabase } from 'lib/base/client';
 import { FormInput } from '../FormInput';
 import { useFormValidation } from 'hooks/useFormValidation';
 import styles from './styles.module.css';
