@@ -28,7 +28,7 @@ export const FormInput: FC<Props> = ({
       <FormLabel mt={5} htmlFor={name} color={labelColor} fontSize={17}>
         {label}
       </FormLabel>
-      <Input name={name} onChange={onChange} {...rest} color="white" />
+      <Input name={name} onChange={onChange} {...rest} color={labelColor} />
       <FormErrorMessage> {error} </FormErrorMessage>
     </FormControl>
   );

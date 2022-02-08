@@ -46,9 +46,9 @@ input:-webkit-autofill:active {
   -webkit-text-fill-color: #fff !important;
 }
 
-input {
+/* input {
   caret-color: #fff;
-}
+} */
 
 .str-chat.str-chat-channel.messaging.light,
 .str-chat.str-chat-channel-list.messaging.light {
