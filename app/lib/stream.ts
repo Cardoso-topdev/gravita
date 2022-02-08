@@ -1,6 +1,6 @@
 import { StreamChat } from 'stream-chat';
 import { request } from 'utils/response';
-import { supabase } from './base';
+import { supabase } from './base/client';
 
 export type Channel = {
   type: string;

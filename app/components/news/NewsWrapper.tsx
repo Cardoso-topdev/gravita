@@ -19,7 +19,7 @@ interface Props {
 
 export const NewsWrapper: FC<Props> = ({ news }) => {
   return (
-    <Box p={{ base: 10, lg: 20 }}>
+    <Box p={{ base: 5, lg: 10 }}>
       <Flex align="center" justify="space-between" mb={5}>
         <Heading {...typography.pageHeading}>News & Updates</Heading>
         <HStack>
@@ -43,7 +43,6 @@ export const NewsWrapper: FC<Props> = ({ news }) => {
       <Center>
         <Button
           variant="outline"
-          w="99%"
           color="primaryGray"
           {...typography.titleSM}
         >

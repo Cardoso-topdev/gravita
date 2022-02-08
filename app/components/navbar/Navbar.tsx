@@ -1,17 +1,19 @@
 import Link from 'next/link';
 import { Box, Avatar, Flex, Image, Text, Button, Menu, MenuButton, MenuList, MenuItem } from '@chakra-ui/react';
-import { supabase } from 'lib/base';
+import { supabase } from 'lib/base/client';
 import { useAuthContext } from 'context/AuthContext';
 import { ToggleColorModeButton } from './ToggleColorModeButton';
 import { NotificationButton } from './NotificationButton';
 import { useEffect, useRef } from 'react';
-import { useColorMode, Icon } from '@chakra-ui/react';
+import { useColorMode } from '@chakra-ui/react';
 import styles from './navbar.module.css';
 import { textToCapitalizeWord } from 'utils/common';
 
 export const Navbar = (): JSX.Element => {
   const { session } = useAuthContext();
+
   const mountRef = useRef(false)
+  
   const { colorMode } = useColorMode();
 
   const handleSignout = () => supabase.auth.signOut();
