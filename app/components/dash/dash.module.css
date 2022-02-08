@@ -45,6 +45,7 @@
   flex-direction: column;
   justify-content: space-around;
   background-image: url('../../public/images/event-card-bk.png');
+  cursor: pointer;
 }
 
 .eventCardContent {
@@ -52,7 +53,65 @@
   line-height: 140%;
 }
 
-.eventCardsWrapper {
+.cardsWrapper {
   display: flex;
   flex-wrap: wrap;
+}
+
+.shortcutCardContainer {
+  border-radius: 20px;
+  width: 150px;
+  height: 150px;
+  cursor: pointer;
+}
+
+.shortcutCardLogo {
+  width: 30px;
+  height: 30px;
+}
+
+.shortcutCardLogoWrapper {
+  background: white;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  margin: 25px 50px 20px;
+}
+
+.newShortcutCardLogoWrapper {
+  width: 50px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  margin: 25px 50px 10px;
+}
+
+.shortcutCardTitle {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 17px;
+  text-align: center;
+}
+
+.newShortcutCardContainer {
+  border-radius: 20px;
+  border-style: dashed;
+  border-width: 1px;
+  width: 150px;
+  height: 150px;
+  cursor: pointer;
+}
+
+.newShotcutDesc {
+  text-align: center;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 140%;
 }

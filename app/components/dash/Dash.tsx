@@ -1,7 +1,10 @@
 import { Box } from '@chakra-ui/react';
+import { Title } from 'components/Title';
 import styles from './dash.module.css';
 import { EventCard } from './EventCard';
+import { NewShortcutCard } from './NewShortcutCard';
 import { SearchEvent } from './SearchEvent';
+import { ShortcutCard } from './ShortcutCard';
 
 export const Dash: React.FC = (): JSX.Element => {
   const onSearchChanged = (event) => {
@@ -23,6 +26,12 @@ export const Dash: React.FC = (): JSX.Element => {
     },
   ]
 
+  const shortcutList = [
+    {
+      title: 'Our Principle'
+    }
+  ]
+
   return (
     <Box
       mx='auto'
@@ -33,7 +42,7 @@ export const Dash: React.FC = (): JSX.Element => {
         onSearchChanged={onSearchChanged}
       />
       <Box
-        className={styles.eventCardsWrapper}
+        className={styles.cardsWrapper}
         my={5}
       >
         {eventCardList.map((item, idx) => (
@@ -42,6 +51,16 @@ export const Dash: React.FC = (): JSX.Element => {
             {...item}
           />
         ))}
+      </Box>
+      <Title title="shortcuts" />
+      <Box
+        className={styles.cardsWrapper}
+        my={5}
+      >
+        {shortcutList.map((item, idx) => (
+          <ShortcutCard {...item} key={idx} />
+        ))}
+        <NewShortcutCard />
       </Box>
     </Box>
   );
