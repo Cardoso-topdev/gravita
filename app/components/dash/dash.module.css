@@ -1,5 +1,5 @@
 .dashContainer {
-  max-width: 832px;
+  max-width: 892px;
 }
 
 .inputSearchBox {
@@ -50,4 +50,9 @@
 .eventCardContent {
   font-size: 14px;
   line-height: 140%;
+}
+
+.eventCardsWrapper {
+  display: flex;
+  flex-wrap: wrap;
 }
