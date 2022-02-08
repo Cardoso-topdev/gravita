@@ -1,11 +1,29 @@
+import * as R from 'ramda';
+import { getHours, getMinutes } from 'date-fns';
+
+export const getEndTime = (date: string) =>
+  R.converge(
+    (hours, minutes) => `${hours}:${minutes}`,
+    [getHours, getMinutes],
+  )(new Date(date));
+
+export const objOrEmpty = <T extends object>(
+  object: T,
+  condition?: boolean,
+): T | object => {
+  if (!object) {
+    return {};
+  }
+  return condition ? object : R.empty<T>(object);
+};
+
 export const firstCapDataLike = (value: string): string =>
   value.replace(/^\w/, (e) => e.toUpperCase());
-
 
 export function debounce<F extends (...args: any[]) => void>(
   func: F,
   waitMilliseconds = 50,
-  isImmediate: boolean = false
+  isImmediate: boolean = false,
 ): (...args: Parameters<F>) => void {
   let timeoutId: ReturnType<typeof setTimeout> | undefined;
 

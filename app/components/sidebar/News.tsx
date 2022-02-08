@@ -1,12 +1,18 @@
 import { FC } from 'react';
-import { NewsQuery } from 'generated/graphql';
+import { useNewsQuery } from 'generated/graphql';
 import { Heading, Text, Box } from '@chakra-ui/react';
 
-interface Props {
-  data: NewsQuery;
-}
+export const News: FC = () => {
+  const [result] = useNewsQuery({
+    requestPolicy: 'cache-and-network',
+    variables: { limit: 3 },
+  });
 
-export const News: FC<Props> = ({ data }) => {
+  const { fetching, data } = result;
+
+  if (fetching) {
+    return <Text>...Loading</Text>;
+  }
   return (
     <>
       {data.newsCollection.items.map((news) => {

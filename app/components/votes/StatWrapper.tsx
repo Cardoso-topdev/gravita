@@ -2,16 +2,17 @@ import { FC } from 'react';
 import { Text, Wrap, WrapItem, WrapProps } from '@chakra-ui/react';
 import { Stat } from './Stat';
 import { Emoji } from '../Emoji';
-import { getVotePercentages } from 'lib/base';
+import { getVotePercentages } from 'lib/base/client';
 import { useData } from 'hooks/useData';
 import { EmojiMapper } from 'theme/common';
 
 interface Props extends WrapProps {
   statWidth?: number;
+  title: string
 }
 
-export const StatWrapper: FC<Props> = ({ statWidth, ...rest }): JSX.Element => {
-  const [votes, loading] = useData(getVotePercentages);
+export const StatWrapper: FC<Props> = ({ statWidth, title, ...rest }): JSX.Element => {
+  const [votes, loading] = useData(() => getVotePercentages(title));
 
   if (loading) {
     return (

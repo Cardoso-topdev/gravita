@@ -20,6 +20,7 @@ export interface paths {
           vote_type?: parameters["rowFilter.card_votes.vote_type"];
           created_at?: parameters["rowFilter.card_votes.created_at"];
           user_id?: parameters["rowFilter.card_votes.user_id"];
+          title?: parameters["rowFilter.card_votes.title"];
           /** Filtering Columns */
           select?: parameters["select"];
           /** Ordering */
@@ -74,6 +75,7 @@ export interface paths {
           vote_type?: parameters["rowFilter.card_votes.vote_type"];
           created_at?: parameters["rowFilter.card_votes.created_at"];
           user_id?: parameters["rowFilter.card_votes.user_id"];
+          title?: parameters["rowFilter.card_votes.title"];
         };
         header: {
           /** Preference */
@@ -92,6 +94,7 @@ export interface paths {
           vote_type?: parameters["rowFilter.card_votes.vote_type"];
           created_at?: parameters["rowFilter.card_votes.created_at"];
           user_id?: parameters["rowFilter.card_votes.user_id"];
+          title?: parameters["rowFilter.card_votes.title"];
         };
         body: {
           /** card_votes */
@@ -108,12 +111,12 @@ export interface paths {
       };
     };
   };
-  "/card_votes_percentages": {
+  "/profiles": {
     get: {
       parameters: {
         query: {
-          vote_type?: parameters["rowFilter.card_votes_percentages.vote_type"];
-          percentage?: parameters["rowFilter.card_votes_percentages.percentage"];
+          id?: parameters["rowFilter.profiles.id"];
+          email?: parameters["rowFilter.profiles.email"];
           /** Filtering Columns */
           select?: parameters["select"];
           /** Ordering */
@@ -135,10 +138,193 @@ export interface paths {
       responses: {
         /** OK */
         200: {
-          schema: definitions["card_votes_percentages"][];
+          schema: definitions["profiles"][];
         };
         /** Partial Content */
         206: unknown;
+      };
+    };
+    post: {
+      parameters: {
+        body: {
+          /** profiles */
+          profiles?: definitions["profiles"];
+        };
+        query: {
+          /** Filtering Columns */
+          select?: parameters["select"];
+        };
+        header: {
+          /** Preference */
+          Prefer?: parameters["preferReturn"];
+        };
+      };
+      responses: {
+        /** Created */
+        201: unknown;
+      };
+    };
+    delete: {
+      parameters: {
+        query: {
+          id?: parameters["rowFilter.profiles.id"];
+          email?: parameters["rowFilter.profiles.email"];
+        };
+        header: {
+          /** Preference */
+          Prefer?: parameters["preferReturn"];
+        };
+      };
+      responses: {
+        /** No Content */
+        204: never;
+      };
+    };
+    patch: {
+      parameters: {
+        query: {
+          id?: parameters["rowFilter.profiles.id"];
+          email?: parameters["rowFilter.profiles.email"];
+        };
+        body: {
+          /** profiles */
+          profiles?: definitions["profiles"];
+        };
+        header: {
+          /** Preference */
+          Prefer?: parameters["preferReturn"];
+        };
+      };
+      responses: {
+        /** No Content */
+        204: never;
+      };
+    };
+  };
+  "/test": {
+    get: {
+      parameters: {
+        query: {
+          email?: parameters["rowFilter.test.email"];
+          num?: parameters["rowFilter.test.num"];
+          /** Filtering Columns */
+          select?: parameters["select"];
+          /** Ordering */
+          order?: parameters["order"];
+          /** Limiting and Pagination */
+          offset?: parameters["offset"];
+          /** Limiting and Pagination */
+          limit?: parameters["limit"];
+        };
+        header: {
+          /** Limiting and Pagination */
+          Range?: parameters["range"];
+          /** Limiting and Pagination */
+          "Range-Unit"?: parameters["rangeUnit"];
+          /** Preference */
+          Prefer?: parameters["preferCount"];
+        };
+      };
+      responses: {
+        /** OK */
+        200: {
+          schema: definitions["test"][];
+        };
+        /** Partial Content */
+        206: unknown;
+      };
+    };
+    post: {
+      parameters: {
+        body: {
+          /** test */
+          test?: definitions["test"];
+        };
+        query: {
+          /** Filtering Columns */
+          select?: parameters["select"];
+        };
+        header: {
+          /** Preference */
+          Prefer?: parameters["preferReturn"];
+        };
+      };
+      responses: {
+        /** Created */
+        201: unknown;
+      };
+    };
+    delete: {
+      parameters: {
+        query: {
+          email?: parameters["rowFilter.test.email"];
+          num?: parameters["rowFilter.test.num"];
+        };
+        header: {
+          /** Preference */
+          Prefer?: parameters["preferReturn"];
+        };
+      };
+      responses: {
+        /** No Content */
+        204: never;
+      };
+    };
+    patch: {
+      parameters: {
+        query: {
+          email?: parameters["rowFilter.test.email"];
+          num?: parameters["rowFilter.test.num"];
+        };
+        body: {
+          /** test */
+          test?: definitions["test"];
+        };
+        header: {
+          /** Preference */
+          Prefer?: parameters["preferReturn"];
+        };
+      };
+      responses: {
+        /** No Content */
+        204: never;
+      };
+    };
+  };
+  "/rpc/handle_new_user": {
+    post: {
+      parameters: {
+        body: {
+          args: { [key: string]: unknown };
+        };
+        header: {
+          /** Preference */
+          Prefer?: parameters["preferParams"];
+        };
+      };
+      responses: {
+        /** OK */
+        200: unknown;
+      };
+    };
+  };
+  "/rpc/get_votes_by_title": {
+    post: {
+      parameters: {
+        body: {
+          args: {
+            /** Format: text */
+            vote_title: string;
+          };
+        };
+        header: {
+          /** Preference */
+          Prefer?: parameters["preferParams"];
+        };
+      };
+      responses: {
+        /** OK */
+        200: unknown;
       };
     };
   };
@@ -163,16 +349,25 @@ export interface definitions {
      */
     created_at?: string;
     /** Format: uuid */
-    user_id: string;
+    user_id?: string;
+    /** Format: text */
+    title: string;
   };
-  card_votes_percentages: {
+  profiles: {
     /**
-     * Format: public.card_vote_types
-     * @enum {string}
+     * Format: uuid
+     * @description Note:
+     * This is a Primary Key.<pk/>
      */
-    vote_type?: "great" | "good" | "bad" | "shit";
-    /** Format: bigint */
-    percentage?: number;
+    id: string;
+    /** Format: text */
+    email?: string;
+  };
+  test: {
+    /** Format: text */
+    email?: string;
+    /** Format: integer */
+    num?: number;
   };
 }
 
@@ -219,12 +414,20 @@ export interface parameters {
   "rowFilter.card_votes.created_at": string;
   /** Format: uuid */
   "rowFilter.card_votes.user_id": string;
-  /** @description card_votes_percentages */
-  "body.card_votes_percentages": definitions["card_votes_percentages"];
-  /** Format: public.card_vote_types */
-  "rowFilter.card_votes_percentages.vote_type": string;
-  /** Format: bigint */
-  "rowFilter.card_votes_percentages.percentage": string;
+  /** Format: text */
+  "rowFilter.card_votes.title": string;
+  /** @description profiles */
+  "body.profiles": definitions["profiles"];
+  /** Format: uuid */
+  "rowFilter.profiles.id": string;
+  /** Format: text */
+  "rowFilter.profiles.email": string;
+  /** @description test */
+  "body.test": definitions["test"];
+  /** Format: text */
+  "rowFilter.test.email": string;
+  /** Format: integer */
+  "rowFilter.test.num": string;
 }
 
 export interface operations {}

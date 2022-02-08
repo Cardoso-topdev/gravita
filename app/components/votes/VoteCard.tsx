@@ -1,20 +1,26 @@
 import { FC, useState } from 'react';
+import { useRouter } from 'next/router';
 import {
   Button,
   Divider,
   Flex,
   HStack,
+  Tag,
   Text,
   useToast,
 } from '@chakra-ui/react';
-import { insertVote } from 'lib/base';
+import { insertVote } from 'lib/base/client';
 import { definitions } from 'lib/types';
 import { useAuthContext } from 'context/AuthContext';
 import { StatWrapper } from './StatWrapper';
 import { VoteOptions } from './VoteOptions';
 
 interface Props {
+  voteId: string;
   title: string;
+  status: string;
+  createdAt: string;
+  defaultView?: number | null;
 }
 
 enum Screen {
@@ -23,12 +29,23 @@ enum Screen {
   default,
 }
 
-export const VoteCard: FC<Props> = ({ title }): JSX.Element => {
-  const [view, setView] = useState<Screen>();
+export const VoteCard: FC<Props> = ({
+  defaultView = null,
+  title,
+  status,
+  voteId,
+}): JSX.Element => {
+  const [view, setView] = useState<Screen | null>(defaultView);
 
   const { session } = useAuthContext();
 
   const toast = useToast();
+
+  const router = useRouter();
+
+  const handleRouteToVoteDetail = (): void => {
+    router.push(`/votes/${voteId}`);
+  };
 
   const handleVote = async (
     voteType: definitions['card_votes']['vote_type'],
@@ -37,7 +54,7 @@ export const VoteCard: FC<Props> = ({ title }): JSX.Element => {
       return;
     }
 
-    const { error } = await insertVote(voteType, session.user.id);
+    const { error } = await insertVote(voteType, session.user.id, title);
 
     if (error) {
       toast({
@@ -59,7 +76,7 @@ export const VoteCard: FC<Props> = ({ title }): JSX.Element => {
     setView(view);
   };
 
-  const renderView = (view?: Screen): JSX.Element => {
+  const renderView = (view: Screen): JSX.Element => {
     switch (view) {
       case 1:
         return (
@@ -80,7 +97,7 @@ export const VoteCard: FC<Props> = ({ title }): JSX.Element => {
                 variant="link"
                 onClick={handleView.bind(null, 2)}
               >
-                View all
+                Stats
               </Button>
             </HStack>
           </>
@@ -88,7 +105,7 @@ export const VoteCard: FC<Props> = ({ title }): JSX.Element => {
       case 2:
         return (
           <>
-            <StatWrapper w={370} statWidth={70} />
+            <StatWrapper w={370} statWidth={70} title={title} />
             <Divider />
             <Button
               fontSize={12}
@@ -106,7 +123,12 @@ export const VoteCard: FC<Props> = ({ title }): JSX.Element => {
             <Button bg="teal" onClick={handleView.bind(null, 1)} w={165}>
               Vote
             </Button>
-            <Button variant="outline" color="white" w={165}>
+            <Button
+              color="white"
+              onClick={handleRouteToVoteDetail}
+              variant="outline"
+              w={165}
+            >
               Details
             </Button>
           </HStack>
@@ -120,11 +142,21 @@ export const VoteCard: FC<Props> = ({ title }): JSX.Element => {
       justify="space-evenly"
       bg="gray.700"
       borderRadius={20}
-      h={220}
-      w={350}
+      h={200}
+      w={325}
       p={5}
+      position="relative"
     >
-      <Text fontSize={20} fontWeight={700} color="white">
+      <Tag
+        alignSelf="flex-end"
+        borderRadius={40}
+        bg={status === 'closed' ? 'gray.500' : 'secondaryGreen'}
+        position="absolute"
+        top={3}
+      >
+        {status}
+      </Tag>
+      <Text color="white" fontSize={20} fontWeight={700} mt={2}>
         {title}
       </Text>
       {renderView(view)}

@@ -1,0 +1,24 @@
+fragment Content on VotesContent {
+  json
+}
+
+fragment VoteItem on Votes {
+  sys {
+    ...Sys
+  }
+  content {
+    ...Content
+  }
+  createdAt
+  expiresAt
+  status
+  title
+}
+
+query Votes($limit: Int, $where: VotesFilter, $order: [VotesOrder]) {
+  votesCollection(limit: $limit, where: $where, order: $order) {
+    items {
+      ...VoteItem
+    }
+  }
+}
