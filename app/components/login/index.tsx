@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Button, Box, Flex, FormControl, FormLabel, Input, FormErrorMessage, InputRightElement, InputGroup, Text } from '@chakra-ui/react';
 import { object, string, SchemaOf } from 'yup';
 import { useRouter } from 'next/router';
-import { supabase } from 'lib/base';
+import { supabase } from 'lib/base/client';
 import { FormInput } from '../FormInput';
 import { useFormValidation } from 'hooks/useFormValidation';
 import { ViewIcon, ViewOffIcon } from '@chakra-ui/icons';
