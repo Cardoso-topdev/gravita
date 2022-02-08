@@ -12,6 +12,9 @@ export const NewShortcutCard: FC<Props> = (): JSX.Element => {
       my={3}
       mx={3}
       borderColor="primaryGray"
+      _hover={{
+        borderColor: "teal",
+      }}
     >
       <Box
         className={styles.newShortcutCardLogoWrapper}

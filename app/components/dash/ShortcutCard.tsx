@@ -10,6 +10,10 @@ export const ShortcutCard: FC<Props> = ({ title }): JSX.Element => {
   return (
     <Box
       className={styles.shortcutCardContainer}
+      _hover={{
+        background: "gray.700",
+        color: "teal",
+      }}
       my={3}
       mx={3}
       backgroundColor="secondaryDark"
