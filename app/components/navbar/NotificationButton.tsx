@@ -1,6 +1,6 @@
 import { BellIcon } from '@chakra-ui/icons';
 import { Box } from '@chakra-ui/react';
-import styles from './navbar.module.css';
+import styles from './styles.module.css';
 
 export const NotificationButton = ({ hasNewNotification, onNotificationClick }): JSX.Element => {
   if (hasNewNotification) {

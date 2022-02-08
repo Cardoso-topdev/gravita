@@ -1,6 +1,6 @@
 import { useColorMode, Icon } from '@chakra-ui/react';
 import { BsFillSunFill, BsFillMoonFill } from 'react-icons/bs';
-import styles from './navbar.module.css';
+import styles from './styles.module.css';
 
 export const ToggleColorModeButton = (): JSX.Element => {
   const { colorMode, toggleColorMode } = useColorMode();

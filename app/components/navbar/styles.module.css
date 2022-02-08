@@ -1,26 +1,12 @@
-.container {
-  border-bottom: 1px solid #e2e8f0;
-  position: sticky;
-  z-index: 1;
-}
-
-.navIcon {
-  width: 24px!important;
-  height: 24px!important;
-  margin-right: 18px;
-  cursor: pointer;
-}
-
 .navLogo {
   width: 151px;
   height: 34px;
   display: inline;
 }
 
-.notifyIcon {
-  width: 28px!important;
-  height: 28px!important;
-  margin-right: 18px;
+.logoContainer {
+  height: 65px;
+  border-bottom: 1px solid;
   cursor: pointer;
 }
 
@@ -28,7 +14,6 @@
   display: flex;
   align-items: center;
 }
-
 .navMenuBtn {
   width: 44px!important;
   padding: 0!important;
@@ -43,6 +28,19 @@
   height: 40px!important;
   width: 40px!important;
 }
+
+.notifyIconWrapper{
+  position: relative;
+  cursor: pointer;
+}
+
+.notifyIcon {
+  width: 28px!important;
+  height: 28px!important;
+  margin-right: 18px;
+  cursor: pointer;
+}
+
 .hasNewNotifications {
   width: 13px;
   height: 13px;
@@ -52,7 +50,10 @@
   top: 0;
   right: 18px;
 }
-.notifyIconWrapper{
-  position: relative;
+
+.navIcon {
+  width: 24px!important;
+  height: 24px!important;
+  margin-right: 18px;
   cursor: pointer;
 }
