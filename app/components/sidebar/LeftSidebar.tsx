@@ -12,7 +12,6 @@ export const LeftSidebar: FC = () => {
       flexDir="column"
       h="calc(100vh - 66px)"
       p={10}
-      w={250}
     >
       <SidebarContent align="left" spacing={7} />
       <Projects align="left" spacing={5} mt={5} />

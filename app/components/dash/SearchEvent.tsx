@@ -4,7 +4,7 @@ import { InputGroup, Input, InputLeftElement } from '@chakra-ui/react';
 import styles from './dash.module.css';
 
 interface Props {
-  onSearchChanged: any;
+  onSearchChanged: Function;
 }
 
 export const SearchEvent: FC<Props> = ({ onSearchChanged }): JSX.Element => {
@@ -24,7 +24,7 @@ export const SearchEvent: FC<Props> = ({ onSearchChanged }): JSX.Element => {
         pl={12}
         className={styles.inputSearchBox}
         placeholder='What would you like to do?'
-        onChange={onSearchChanged}
+        onChange={(event) => onSearchChanged(event)}
       />
     </InputGroup>
   );
