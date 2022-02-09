@@ -1,7 +1,11 @@
+.mainContainer {
+  border-top-width: 1px;
+  height: 100vh;
+  overflow: auto;
+}
+
 .dashContainer {
   max-width: 981px;
-  height: calc(100vh - 66px);
-  overflow: auto;
   left: 50%;
   position: relative;
   transform: translateX(-50%);

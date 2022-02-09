@@ -5,6 +5,7 @@ import { NewShortcutCard } from './NewShortcutCard';
 import { SearchEvent } from './SearchEvent';
 import { ShortcutCard } from './ShortcutCard';
 import styles from './dash.module.css';
+import { CenterNavBar } from 'components/navbar/CenterNavBar';
 
 export const Dash: React.FC = (): JSX.Element => {
   const onSearchChanged = (event) => {
@@ -34,33 +35,38 @@ export const Dash: React.FC = (): JSX.Element => {
 
   return (
     <Box
-      px={10}
-      pt={10}
-      className={styles.dashContainer}
+      className={styles.mainContainer}
     >
-      <SearchEvent
-        onSearchChanged={onSearchChanged}
-      />
+      <CenterNavBar />
       <Box
-        className={styles.cardsWrapper}
-        my={5}
+        px={10}
+        pt={10}
+        className={styles.dashContainer}
       >
-        {eventCardList.map((item, idx) => (
-          <EventCard
-            key={idx}
-            {...item}
-          />
-        ))}
-      </Box>
-      <Title title="shortcuts" />
-      <Box
-        className={styles.cardsWrapper}
-        my={5}
-      >
-        {shortcutList.map((item, idx) => (
-          <ShortcutCard {...item} key={idx} />
-        ))}
-        <NewShortcutCard />
+        <SearchEvent
+          onSearchChanged={onSearchChanged}
+        />
+        <Box
+          className={styles.cardsWrapper}
+          my={5}
+        >
+          {eventCardList.map((item, idx) => (
+            <EventCard
+              key={idx}
+              {...item}
+            />
+          ))}
+        </Box>
+        <Title title="shortcuts" />
+        <Box
+          className={styles.cardsWrapper}
+          my={5}
+        >
+          {shortcutList.map((item, idx) => (
+            <ShortcutCard {...item} key={idx} />
+          ))}
+          <NewShortcutCard />
+        </Box>
       </Box>
     </Box>
   );

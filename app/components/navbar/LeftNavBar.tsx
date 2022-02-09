@@ -1,5 +1,5 @@
-import { Box, Image } from '@chakra-ui/react';
 import Link from 'next/link';
+import { Box, Image } from '@chakra-ui/react';
 import { useColorMode } from '@chakra-ui/react';
 import styles from './styles.module.css';
 
@@ -11,6 +11,7 @@ export const LeftNavBar = (): JSX.Element => {
       px={10}
       py={4}
       borderColor="whiteAlpha.300"
+      cursor="pointer"
     >
       <Link href="/dashboard" passHref>
         <Image
