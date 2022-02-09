@@ -30,6 +30,14 @@ h1, .f-32 {
   font-size: 32px!important;
 }
 
+h4 {
+  /* font-family: Inter; */
+  font-style: normal;
+  font-weight: bold;
+  font-size: 20px;
+  line-height: 140%;
+}
+
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,

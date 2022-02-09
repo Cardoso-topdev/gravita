@@ -1,5 +1,6 @@
 export const colors = {
   gray: {
+    500: '#828288',
     800: '#171822',
   },
   secondaryDark: '#1E1F2B',
