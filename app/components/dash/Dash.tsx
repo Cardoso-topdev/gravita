@@ -1,10 +1,10 @@
 import { Box } from '@chakra-ui/react';
 import { Title } from 'components/Title';
-import styles from './dash.module.css';
 import { EventCard } from './EventCard';
 import { NewShortcutCard } from './NewShortcutCard';
 import { SearchEvent } from './SearchEvent';
 import { ShortcutCard } from './ShortcutCard';
+import styles from './dash.module.css';
 
 export const Dash: React.FC = (): JSX.Element => {
   const onSearchChanged = (event) => {
@@ -34,8 +34,8 @@ export const Dash: React.FC = (): JSX.Element => {
 
   return (
     <Box
-      mx='auto'
-      my={20}
+      px={10}
+      pt={10}
       className={styles.dashContainer}
     >
       <SearchEvent
