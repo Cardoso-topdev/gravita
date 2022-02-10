@@ -1,7 +1,7 @@
 export const sizes = {
   sm: 'sm',
   lg: 'lg',
-  xs: 'xs', 
+  xs: 'xs',
   xl: 'xl',
-  xxl: 40
-} as const 
+  xxl: 40,
+} as const;

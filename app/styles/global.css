@@ -26,8 +26,9 @@ img {
   display: block;
 }
 
-h1, .f-32 {
-  font-size: 32px!important;
+h1,
+.f-32 {
+  font-size: 32px !important;
 }
 
 h4 {

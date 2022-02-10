@@ -16,10 +16,14 @@ export const LeftNavBar = (): JSX.Element => {
       <Link href="/dashboard" passHref>
         <Image
           alt="logo"
-          src={colorMode === 'light' ? "/images/logo-light.png" : "/images/logo.png"}
+          src={
+            colorMode === 'light'
+              ? '/images/logo-light.png'
+              : '/images/logo.png'
+          }
           className={styles.navLogo}
         />
       </Link>
     </Box>
-  )
+  );
 };

@@ -26,8 +26,14 @@ export const NewsWrapper: FC<Props> = ({ news }) => {
         <Flex align="center" justify="space-between" mb={5}>
           <Heading {...typography.pageHeading}>News & Updates</Heading>
           <HStack>
-            <Text fontSize={14}>Sort by:</Text> 
-            <Select fontSize={14} fontWeight={700} placeholder="Recent" variant="unstyled" w={100}>
+            <Text fontSize={14}>Sort by:</Text>
+            <Select
+              fontSize={14}
+              fontWeight={700}
+              placeholder="Recent"
+              variant="unstyled"
+              w={100}
+            >
               <option value="option1">Recent</option>
             </Select>
           </HStack>
@@ -44,11 +50,7 @@ export const NewsWrapper: FC<Props> = ({ news }) => {
           />
         ))}
         <Center>
-          <Button
-            variant="outline"
-            color="primaryGray"
-            {...typography.titleSM}
-          >
+          <Button variant="outline" color="primaryGray" {...typography.titleSM}>
             SEE MORE
           </Button>
         </Center>

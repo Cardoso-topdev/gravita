@@ -7,7 +7,7 @@ const handleResponse = async (response: Response) => {
 
 export const request = async <T>(
   url: string,
-  config: RequestInit
+  config: RequestInit,
 ): Promise<T> => {
   const response = await fetch(url, config);
 

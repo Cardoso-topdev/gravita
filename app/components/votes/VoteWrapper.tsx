@@ -39,9 +39,7 @@ export const VotesWrapper: FC = () => {
   }
 
   return (
-    <Box
-      className="main-container"
-    >
+    <Box className="main-container">
       <CenterNavBar />
       <Box p={{ base: 5, lg: 10 }}>
         <Heading {...typography.pageHeading} mb={5}>

@@ -28,7 +28,7 @@ const SCHEMA: SchemaOf<Form> = object({
 export const Signup = (): JSX.Element => {
   const { errors, disabled, handleChange, handleSubmit } = useFormValidation(
     DEFAULT,
-    SCHEMA
+    SCHEMA,
   );
 
   const [serverError, setServerError] = useState<string>('');
@@ -59,9 +59,7 @@ export const Signup = (): JSX.Element => {
 
   return (
     <Flex align="center" justify="center">
-      <Box
-        w="50%"
-      >
+      <Box w="50%">
         <form onSubmit={handleSubmit(onSubmit)}>
           <FormInput
             autoComplete="off"

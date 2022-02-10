@@ -12,7 +12,7 @@ export const RightSidebar: FC = () => {
     requestPolicy: 'cache-and-network',
     variables: { limit: 1, where: { status: 'open' } },
   });
- 
+
   const { colorMode } = useColorMode();
 
   const { fetching, data } = result;
@@ -24,14 +24,14 @@ export const RightSidebar: FC = () => {
 
   return (
     <Box
-      bg={colorMode === 'light' ? "gray.300" : "secondaryDark"}
+      bg={colorMode === 'light' ? 'gray.300' : 'secondaryDark'}
       w={450}
       h="100vh"
     >
       <RightNavBar />
       <Flex flexDir="column" p={10}>
         <Box>
-          <Title title='POLLS & SURVEYS' />
+          <Title title="POLLS & SURVEYS" />
           <VoteCard
             createdAt={firstVote.createdAt}
             status={firstVote.status}
@@ -45,7 +45,7 @@ export const RightSidebar: FC = () => {
           </Text>
         </Link>
         <Box mt={5}>
-          <Title title='NEWS & UPDATES' />
+          <Title title="NEWS & UPDATES" />
           <News />
           <Link href="/news" passHref>
             <Text color="teal" mt={2} fontSize={14} cursor="pointer">

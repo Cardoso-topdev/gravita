@@ -19,9 +19,14 @@ export const OpenVotes: FC = () => {
     <>
       {data.votesCollection.items.map((vote) => (
         <Box key={vote.sys.id}>
-          <Heading color="primaryGray" fontWeight={700} fontSize={12}>OPEN FOR VOTING</Heading>
+          <Heading color="primaryGray" fontWeight={700} fontSize={12}>
+            OPEN FOR VOTING
+          </Heading>
           <Link href={`/votes/${vote.sys.id}`} passHref>
-            <Text color='teal' cursor='pointer'> {vote.title} </Text>
+            <Text color="teal" cursor="pointer">
+              {' '}
+              {vote.title}{' '}
+            </Text>
           </Link>
         </Box>
       ))}

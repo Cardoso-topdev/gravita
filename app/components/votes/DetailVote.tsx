@@ -22,9 +22,7 @@ interface Props {
 
 export const DetailVote: FC<Props> = ({ vote, count }) => {
   return (
-    <Box
-      className="main-container"
-    >
+    <Box className="main-container">
       <CenterNavBar />
       <Box p={30}>
         <Heading {...typography.pageHeading} mb={5}>
@@ -44,11 +42,11 @@ export const DetailVote: FC<Props> = ({ vote, count }) => {
             <Text fontWeight={700}> {count} </Text>
           </HStack>
         </HStack>
-        <SimpleGrid minChildWidth='80px' spacing={10}>
+        <SimpleGrid minChildWidth="80px" spacing={10}>
           <Box>
             <Text>{documentToReactComponents(vote.content.json)}</Text>
           </Box>
-          <VStack spacing={5} align='left'>
+          <VStack spacing={5} align="left">
             <VoteCard
               defaultView={1}
               title={vote.title}

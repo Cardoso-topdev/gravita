@@ -1,5 +1,14 @@
 import Link from 'next/link';
-import { Box, Text, Avatar, Button, Menu, MenuButton, MenuList, MenuItem } from '@chakra-ui/react';
+import {
+  Box,
+  Text,
+  Avatar,
+  Button,
+  Menu,
+  MenuButton,
+  MenuList,
+  MenuItem,
+} from '@chakra-ui/react';
 import { useAuthContext } from 'context/AuthContext';
 import { textToCapitalizeWord } from 'utils/common';
 import { ToggleColorModeButton } from './ToggleColorModeButton';
@@ -10,7 +19,7 @@ import styles from './styles.module.css';
 export const RightNavBar = (): JSX.Element => {
   const { session } = useAuthContext();
   const onNotificationClick = () => {
-    console.log("onNotificationClicked");
+    console.log('onNotificationClicked');
   };
   const handleSignout = () => supabase.auth.signOut();
 
@@ -25,30 +34,33 @@ export const RightNavBar = (): JSX.Element => {
     >
       {session ? (
         <>
-          <Text>Howdy {textToCapitalizeWord(session.user.email.substring(0, session.user.email.indexOf('@')))}!</Text>
-          <Box
-            className={styles.navIconContainer}
-          >
+          <Text>
+            Howdy{' '}
+            {textToCapitalizeWord(
+              session.user.email.substring(0, session.user.email.indexOf('@')),
+            )}
+            !
+          </Text>
+          <Box className={styles.navIconContainer}>
             <ToggleColorModeButton />
             <NotificationButton
               hasNewNotification={true}
               onNotificationClick={onNotificationClick}
             />
             <Menu>
-              <MenuButton
-                className={styles.navMenuBtn}
-                as={Button}
-              >
+              <MenuButton className={styles.navMenuBtn} as={Button}>
                 <Avatar
-                  name='Dan Abrahmov'
+                  name="Dan Abrahmov"
                   className={styles.userAvatar}
-                  src='https://bit.ly/dan-abramov'
+                  src="https://bit.ly/dan-abramov"
                 />
               </MenuButton>
-              <MenuList >
+              <MenuList>
                 <MenuItem onClick={() => alert('Account')}>Account</MenuItem>
                 <MenuItem onClick={() => alert('Settings')}>Settings</MenuItem>
-                <MenuItem onClick={() => alert('Knowledgebase')}>Knowledgebase</MenuItem>
+                <MenuItem onClick={() => alert('Knowledgebase')}>
+                  Knowledgebase
+                </MenuItem>
                 <MenuItem onClick={() => alert('Feedback')}>Feedback</MenuItem>
                 <MenuItem onClick={handleSignout}>Sign out</MenuItem>
               </MenuList>
@@ -63,5 +75,5 @@ export const RightNavBar = (): JSX.Element => {
         </>
       )}
     </Box>
-  )
+  );
 };

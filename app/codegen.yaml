@@ -1,9 +1,9 @@
 overwrite: true
-schema: "https://graphql.contentful.com/content/v1/spaces/${NEXT_PUBLIC_CTF_SPACE_ID}/environments/${NEXT_PUBLIC_CTF_ENVIRONMENT}"
-headers: 
-    Authorization: "Bearer ${NEXT_PUBLIC_CTF_ACCESS_TOKEN}"
-documents: 
-   - ./graphql/queries/*.gql
+schema: 'https://graphql.contentful.com/content/v1/spaces/${NEXT_PUBLIC_CTF_SPACE_ID}/environments/${NEXT_PUBLIC_CTF_ENVIRONMENT}'
+headers:
+  Authorization: 'Bearer ${NEXT_PUBLIC_CTF_ACCESS_TOKEN}'
+documents:
+  - ./graphql/queries/*.gql
 generates:
   ./generated/graphql.ts:
     plugins:

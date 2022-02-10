@@ -8,10 +8,14 @@ import { EmojiMapper } from 'theme/common';
 
 interface Props extends WrapProps {
   statWidth?: number;
-  title: string
+  title: string;
 }
 
-export const StatWrapper: FC<Props> = ({ statWidth, title, ...rest }): JSX.Element => {
+export const StatWrapper: FC<Props> = ({
+  statWidth,
+  title,
+  ...rest
+}): JSX.Element => {
   const [votes, loading] = useData(() => getVotePercentages(title));
 
   if (loading) {

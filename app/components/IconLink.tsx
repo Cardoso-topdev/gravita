@@ -5,14 +5,16 @@ interface Props extends IconProps {
   icon: FunctionComponent<SVGProps<SVGAElement>>;
 }
 
-type Ref = HTMLAnchorElement
+type Ref = HTMLAnchorElement;
 
 // eslint-disable-next-line react/display-name
-export const IconLink = forwardRef<Ref, Props>(({ icon, title, ...rest}, ref) => (
-  <Link ref={ref}>
-    <HStack>
-      <Icon {...rest} as={icon} />
-      <Text> {title} </Text>
-    </HStack>
-  </Link>
-));
+export const IconLink = forwardRef<Ref, Props>(
+  ({ icon, title, ...rest }, ref) => (
+    <Link ref={ref}>
+      <HStack>
+        <Icon {...rest} as={icon} />
+        <Text> {title} </Text>
+      </HStack>
+    </Link>
+  ),
+);

@@ -7,16 +7,9 @@ import { LeftNavBar } from 'components/navbar/LeftNavBar';
 
 export const LeftSidebar: FC = () => {
   return (
-    <Box
-      borderWidth={1}
-      h="100vh"
-    >
+    <Box borderWidth={1} h="100vh">
       <LeftNavBar />
-      <Flex
-        flexDir="column"
-        p={10}
-        w={250}
-      >
+      <Flex flexDir="column" p={10} w={250}>
         <SidebarContent align="left" spacing={7} />
         <Projects align="left" spacing={5} mt={5} />
         <Teams align="left" spacing={5} mt={5} />

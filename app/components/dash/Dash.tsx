@@ -10,58 +10,41 @@ import { CenterNavBar } from 'components/navbar/CenterNavBar';
 export const Dash: React.FC = (): JSX.Element => {
   const onSearchChanged = (event) => {
     console.log('onSearchChanged: ', event.target.value);
-  }
+  };
 
   const eventCardList = [
     {
-      title: "Discover",
-      description: "Explore a new and better way of building great produts!"
+      title: 'Discover',
+      description: 'Explore a new and better way of building great produts!',
     },
     {
-      title: "Collaborate",
-      description: "Connect & collaborate with other community members"
+      title: 'Collaborate',
+      description: 'Connect & collaborate with other community members',
     },
     {
-      title: "Build",
-      description: "See how the community is growing and what's ahead."
+      title: 'Build',
+      description: "See how the community is growing and what's ahead.",
     },
-  ]
+  ];
 
   const shortcutList = [
     {
-      title: 'Our Principle'
-    }
-  ]
+      title: 'Our Principle',
+    },
+  ];
 
   return (
-    <Box
-      className="main-container"
-    >
+    <Box className="main-container">
       <CenterNavBar />
-      <Box
-        px={10}
-        pt={10}
-        className={styles.dashContainer}
-      >
-        <SearchEvent
-          onSearchChanged={onSearchChanged}
-        />
-        <Box
-          className={styles.cardsWrapper}
-          my={5}
-        >
+      <Box px={10} pt={10} className={styles.dashContainer}>
+        <SearchEvent onSearchChanged={onSearchChanged} />
+        <Box className={styles.cardsWrapper} my={5}>
           {eventCardList.map((item, idx) => (
-            <EventCard
-              key={idx}
-              {...item}
-            />
+            <EventCard key={idx} {...item} />
           ))}
         </Box>
         <Title title="shortcuts" />
-        <Box
-          className={styles.cardsWrapper}
-          my={5}
-        >
+        <Box className={styles.cardsWrapper} my={5}>
           {shortcutList.map((item, idx) => (
             <ShortcutCard {...item} key={idx} />
           ))}
@@ -70,4 +53,4 @@ export const Dash: React.FC = (): JSX.Element => {
       </Box>
     </Box>
   );
-}; 
+};

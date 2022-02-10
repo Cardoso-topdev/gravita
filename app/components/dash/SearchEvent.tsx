@@ -9,21 +9,18 @@ interface Props {
 
 export const SearchEvent: FC<Props> = ({ onSearchChanged }): JSX.Element => {
   return (
-    <InputGroup >
+    <InputGroup>
       <InputLeftElement
-        pointerEvents='none'
+        pointerEvents="none"
         className={styles.inputSearchElement}
       >
-        <SearchIcon
-          color="gray.500"
-          className={styles.inputSearchIcon}
-        />
+        <SearchIcon color="gray.500" className={styles.inputSearchIcon} />
       </InputLeftElement>
       <Input
         type="text"
         pl={12}
         className={styles.inputSearchBox}
-        placeholder='What would you like to do?'
+        placeholder="What would you like to do?"
         onChange={(event) => onSearchChanged(event)}
       />
     </InputGroup>

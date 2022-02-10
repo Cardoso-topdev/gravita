@@ -8,5 +8,5 @@ export const colors = {
   red1: '#D25252',
   teal: '#A2E0D9',
   primaryGray: '#868899',
-  streamGray: '#2d2f2f'
+  streamGray: '#2d2f2f',
 } as const;

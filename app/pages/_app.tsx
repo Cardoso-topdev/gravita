@@ -7,12 +7,12 @@ import { sizes } from 'theme/sizes';
 import '../styles/global.css';
 
 const theme = extendTheme({
-	colors: colors,
+  colors: colors,
   sizes: sizes,
   typography: typography,
   initialColorMode: 'dark',
   useSystemColorMode: false,
-})
+});
 
 export default function App({ Component, pageProps }) {
   return (

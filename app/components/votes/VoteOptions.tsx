@@ -25,9 +25,5 @@ export const VoteOptions: FC<Props> = ({
       );
     });
 
-  return (
-    <HStack {...rest}>
-      {renderEmojis()}
-    </HStack>
-  );
+  return <HStack {...rest}>{renderEmojis()}</HStack>;
 };
