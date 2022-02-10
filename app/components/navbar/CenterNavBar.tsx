@@ -16,6 +16,18 @@ const navTabList = [
     title: "Voting",
     normalImgSrc: "/images/nav-tab-icon1-dark.png",
     focusImgSrc: "/images/nav-tab-icon1-active.svg",
+    focus: false,
+  },
+  {
+    title: "Discover",
+    normalImgSrc: "/images/discover-dark.png",
+    focusImgSrc: "/images/discover-active.png",
+    focus: false,
+  },
+  {
+    title: "Collaborate",
+    normalImgSrc: "/images/collaborate-white.svg",
+    focusImgSrc: "/images/collaborate-active.png",
     focus: true,
   }
 ];
