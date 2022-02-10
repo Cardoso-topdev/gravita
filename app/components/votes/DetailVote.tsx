@@ -13,6 +13,7 @@ import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 import { getEndTime } from 'utils/common';
 import { VoteCard } from 'components/votes/VoteCard';
 import { OpenVotes } from './OpenVotes';
+import { CenterNavBar } from 'components/navbar/CenterNavBar';
 
 interface Props {
   vote: VoteItemFragment;
@@ -21,39 +22,44 @@ interface Props {
 
 export const DetailVote: FC<Props> = ({ vote, count }) => {
   return (
-    <Box p={30}>
-      <Heading {...typography.pageHeading} mb={5}>
-        {vote.title}
-      </Heading>
-      <HStack mb={5} spacing={5}>
-        <HStack>
-          <Text>Status:</Text>
-          <Text fontWeight={700}>{vote.status} </Text>
+    <Box
+      className="main-container"
+    >
+      <CenterNavBar />
+      <Box p={30}>
+        <Heading {...typography.pageHeading} mb={5}>
+          {vote.title}
+        </Heading>
+        <HStack mb={5} spacing={5}>
+          <HStack>
+            <Text>Status:</Text>
+            <Text fontWeight={700}>{vote.status} </Text>
+          </HStack>
+          <HStack>
+            <Text>Time remaining:</Text>
+            <Text fontWeight={700}> {getEndTime(vote.expiresAt)} </Text>
+          </HStack>
+          <HStack>
+            <Text>Total votes:</Text>
+            <Text fontWeight={700}> {count} </Text>
+          </HStack>
         </HStack>
-        <HStack>
-          <Text>Time remaining:</Text>
-          <Text fontWeight={700}> {getEndTime(vote.expiresAt)} </Text>
-        </HStack>
-        <HStack>
-          <Text>Total votes:</Text>
-          <Text fontWeight={700}> {count} </Text>
-        </HStack>
-      </HStack>
-      <SimpleGrid minChildWidth='80px' spacing={10}>
-        <Box>
-          <Text>{documentToReactComponents(vote.content.json)}</Text>
-        </Box>
-        <VStack spacing={5} align='left'>
-          <VoteCard
-            defaultView={1}
-            title={vote.title}
-            voteId={vote.sys.id}
-            createdAt={vote.createdAt}
-            status={vote.status}
-          />
-          <OpenVotes />
-        </VStack>
-      </SimpleGrid>
+        <SimpleGrid minChildWidth='80px' spacing={10}>
+          <Box>
+            <Text>{documentToReactComponents(vote.content.json)}</Text>
+          </Box>
+          <VStack spacing={5} align='left'>
+            <VoteCard
+              defaultView={1}
+              title={vote.title}
+              voteId={vote.sys.id}
+              createdAt={vote.createdAt}
+              status={vote.status}
+            />
+            <OpenVotes />
+          </VStack>
+        </SimpleGrid>
+      </Box>
     </Box>
   );
 };

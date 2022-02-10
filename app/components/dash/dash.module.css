@@ -1,9 +1,3 @@
-.mainContainer {
-  border-top-width: 1px;
-  height: 100vh;
-  overflow: auto;
-}
-
 .dashContainer {
   max-width: 981px;
   left: 50%;

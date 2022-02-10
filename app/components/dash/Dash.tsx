@@ -35,7 +35,7 @@ export const Dash: React.FC = (): JSX.Element => {
 
   return (
     <Box
-      className={styles.mainContainer}
+      className="main-container"
     >
       <CenterNavBar />
       <Box
