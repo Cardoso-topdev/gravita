@@ -1,34 +1,47 @@
-import { FC, ChangeEvent } from 'react';
+import { FC, FunctionComponent, SVGProps, ChangeEvent } from 'react';
 import {
   Input,
   FormControl,
   FormErrorMessage,
   FormLabel,
+  FormLabelProps,
   InputProps,
+  Icon,
+  HStack,
 } from '@chakra-ui/react';
+
 
 interface Props extends InputProps {
   error: string;
+  icon?: FunctionComponent<SVGProps<SVGAElement>>;
   label: string;
+  labelStyle?: FormLabelProps;
   name: string;
   onChange: (e: ChangeEvent) => void;
-  labelColor?: string;
 }
 
 export const FormInput: FC<Props> = ({
   error,
   label,
+  labelStyle,
+  icon,
   onChange,
   name,
-  labelColor,
   ...rest
 }) => {
   return (
     <FormControl isInvalid={Boolean(error)}>
-      <FormLabel mt={5} htmlFor={name} color={labelColor} fontSize={17}>
+      <FormLabel mt={5} htmlFor={name} fontSize={17} {...labelStyle}>
         {label}
       </FormLabel>
-      <Input name={name} onChange={onChange} {...rest} color="white" />
+      {icon ? (
+        <HStack>
+          <Icon as={icon} />
+          <Input name={name} onChange={onChange} {...rest} color="white" />
+        </HStack>
+      ) : (
+        <Input name={name} onChange={onChange} {...rest} color="white" />
+      )}
       <FormErrorMessage> {error} </FormErrorMessage>
     </FormControl>
   );

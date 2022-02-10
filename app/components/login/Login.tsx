@@ -1,5 +1,17 @@
 import { useState } from 'react';
-import { Button, Box, Flex, FormControl, FormLabel, Input, FormErrorMessage, InputRightElement, InputGroup, Text } from '@chakra-ui/react';
+import Link from 'next/link';
+import {
+  Button,
+  Box,
+  Flex,
+  FormControl,
+  FormLabel,
+  Input,
+  FormErrorMessage,
+  InputRightElement,
+  InputGroup,
+  Text,
+} from '@chakra-ui/react';
 import { object, string, SchemaOf } from 'yup';
 import { useRouter } from 'next/router';
 import { supabase } from 'lib/base/client';
@@ -8,8 +20,6 @@ import { useFormValidation } from 'hooks/useFormValidation';
 import { ViewIcon, ViewOffIcon } from '@chakra-ui/icons';
 import styles from './login.module.css';
 import commonStyles from '../../styles/common.module.css';
-import Link from 'next/link';
-
 interface Form {
   email: string;
   password: string;
@@ -32,7 +42,9 @@ export const Login = (): JSX.Element => {
   );
 
   const [serverError, setServerError] = useState<string>('');
+
   const [showPassword, setShowPassword] = useState<Boolean>(false);
+
   const handlePasswordVisibility = () => setShowPassword(!showPassword);
 
   const router = useRouter();
@@ -43,7 +55,7 @@ export const Login = (): JSX.Element => {
       password: data.password,
     });
 
-    console.log(error)
+    console.log(error);
 
     if (error) {
       setServerError(error.message);
@@ -66,11 +78,15 @@ export const Login = (): JSX.Element => {
             name="email"
             type="email"
             variant="flushed"
-            labelColor="white"
           />
           <FormControl isInvalid={Boolean(errors.password)}>
-            <FormLabel mt={5} htmlFor={"password"} color={"white"} fontSize={17}>
-              {"Password"}
+            <FormLabel
+              mt={5}
+              htmlFor={'password'}
+              color={'white'}
+              fontSize={17}
+            >
+              {'Password'}
             </FormLabel>
             <InputGroup>
               <Input
@@ -82,7 +98,11 @@ export const Login = (): JSX.Element => {
                 onChange={handleChange}
               />
               <InputRightElement width="3rem">
-                {showPassword ? <ViewIcon onClick={handlePasswordVisibility}/> : <ViewOffIcon onClick={handlePasswordVisibility} />}
+                {showPassword ? (
+                  <ViewIcon onClick={handlePasswordVisibility} />
+                ) : (
+                  <ViewOffIcon onClick={handlePasswordVisibility} />
+                )}
               </InputRightElement>
             </InputGroup>
             <FormErrorMessage> {errors.password} </FormErrorMessage>
@@ -102,7 +122,8 @@ export const Login = (): JSX.Element => {
               className={styles.forgotPwd + ' ' + commonStyles.fontSize12}
               color="teal"
             >
-              Forgot password</Text>
+              Forgot password
+            </Text>
           </Link>
           <Button
             type="submit"
