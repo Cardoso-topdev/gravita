@@ -3,6 +3,7 @@ import {
   FormControl,
   FormErrorMessage,
   FormLabel,
+  FormLabelProps,
   Textarea,
   TextareaProps,
 } from '@chakra-ui/react';
@@ -13,19 +14,20 @@ interface Props extends TextareaProps {
   labelColor?: string;
   name: string;
   onChange: (e: ChangeEvent) => void;
+  labelStyle: FormLabelProps;
 }
 
 export const FormTextarea: FC<Props> = ({
   error,
   label,
-  labelColor,
+  labelStyle,
   onChange,
   name,
   ...rest
 }) => {
   return (
     <FormControl isInvalid={Boolean(error)}>
-      <FormLabel mt={5} htmlFor={name} color={labelColor} fontSize={17}>
+      <FormLabel mt={5} htmlFor={name} fontSize={17} {...labelStyle}>
         {label}
       </FormLabel>
       <Textarea name={name} onChange={onChange} {...rest} color="white" />

@@ -1,7 +1,7 @@
 import { useState, useCallback } from 'react';
+import * as R from 'ramda';
 import { ObjectSchema, ValidationError } from 'yup';
 import { ChangeEvent, FormEvent } from 'react';
-import * as R from 'ramda';
 import { firstCapDataLike } from '../utils/common';
 import { formatPhoneNumber } from 'utils/common';
 
@@ -60,6 +60,7 @@ export const useFormValidation = <T, K extends { [key: string]: any }>(
               R.join(' '),
               R.toLower,
               firstCapDataLike,
+              R.replace('_', ' ')
             )(error.errors),
           }));
         }
@@ -80,13 +81,12 @@ export const useFormValidation = <T, K extends { [key: string]: any }>(
       const newValues = { ...prevValues, [target.name]: target.value };
 
       if(/(?=phone)/.test(target.name)) {
-        const updatedValues = R.mergeRight(newValues, { phoneNumber: formatPhoneNumber(target.value)}); 
+        const updatedValues = R.mergeRight(newValues, { [target.name]: formatPhoneNumber(target.value)}); 
 
         handleValidateOne(target.name, updatedValues);
 
         return updatedValues as T;
       }
-
       handleValidateOne(target.name, newValues);
 
       return newValues;

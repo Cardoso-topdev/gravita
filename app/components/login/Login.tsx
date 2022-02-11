@@ -54,9 +54,6 @@ export const Login = (): JSX.Element => {
       email: data.email,
       password: data.password,
     });
-
-    console.log(error);
-
     if (error) {
       setServerError(error.message);
 
