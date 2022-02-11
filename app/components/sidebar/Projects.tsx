@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import { VStack, Button, StackProps } from '@chakra-ui/react';
-import { Title } from './Title';
+import { Title } from '../Title';
 import { Text } from './Text';
 
 interface Props extends StackProps {}
@@ -12,12 +12,7 @@ export const Projects: FC<Props> = (props) => (
     <Text> Gravita Identity</Text>
     <Text> Gravita Operate</Text>
 
-    <Button
-      alignSelf="flex-start"
-      color="teal"
-      size="xs"
-      variant="link"
-    >
+    <Button alignSelf="flex-start" color="teal" size="xs" variant="link">
       + New Project
     </Button>
   </VStack>

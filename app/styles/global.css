@@ -26,8 +26,17 @@ img {
   display: block;
 }
 
-h1, .f-32 {
-  font-size: 32px!important;
+h1,
+.f-32 {
+  font-size: 32px !important;
+}
+
+h4 {
+  /* font-family: Inter; */
+  font-style: normal;
+  font-weight: bold;
+  font-size: 20px;
+  line-height: 140%;
 }
 
 input:-webkit-autofill,
@@ -38,11 +47,17 @@ input:-webkit-autofill:active {
   -webkit-text-fill-color: #fff !important;
 }
 
-input {
+/* input {
   caret-color: #fff;
-}
+} */
 
 .str-chat.str-chat-channel.messaging.light,
 .str-chat.str-chat-channel-list.messaging.light {
   height: calc(100% - 54px - 4rem);
+}
+
+.main-container {
+  border-top-width: 1px;
+  height: 100vh;
+  overflow: auto;
 }

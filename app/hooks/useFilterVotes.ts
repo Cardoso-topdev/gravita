@@ -7,7 +7,6 @@ const Filter = {
   open: 'open',
 } as const;
 
-
 export const useFilterVotes = () => {
   const [filter, setFilter] = useState<string | null>(null);
 

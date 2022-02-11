@@ -8,7 +8,7 @@ interface Props extends TextProps {
 export const Title: FC<Props> = ({ title, ...rest }) => {
   return (
     <Text color="primaryGray" fontWeight={700} fontSize={12} {...rest}>
-      {title}
+      {title.toUpperCase()}
     </Text>
   );
 };

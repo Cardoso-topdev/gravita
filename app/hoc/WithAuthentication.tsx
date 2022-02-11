@@ -4,7 +4,7 @@ import { Loader } from 'components/Loader';
 import { useAuthContext } from 'context/AuthContext';
 
 export function WithAuthentication<P extends {}>(
-  Component: React.ComponentType<P>
+  Component: React.ComponentType<P>,
 ) {
   return function AuthHoc(props: P) {
     const { session, loading } = useAuthContext();

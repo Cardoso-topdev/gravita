@@ -10,7 +10,6 @@ import {
   HStack,
 } from '@chakra-ui/react';
 
-
 interface Props extends InputProps {
   error: string;
   icon?: FunctionComponent<SVGProps<SVGAElement>>;

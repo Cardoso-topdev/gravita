@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import GqlClient from '../lib/contentful/gqlService';
 import Layout, { title } from '../components/layout/Layout';
-import { Login } from 'components/login/Login';
+import { Login } from 'components/login';
 import { Flex, Heading, Text } from '@chakra-ui/react';
 import Link from 'next/link';
 import { LandingPageDocument, LandingPageQuery } from 'generated/graphql';
@@ -18,10 +18,7 @@ const HomePage = ({ items }) => {
         {welcomeText}
       </Heading>
       <Login />
-      <Flex
-        className={styles.fatherTiger}
-        display="inline-flex"
-      >
+      <Flex className={styles.fatherTiger} display="inline-flex">
         <Text fontSize="12px" display="inline-flex" color="white">
           Don&apos;t have an account?{' '}
         </Text>
@@ -33,9 +30,9 @@ const HomePage = ({ items }) => {
       </Flex>
     </Layout>
   );
-}
+};
 
-export default HomePage
+export default HomePage;
 
 export const getStaticProps = async () => {
   const { data } = await GqlClient.query<LandingPageQuery>(
