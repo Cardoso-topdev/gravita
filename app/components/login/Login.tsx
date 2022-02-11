@@ -1,8 +1,5 @@
 import { useState } from 'react';
-<<<<<<< HEAD
 import Link from 'next/link';
-=======
->>>>>>> develop
 import {
   Button,
   Box,
@@ -57,12 +54,6 @@ export const Login = (): JSX.Element => {
       email: data.email,
       password: data.password,
     });
-<<<<<<< HEAD
-=======
-
-    console.log(error);
-
->>>>>>> develop
     if (error) {
       setServerError(error.message);
 
