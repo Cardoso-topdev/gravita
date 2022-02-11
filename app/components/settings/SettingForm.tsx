@@ -57,7 +57,7 @@ export const SettingsForm: FC<Props> = (props) => {
 
     const inputError = errors[event.target.name];
 
-    if (!savableValue || inputError || !profile?.email) {
+    if (!savableValue || !profile?.email || inputError ) {
       return;
     }
 
@@ -82,12 +82,12 @@ export const SettingsForm: FC<Props> = (props) => {
   }
 
   return (
-    <Box p={30} {...props}>
-      <form>
+    <Box {...props}>
+      <Heading {...typography.heading}> Basic details </Heading>
         <HStack>
           <FormInput
             autoComplete="off"
-            defaultValue={profile.first_name}
+            defaultValue={profile?.first_name}
             id="firstName"
             error={errors.first_name}
             onChange={handleChange}
@@ -100,7 +100,7 @@ export const SettingsForm: FC<Props> = (props) => {
           />
           <FormInput
             autoComplete="off"
-            defaultValue={profile.last_name}
+            defaultValue={profile?.last_name}
             id="lastName"
             error={errors.last_name}
             onChange={handleChange}
@@ -122,7 +122,7 @@ export const SettingsForm: FC<Props> = (props) => {
           name="phone"
           type="text"
           variant="flushed"
-          value={values.phone ?? profile.phone}
+          value={values.phone ?? profile?.phone}
           labelStyle={typography.titleSM}
         />
         <FormInput
@@ -140,7 +140,7 @@ export const SettingsForm: FC<Props> = (props) => {
         />
         <FormTextarea
           autoComplete="off"
-          defaultValue={profile.bio}
+          defaultValue={profile?.bio}
           id="bio"
           error={errors.bio}
           onChange={handleChange}
@@ -156,7 +156,7 @@ export const SettingsForm: FC<Props> = (props) => {
           </Heading>
           <FormInput
             autoComplete="off"
-            defaultValue={profile.website}
+            defaultValue={profile?.website}
             id="website"
             error={errors.website}
             onChange={handleChange}
@@ -170,7 +170,7 @@ export const SettingsForm: FC<Props> = (props) => {
           />
           <FormInput
             autoComplete="off"
-            defaultValue={profile.github}
+            defaultValue={profile?.github}
             id="github"
             error={errors.github}
             onChange={handleChange}
@@ -183,7 +183,6 @@ export const SettingsForm: FC<Props> = (props) => {
             icon={AiFillGithub}
           />
         </Box>
-      </form>
     </Box>
   );
 };

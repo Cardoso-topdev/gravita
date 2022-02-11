@@ -1,5 +1,16 @@
 import Link from 'next/link';
-import { Box, Avatar, Flex, Image, Text, Button, Menu, MenuButton, MenuList, MenuItem } from '@chakra-ui/react';
+import {
+  Box,
+  Avatar,
+  Flex,
+  Image,
+  Text,
+  Button,
+  Menu,
+  MenuButton,
+  MenuList,
+  MenuItem,
+} from '@chakra-ui/react';
 import { supabase } from 'lib/base/client';
 import { useAuthContext } from 'context/AuthContext';
 import { ToggleColorModeButton } from './ToggleColorModeButton';
@@ -12,26 +23,25 @@ import { textToCapitalizeWord } from 'utils/common';
 export const Navbar = (): JSX.Element => {
   const { session } = useAuthContext();
 
-  const mountRef = useRef(false)
-  
+  const mountRef = useRef(false);
+
   const { colorMode } = useColorMode();
 
   const handleSignout = () => supabase.auth.signOut();
+
   const onNotificationClick = () => {
-    console.log("onNotificationClicked");
+    console.log('onNotificationClicked');
   };
 
   useEffect(() => {
-    mountRef.current = true
+    mountRef.current = true;
     return () => {
-      mountRef.current = false
-    }
-  }, [])
+      mountRef.current = false;
+    };
+  }, []);
 
   return (
-    <Box
-      className={styles.container}
-    >
+    <Box className={styles.container}>
       <Flex
         h={{ base: 'auto', lg: '65px' }}
         p="10px 0"
@@ -44,7 +54,11 @@ export const Navbar = (): JSX.Element => {
           <Link href="/dashboard" passHref>
             <Image
               alt="logo"
-              src={colorMode === 'light' ? "/images/logo-light.png" : "/images/logo.png"}
+              src={
+                colorMode === 'light'
+                  ? '/images/logo-light.png'
+                  : '/images/logo.png'
+              }
               className={styles.navLogo}
             />
           </Link>
@@ -60,31 +74,43 @@ export const Navbar = (): JSX.Element => {
         >
           {session ? (
             <>
-              <Text>Howdy {textToCapitalizeWord(session.user.email.substring(0, session.user.email.indexOf('@')))}!</Text>
-              <Box
-                className={styles.navIconContainer}
-              >
+              <Text>
+                Howdy
+                {textToCapitalizeWord(
+                  session.user.email.substring(
+                    0,
+                    session.user.email.indexOf('@'),
+                  ),
+                )}
+                !
+              </Text>
+              <Box className={styles.navIconContainer}>
                 <ToggleColorModeButton />
                 <NotificationButton
                   hasNewNotification={true}
                   onNotificationClick={onNotificationClick}
                 />
                 <Menu>
-                  <MenuButton
-                    className={styles.navMenuBtn}
-                    as={Button}
-                  >
+                  <MenuButton className={styles.navMenuBtn} as={Button}>
                     <Avatar
-                      name='Dan Abrahmov'
+                      name="Dan Abrahmov"
                       className={styles.userAvatar}
-                      src='https://bit.ly/dan-abramov'
+                      src="https://bit.ly/dan-abramov"
                     />
                   </MenuButton>
-                  <MenuList >
-                    <MenuItem onClick={() => alert('Account')}>Account</MenuItem>
-                    <MenuItem onClick={() => alert('Settings')}>Settings</MenuItem>
-                    <MenuItem onClick={() => alert('Knowledgebase')}>Knowledgebase</MenuItem>
-                    <MenuItem onClick={() => alert('Feedback')}>Feedback</MenuItem>
+                  <MenuList>
+                    <MenuItem onClick={() => alert('Account')}>
+                      Account
+                    </MenuItem>
+                    <MenuItem onClick={() => alert('Settings')}>
+                      Settings
+                    </MenuItem>
+                    <MenuItem onClick={() => alert('Knowledgebase')}>
+                      Knowledgebase
+                    </MenuItem>
+                    <MenuItem onClick={() => alert('Feedback')}>
+                      Feedback
+                    </MenuItem>
                     <MenuItem onClick={handleSignout}>Sign out</MenuItem>
                   </MenuList>
                 </Menu>
