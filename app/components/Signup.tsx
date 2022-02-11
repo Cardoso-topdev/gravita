@@ -26,7 +26,7 @@ const SCHEMA: SchemaOf<Form> = object({
 export const Signup = (): JSX.Element => {
   const { errors, disabled, handleChange, handleSubmit } = useFormValidation(
     DEFAULT,
-    SCHEMA
+    SCHEMA,
   );
 
   const [serverError, setServerError] = useState<string>('');

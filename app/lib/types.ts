@@ -4,7 +4,7 @@
  */
 
 export interface paths {
-  "/": {
+  '/': {
     get: {
       responses: {
         /** OK */
@@ -12,37 +12,37 @@ export interface paths {
       };
     };
   };
-  "/card_votes": {
+  '/card_votes': {
     get: {
       parameters: {
         query: {
-          id?: parameters["rowFilter.card_votes.id"];
-          vote_type?: parameters["rowFilter.card_votes.vote_type"];
-          created_at?: parameters["rowFilter.card_votes.created_at"];
-          user_id?: parameters["rowFilter.card_votes.user_id"];
-          title?: parameters["rowFilter.card_votes.title"];
+          id?: parameters['rowFilter.card_votes.id'];
+          vote_type?: parameters['rowFilter.card_votes.vote_type'];
+          created_at?: parameters['rowFilter.card_votes.created_at'];
+          user_id?: parameters['rowFilter.card_votes.user_id'];
+          title?: parameters['rowFilter.card_votes.title'];
           /** Filtering Columns */
-          select?: parameters["select"];
+          select?: parameters['select'];
           /** Ordering */
-          order?: parameters["order"];
+          order?: parameters['order'];
           /** Limiting and Pagination */
-          offset?: parameters["offset"];
+          offset?: parameters['offset'];
           /** Limiting and Pagination */
-          limit?: parameters["limit"];
+          limit?: parameters['limit'];
         };
         header: {
           /** Limiting and Pagination */
-          Range?: parameters["range"];
+          Range?: parameters['range'];
           /** Limiting and Pagination */
-          "Range-Unit"?: parameters["rangeUnit"];
+          'Range-Unit'?: parameters['rangeUnit'];
           /** Preference */
-          Prefer?: parameters["preferCount"];
+          Prefer?: parameters['preferCount'];
         };
       };
       responses: {
         /** OK */
         200: {
-          schema: definitions["card_votes"][];
+          schema: definitions['card_votes'][];
         };
         /** Partial Content */
         206: unknown;
@@ -52,15 +52,15 @@ export interface paths {
       parameters: {
         body: {
           /** card_votes */
-          card_votes?: definitions["card_votes"];
+          card_votes?: definitions['card_votes'];
         };
         query: {
           /** Filtering Columns */
-          select?: parameters["select"];
+          select?: parameters['select'];
         };
         header: {
           /** Preference */
-          Prefer?: parameters["preferReturn"];
+          Prefer?: parameters['preferReturn'];
         };
       };
       responses: {
@@ -71,15 +71,15 @@ export interface paths {
     delete: {
       parameters: {
         query: {
-          id?: parameters["rowFilter.card_votes.id"];
-          vote_type?: parameters["rowFilter.card_votes.vote_type"];
-          created_at?: parameters["rowFilter.card_votes.created_at"];
-          user_id?: parameters["rowFilter.card_votes.user_id"];
-          title?: parameters["rowFilter.card_votes.title"];
+          id?: parameters['rowFilter.card_votes.id'];
+          vote_type?: parameters['rowFilter.card_votes.vote_type'];
+          created_at?: parameters['rowFilter.card_votes.created_at'];
+          user_id?: parameters['rowFilter.card_votes.user_id'];
+          title?: parameters['rowFilter.card_votes.title'];
         };
         header: {
           /** Preference */
-          Prefer?: parameters["preferReturn"];
+          Prefer?: parameters['preferReturn'];
         };
       };
       responses: {
@@ -90,19 +90,19 @@ export interface paths {
     patch: {
       parameters: {
         query: {
-          id?: parameters["rowFilter.card_votes.id"];
-          vote_type?: parameters["rowFilter.card_votes.vote_type"];
-          created_at?: parameters["rowFilter.card_votes.created_at"];
-          user_id?: parameters["rowFilter.card_votes.user_id"];
-          title?: parameters["rowFilter.card_votes.title"];
+          id?: parameters['rowFilter.card_votes.id'];
+          vote_type?: parameters['rowFilter.card_votes.vote_type'];
+          created_at?: parameters['rowFilter.card_votes.created_at'];
+          user_id?: parameters['rowFilter.card_votes.user_id'];
+          title?: parameters['rowFilter.card_votes.title'];
         };
         body: {
           /** card_votes */
-          card_votes?: definitions["card_votes"];
+          card_votes?: definitions['card_votes'];
         };
         header: {
           /** Preference */
-          Prefer?: parameters["preferReturn"];
+          Prefer?: parameters['preferReturn'];
         };
       };
       responses: {
@@ -111,34 +111,34 @@ export interface paths {
       };
     };
   };
-  "/profiles": {
+  '/profiles': {
     get: {
       parameters: {
         query: {
-          id?: parameters["rowFilter.profiles.id"];
-          email?: parameters["rowFilter.profiles.email"];
+          id?: parameters['rowFilter.profiles.id'];
+          email?: parameters['rowFilter.profiles.email'];
           /** Filtering Columns */
-          select?: parameters["select"];
+          select?: parameters['select'];
           /** Ordering */
-          order?: parameters["order"];
+          order?: parameters['order'];
           /** Limiting and Pagination */
-          offset?: parameters["offset"];
+          offset?: parameters['offset'];
           /** Limiting and Pagination */
-          limit?: parameters["limit"];
+          limit?: parameters['limit'];
         };
         header: {
           /** Limiting and Pagination */
-          Range?: parameters["range"];
+          Range?: parameters['range'];
           /** Limiting and Pagination */
-          "Range-Unit"?: parameters["rangeUnit"];
+          'Range-Unit'?: parameters['rangeUnit'];
           /** Preference */
-          Prefer?: parameters["preferCount"];
+          Prefer?: parameters['preferCount'];
         };
       };
       responses: {
         /** OK */
         200: {
-          schema: definitions["profiles"][];
+          schema: definitions['profiles'][];
         };
         /** Partial Content */
         206: unknown;
@@ -148,15 +148,15 @@ export interface paths {
       parameters: {
         body: {
           /** profiles */
-          profiles?: definitions["profiles"];
+          profiles?: definitions['profiles'];
         };
         query: {
           /** Filtering Columns */
-          select?: parameters["select"];
+          select?: parameters['select'];
         };
         header: {
           /** Preference */
-          Prefer?: parameters["preferReturn"];
+          Prefer?: parameters['preferReturn'];
         };
       };
       responses: {
@@ -167,12 +167,12 @@ export interface paths {
     delete: {
       parameters: {
         query: {
-          id?: parameters["rowFilter.profiles.id"];
-          email?: parameters["rowFilter.profiles.email"];
+          id?: parameters['rowFilter.profiles.id'];
+          email?: parameters['rowFilter.profiles.email'];
         };
         header: {
           /** Preference */
-          Prefer?: parameters["preferReturn"];
+          Prefer?: parameters['preferReturn'];
         };
       };
       responses: {
@@ -183,16 +183,16 @@ export interface paths {
     patch: {
       parameters: {
         query: {
-          id?: parameters["rowFilter.profiles.id"];
-          email?: parameters["rowFilter.profiles.email"];
+          id?: parameters['rowFilter.profiles.id'];
+          email?: parameters['rowFilter.profiles.email'];
         };
         body: {
           /** profiles */
-          profiles?: definitions["profiles"];
+          profiles?: definitions['profiles'];
         };
         header: {
           /** Preference */
-          Prefer?: parameters["preferReturn"];
+          Prefer?: parameters['preferReturn'];
         };
       };
       responses: {
@@ -201,34 +201,34 @@ export interface paths {
       };
     };
   };
-  "/test": {
+  '/test': {
     get: {
       parameters: {
         query: {
-          email?: parameters["rowFilter.test.email"];
-          num?: parameters["rowFilter.test.num"];
+          email?: parameters['rowFilter.test.email'];
+          num?: parameters['rowFilter.test.num'];
           /** Filtering Columns */
-          select?: parameters["select"];
+          select?: parameters['select'];
           /** Ordering */
-          order?: parameters["order"];
+          order?: parameters['order'];
           /** Limiting and Pagination */
-          offset?: parameters["offset"];
+          offset?: parameters['offset'];
           /** Limiting and Pagination */
-          limit?: parameters["limit"];
+          limit?: parameters['limit'];
         };
         header: {
           /** Limiting and Pagination */
-          Range?: parameters["range"];
+          Range?: parameters['range'];
           /** Limiting and Pagination */
-          "Range-Unit"?: parameters["rangeUnit"];
+          'Range-Unit'?: parameters['rangeUnit'];
           /** Preference */
-          Prefer?: parameters["preferCount"];
+          Prefer?: parameters['preferCount'];
         };
       };
       responses: {
         /** OK */
         200: {
-          schema: definitions["test"][];
+          schema: definitions['test'][];
         };
         /** Partial Content */
         206: unknown;
@@ -238,15 +238,15 @@ export interface paths {
       parameters: {
         body: {
           /** test */
-          test?: definitions["test"];
+          test?: definitions['test'];
         };
         query: {
           /** Filtering Columns */
-          select?: parameters["select"];
+          select?: parameters['select'];
         };
         header: {
           /** Preference */
-          Prefer?: parameters["preferReturn"];
+          Prefer?: parameters['preferReturn'];
         };
       };
       responses: {
@@ -257,12 +257,12 @@ export interface paths {
     delete: {
       parameters: {
         query: {
-          email?: parameters["rowFilter.test.email"];
-          num?: parameters["rowFilter.test.num"];
+          email?: parameters['rowFilter.test.email'];
+          num?: parameters['rowFilter.test.num'];
         };
         header: {
           /** Preference */
-          Prefer?: parameters["preferReturn"];
+          Prefer?: parameters['preferReturn'];
         };
       };
       responses: {
@@ -273,16 +273,16 @@ export interface paths {
     patch: {
       parameters: {
         query: {
-          email?: parameters["rowFilter.test.email"];
-          num?: parameters["rowFilter.test.num"];
+          email?: parameters['rowFilter.test.email'];
+          num?: parameters['rowFilter.test.num'];
         };
         body: {
           /** test */
-          test?: definitions["test"];
+          test?: definitions['test'];
         };
         header: {
           /** Preference */
-          Prefer?: parameters["preferReturn"];
+          Prefer?: parameters['preferReturn'];
         };
       };
       responses: {
@@ -291,7 +291,7 @@ export interface paths {
       };
     };
   };
-  "/rpc/handle_new_user": {
+  '/rpc/handle_new_user': {
     post: {
       parameters: {
         body: {
@@ -299,7 +299,7 @@ export interface paths {
         };
         header: {
           /** Preference */
-          Prefer?: parameters["preferParams"];
+          Prefer?: parameters['preferParams'];
         };
       };
       responses: {
@@ -308,7 +308,7 @@ export interface paths {
       };
     };
   };
-  "/rpc/get_votes_by_title": {
+  '/rpc/get_votes_by_title': {
     post: {
       parameters: {
         body: {
@@ -319,7 +319,7 @@ export interface paths {
         };
         header: {
           /** Preference */
-          Prefer?: parameters["preferParams"];
+          Prefer?: parameters['preferParams'];
         };
       };
       responses: {
@@ -342,7 +342,7 @@ export interface definitions {
      * Format: public.card_vote_types
      * @enum {string}
      */
-    vote_type: "great" | "good" | "bad" | "shit";
+    vote_type: 'great' | 'good' | 'bad' | 'shit';
     /**
      * Format: timestamp with time zone
      * @default CURRENT_TIMESTAMP
@@ -376,17 +376,17 @@ export interface parameters {
    * @description Preference
    * @enum {string}
    */
-  preferParams: "params=single-object";
+  preferParams: 'params=single-object';
   /**
    * @description Preference
    * @enum {string}
    */
-  preferReturn: "return=representation" | "return=minimal" | "return=none";
+  preferReturn: 'return=representation' | 'return=minimal' | 'return=none';
   /**
    * @description Preference
    * @enum {string}
    */
-  preferCount: "count=none";
+  preferCount: 'count=none';
   /** @description Filtering Columns */
   select: string;
   /** @description On Conflict */
@@ -405,29 +405,29 @@ export interface parameters {
   /** @description Limiting and Pagination */
   limit: string;
   /** @description card_votes */
-  "body.card_votes": definitions["card_votes"];
+  'body.card_votes': definitions['card_votes'];
   /** Format: bigint */
-  "rowFilter.card_votes.id": string;
+  'rowFilter.card_votes.id': string;
   /** Format: public.card_vote_types */
-  "rowFilter.card_votes.vote_type": string;
+  'rowFilter.card_votes.vote_type': string;
   /** Format: timestamp with time zone */
-  "rowFilter.card_votes.created_at": string;
+  'rowFilter.card_votes.created_at': string;
   /** Format: uuid */
-  "rowFilter.card_votes.user_id": string;
+  'rowFilter.card_votes.user_id': string;
   /** Format: text */
-  "rowFilter.card_votes.title": string;
+  'rowFilter.card_votes.title': string;
   /** @description profiles */
-  "body.profiles": definitions["profiles"];
+  'body.profiles': definitions['profiles'];
   /** Format: uuid */
-  "rowFilter.profiles.id": string;
+  'rowFilter.profiles.id': string;
   /** Format: text */
-  "rowFilter.profiles.email": string;
+  'rowFilter.profiles.email': string;
   /** @description test */
-  "body.test": definitions["test"];
+  'body.test': definitions['test'];
   /** Format: text */
-  "rowFilter.test.email": string;
+  'rowFilter.test.email': string;
   /** Format: integer */
-  "rowFilter.test.num": string;
+  'rowFilter.test.num': string;
 }
 
 export interface operations {}

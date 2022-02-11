@@ -11,7 +11,6 @@ export type VotePercentages = {
   percentage: number;
 };
 
-
 export const getVotePercentages = async (title: string) => {
   const { data, error } = await supabase.rpc('get_votes_by_title', {
     vote_title: title,

@@ -11,16 +11,14 @@ export const ShortcutCard: FC<Props> = ({ title }): JSX.Element => {
     <Box
       className={styles.shortcutCardContainer}
       _hover={{
-        background: "gray.700",
-        color: "teal",
+        background: 'gray.700',
+        color: 'teal',
       }}
       my={3}
       mx={3}
       backgroundColor="secondaryDark"
     >
-      <Box
-        className={styles.shortcutCardLogoWrapper}
-      >
+      <Box className={styles.shortcutCardLogoWrapper}>
         <Image
           src="/images/icon.png"
           className={styles.shortcutCardLogo}
@@ -33,4 +31,3 @@ export const ShortcutCard: FC<Props> = ({ title }): JSX.Element => {
     </Box>
   );
 };
-     

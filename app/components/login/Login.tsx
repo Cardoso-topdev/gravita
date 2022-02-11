@@ -1,5 +1,16 @@
 import { useState } from 'react';
-import { Button, Box, Flex, FormControl, FormLabel, Input, FormErrorMessage, InputRightElement, InputGroup, Text } from '@chakra-ui/react';
+import {
+  Button,
+  Box,
+  Flex,
+  FormControl,
+  FormLabel,
+  Input,
+  FormErrorMessage,
+  InputRightElement,
+  InputGroup,
+  Text,
+} from '@chakra-ui/react';
 import { object, string, SchemaOf } from 'yup';
 import { useRouter } from 'next/router';
 import { supabase } from 'lib/base/client';
@@ -43,7 +54,7 @@ export const Login = (): JSX.Element => {
       password: data.password,
     });
 
-    console.log(error)
+    console.log(error);
 
     if (error) {
       setServerError(error.message);
@@ -69,8 +80,13 @@ export const Login = (): JSX.Element => {
             labelColor="white"
           />
           <FormControl isInvalid={Boolean(errors.password)}>
-            <FormLabel mt={5} htmlFor={"password"} color={"white"} fontSize={17}>
-              {"Password"}
+            <FormLabel
+              mt={5}
+              htmlFor={'password'}
+              color={'white'}
+              fontSize={17}
+            >
+              {'Password'}
             </FormLabel>
             <InputGroup>
               <Input
@@ -82,7 +98,11 @@ export const Login = (): JSX.Element => {
                 onChange={handleChange}
               />
               <InputRightElement width="3rem">
-                {showPassword ? <ViewIcon onClick={handlePasswordVisibility}/> : <ViewOffIcon onClick={handlePasswordVisibility} />}
+                {showPassword ? (
+                  <ViewIcon onClick={handlePasswordVisibility} />
+                ) : (
+                  <ViewOffIcon onClick={handlePasswordVisibility} />
+                )}
               </InputRightElement>
             </InputGroup>
             <FormErrorMessage> {errors.password} </FormErrorMessage>
@@ -102,7 +122,8 @@ export const Login = (): JSX.Element => {
               className={styles.forgotPwd + ' ' + commonStyles.fontSize12}
               color="teal"
             >
-              Forgot password</Text>
+              Forgot password
+            </Text>
           </Link>
           <Button
             type="submit"

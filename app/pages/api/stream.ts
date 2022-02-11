@@ -4,12 +4,12 @@ import * as R from 'ramda';
 
 const client = new StreamChat(
   process.env.STREAM_API_KEY,
-  process.env.STREAM_SECRET_KEY
+  process.env.STREAM_SECRET_KEY,
 );
 
 export default async function handler(
   req: NextApiRequest,
-  res: NextApiResponse
+  res: NextApiResponse,
 ) {
   const { id, role } = req.body;
 
@@ -24,7 +24,7 @@ export default async function handler(
 
     const userId = R.pipe(R.prop('users'), R.keys, R.head)(userData) as string;
 
-    const token = await client.createToken(userId)
+    const token = await client.createToken(userId);
 
     res.status(201).json({ token });
   } catch (error) {

@@ -26,8 +26,9 @@ img {
   display: block;
 }
 
-h1, .f-32 {
-  font-size: 32px!important;
+h1,
+.f-32 {
+  font-size: 32px !important;
 }
 
 h4 {
@@ -53,4 +54,10 @@ input:-webkit-autofill:active {
 .str-chat.str-chat-channel.messaging.light,
 .str-chat.str-chat-channel-list.messaging.light {
   height: calc(100% - 54px - 4rem);
+}
+
+.main-container {
+  border-top-width: 1px;
+  height: 100vh;
+  overflow: auto;
 }

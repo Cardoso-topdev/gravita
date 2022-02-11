@@ -16,7 +16,7 @@ export const AuthContextProvider: FC<PropsWithChildren<{}>> = ({
   const [loading, setLoading] = useState<boolean>(true);
 
   const [session, setSession] = useState<Session | null>(() =>
-    supabase.auth.session()
+    supabase.auth.session(),
   );
 
   useEffect(() => {
@@ -24,7 +24,6 @@ export const AuthContextProvider: FC<PropsWithChildren<{}>> = ({
       return;
     }
     setLoading(false);
-
   }, [session]);
 
   useEffect(() => {
@@ -37,7 +36,7 @@ export const AuthContextProvider: FC<PropsWithChildren<{}>> = ({
 
   const value = useMemo<AuthContext>(
     () => ({ session, loading }),
-    [session, loading]
+    [session, loading],
   );
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;

@@ -14,7 +14,7 @@ type Opts = {
 
 export const useFormValidation = <T, K extends { [key: string]: any }>(
   initialValues: T,
-  schema: ObjectSchema<K>
+  schema: ObjectSchema<K>,
 ) => {
   const [values, setValues] = useState<T>(initialValues);
 
@@ -38,7 +38,7 @@ export const useFormValidation = <T, K extends { [key: string]: any }>(
         setDisabled(true);
       }
     },
-    [setDisabled, schema]
+    [setDisabled, schema],
   );
 
   const handleValidateOne = useCallback<
@@ -58,7 +58,7 @@ export const useFormValidation = <T, K extends { [key: string]: any }>(
         }
       }
     },
-    [schema, handleValidateAll]
+    [schema, handleValidateAll],
   );
 
   const handleChange = debounce(

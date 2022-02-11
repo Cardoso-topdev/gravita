@@ -12,12 +12,7 @@ export const Projects: FC<Props> = (props) => (
     <Text> Gravita Identity</Text>
     <Text> Gravita Operate</Text>
 
-    <Button
-      alignSelf="flex-start"
-      color="teal"
-      size="xs"
-      variant="link"
-    >
+    <Button alignSelf="flex-start" color="teal" size="xs" variant="link">
       + New Project
     </Button>
   </VStack>

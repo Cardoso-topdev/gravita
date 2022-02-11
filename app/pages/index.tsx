@@ -18,10 +18,7 @@ const HomePage = ({ items }) => {
         {welcomeText}
       </Heading>
       <Login />
-      <Flex
-        className={styles.fatherTiger}
-        display="inline-flex"
-      >
+      <Flex className={styles.fatherTiger} display="inline-flex">
         <Text fontSize="12px" display="inline-flex" color="white">
           Don&apos;t have an account?{' '}
         </Text>
@@ -33,9 +30,9 @@ const HomePage = ({ items }) => {
       </Flex>
     </Layout>
   );
-}
+};
 
-export default HomePage
+export default HomePage;
 
 export const getStaticProps = async () => {
   const { data } = await GqlClient.query<LandingPageQuery>(

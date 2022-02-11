@@ -9,12 +9,7 @@ export const Teams: FC<Props> = (props) => (
   <VStack {...props}>
     <Title title="teams" />
     <Text> Gravita Core</Text>
-    <Button
-      alignSelf="flex-start"
-      color="teal"
-      size="xs"
-      variant="link"
-    >
+    <Button alignSelf="flex-start" color="teal" size="xs" variant="link">
       + New Team
     </Button>
   </VStack>
