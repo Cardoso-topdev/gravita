@@ -2,6 +2,7 @@ import { supabase } from './client';
 import { definitions } from './types';
 
 type ProfileParams = {
+  id: string;
   first_name?: string;
   last_name?: string;
   email: string;
