@@ -36,10 +36,10 @@ export const FormInput: FC<Props> = ({
       {icon ? (
         <HStack>
           <Icon as={icon} />
-          <Input name={name} onChange={onChange} {...rest} color="white" />
+          <Input name={name} onChange={onChange} {...rest} />
         </HStack>
       ) : (
-        <Input name={name} onChange={onChange} {...rest} color="white" />
+        <Input name={name} onChange={onChange} {...rest} />
       )}
       <FormErrorMessage> {error} </FormErrorMessage>
     </FormControl>

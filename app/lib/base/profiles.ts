@@ -16,11 +16,10 @@ export const getUserProfile = async (id: string) => {
   return { data, error };
 };
 
-export const updateProfile = async ({ email, ...rest }: ProfileParams) => {
+export const updateProfile = async (profile: ProfileParams) => {
   const { data, error } = await supabase
     .from<definitions['profiles']>('profiles')
-    .update({ ...rest })
-    .match({ email });
+    .upsert(profile); 
 
   return { data, error };
 };

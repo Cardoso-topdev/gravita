@@ -11,10 +11,9 @@ import {
 interface Props extends TextareaProps {
   error: string;
   label: string;
-  labelColor?: string;
   name: string;
   onChange: (e: ChangeEvent) => void;
-  labelStyle: FormLabelProps;
+  labelStyle?: FormLabelProps;
 }
 
 export const FormTextarea: FC<Props> = ({
@@ -30,7 +29,7 @@ export const FormTextarea: FC<Props> = ({
       <FormLabel mt={5} htmlFor={name} fontSize={17} {...labelStyle}>
         {label}
       </FormLabel>
-      <Textarea name={name} onChange={onChange} {...rest} color="white" />
+      <Textarea name={name} onChange={onChange} {...rest} />
       <FormErrorMessage> {error} </FormErrorMessage>
     </FormControl>
   );

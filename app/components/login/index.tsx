@@ -77,7 +77,6 @@ export const Login = (): JSX.Element => {
             name="email"
             type="email"
             variant="flushed"
-            labelColor="white"
           />
           <FormControl isInvalid={Boolean(errors.password)}>
             <FormLabel

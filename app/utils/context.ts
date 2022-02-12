@@ -9,7 +9,7 @@ export function createCtx<T extends {} | null>(defaultValue?: T) {
 
   function useCtx() {
     const ctx = React.useContext(context);
-    if (!ctx) {
+    if (ctx === undefined) {
       throw new Error('useCtx must be inside a Provider with a value');
     }
     return ctx;
