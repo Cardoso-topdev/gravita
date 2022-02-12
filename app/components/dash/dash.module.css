@@ -1,8 +1,9 @@
 .dashContainer {
-  max-width: 981px;
+  max-width: 718px;
   left: 50%;
   position: relative;
   transform: translateX(-50%);
+  height: calc(100vh - 65px);
 }
 
 .inputSearchBox {
@@ -40,14 +41,15 @@
 }
 
 .eventCardContainer {
-  width: 270px;
-  height: 144px;
-  padding: 24px 35px;
+  width: 200px;
+  height: 130px;
+  padding: 24px;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  background-image: url('../../public/images/event-card-bk.png');
   cursor: pointer;
+  background-image: linear-gradient(143.49deg, #1E1F2B -9.97%, #263841 121%);
+  border-radius: 20px;
 }
 
 .eventCardContent {

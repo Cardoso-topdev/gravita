@@ -25,11 +25,11 @@ export const RightSidebar: FC = () => {
   return (
     <Box
       bg={colorMode === 'light' ? 'gray.300' : 'secondaryDark'}
-      w={450}
+      w={350}
       h="100vh"
     >
       <RightNavBar />
-      <Flex flexDir="column" p={10}>
+      <Flex flexDir="column" p={5}>
         <Box>
           <Title title="POLLS & SURVEYS" />
           <VoteCard

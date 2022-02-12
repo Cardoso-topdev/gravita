@@ -18,9 +18,11 @@ import styles from './styles.module.css';
 
 export const RightNavBar = (): JSX.Element => {
   const { session } = useAuthContext();
+
   const onNotificationClick = () => {
     console.log('onNotificationClicked');
   };
+  
   const handleSignout = () => supabase.auth.signOut();
 
   return (

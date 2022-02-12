@@ -39,14 +39,14 @@ export const Dash: React.FC = (): JSX.Element => {
       <Box px={10} pt={10} className={styles.dashContainer}>
         <SearchEvent onSearchChanged={onSearchChanged} />
         <Box className={styles.cardsWrapper} my={5}>
-          {eventCardList.map((item, idx) => (
-            <EventCard key={idx} {...item} />
+          {eventCardList.map(item => (
+            <EventCard key={item.title} {...item} />
           ))}
         </Box>
         <Title title="shortcuts" />
         <Box className={styles.cardsWrapper} my={5}>
-          {shortcutList.map((item, idx) => (
-            <ShortcutCard {...item} key={idx} />
+          {shortcutList.map(item => (
+            <ShortcutCard {...item} key={item.title} />
           ))}
           <NewShortcutCard />
         </Box>
