@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import Link from 'next/link';
 import {
   Button,
   Box,
@@ -19,8 +20,6 @@ import { useFormValidation } from 'hooks/useFormValidation';
 import { ViewIcon, ViewOffIcon } from '@chakra-ui/icons';
 import styles from './login.module.css';
 import commonStyles from '../../styles/common.module.css';
-import Link from 'next/link';
-
 interface Form {
   email: string;
   password: string;
@@ -43,7 +42,9 @@ export const Login = (): JSX.Element => {
   );
 
   const [serverError, setServerError] = useState<string>('');
+
   const [showPassword, setShowPassword] = useState<Boolean>(false);
+
   const handlePasswordVisibility = () => setShowPassword(!showPassword);
 
   const router = useRouter();
@@ -53,9 +54,6 @@ export const Login = (): JSX.Element => {
       email: data.email,
       password: data.password,
     });
-
-    console.log(error);
-
     if (error) {
       setServerError(error.message);
 
@@ -77,7 +75,6 @@ export const Login = (): JSX.Element => {
             name="email"
             type="email"
             variant="flushed"
-            labelColor="white"
           />
           <FormControl isInvalid={Boolean(errors.password)}>
             <FormLabel

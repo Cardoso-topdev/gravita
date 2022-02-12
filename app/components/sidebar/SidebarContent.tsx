@@ -12,16 +12,16 @@ interface Props extends StackProps {}
 export const SidebarContent: FC<Props> = (props) => (
   <VStack {...props}>
     <Link href="/dashboard" passHref>
-      <IconLink title="Home" boxSize={5} icon={RiHome2Line} mr={2} />
+      <IconLink title="Home" icon={RiHome2Line} />
     </Link>
     <Link href="/dashboard" passHref>
-      <IconLink title="Projects" boxSize={5} icon={ImStack} mr={2} />
+      <IconLink title="Projects" icon={ImStack}  />
     </Link>
     <Link href="/dashboard" passHref>
-      <IconLink title="Teams" boxSize={5} icon={AiOutlineTeam} mr={2} />
+      <IconLink title="Teams" icon={AiOutlineTeam}  />
     </Link>
-    <Link href="/dashboard" passHref>
-      <IconLink title="Settings" boxSize={5} icon={FiSettings} mr={2} />
+    <Link href="/settings" passHref>
+       <IconLink title="Settings" icon={FiSettings}/>
     </Link>
   </VStack>
 );

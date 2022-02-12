@@ -4,9 +4,11 @@ import {
   GetStaticPropsContext,
   GetStaticProps,
 } from 'next';
+import { useRouter } from 'next/router';
 import client from 'lib/contentful/gqlService';
 import { VotesDocument, VotesQuery, VoteItemFragment } from 'generated/graphql';
 import { DetailVote } from 'components/votes/DetailVote';
+import { Loader } from 'components/Loader';
 import { getVotesCount } from 'lib/base/server';
 import MainLayout from 'components/layout/MainLayout';
 import { WithAuthentication } from 'hoc/WithAuthentication';
@@ -19,6 +21,12 @@ interface Props {
 }
 
 export default function DetailVotePage({ vote, count }: Props) {
+  const router = useRouter();
+
+  if (router.isFallback) {
+    return <Loader />;
+  }
+
   return (
     <MainLayout>
       <PrivateDetailVotePage vote={vote} count={count} />
@@ -37,7 +45,7 @@ export const getStaticPaths: GetStaticPaths = async (
 
   return {
     paths,
-    fallback: false,
+    fallback: true,
   };
 };
 

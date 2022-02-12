@@ -2,8 +2,13 @@ import { FC, PropsWithChildren, useMemo, useState, useEffect } from 'react';
 import { Session } from '@supabase/supabase-js';
 import { supabase } from 'lib/base/client';
 import { createCtx } from 'utils/context';
+import { getUserProfile } from 'lib/base/profiles';
+import { definitions } from 'lib/base/types';
+
+type Profile = definitions['profiles'] | null;
 
 interface AuthContext {
+  profile: Profile;
   session: Session;
   loading: boolean;
 }
@@ -15,15 +20,21 @@ export const AuthContextProvider: FC<PropsWithChildren<{}>> = ({
 }) => {
   const [loading, setLoading] = useState<boolean>(true);
 
+  const [profile, setProfile] = useState<Profile>(null);
+
   const [session, setSession] = useState<Session | null>(() =>
     supabase.auth.session(),
   );
 
   useEffect(() => {
     if (!session) {
+      setLoading(false);
+
       return;
     }
-    setLoading(false);
+    getUserProfile(session.user.id)
+      .then(({ data }) => setProfile(data[0]))
+      .finally(() => setLoading(false));
   }, [session]);
 
   useEffect(() => {
@@ -35,8 +46,8 @@ export const AuthContextProvider: FC<PropsWithChildren<{}>> = ({
   }, [setSession]);
 
   const value = useMemo<AuthContext>(
-    () => ({ session, loading }),
-    [session, loading],
+    () => ({ session, loading, profile }),
+    [session, loading, profile],
   );
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;

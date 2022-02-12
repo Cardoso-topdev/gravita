@@ -1,29 +1,25 @@
-import { FC, FunctionComponent, SVGProps, ChangeEvent } from 'react';
+import { FC, ChangeEvent } from 'react';
 import {
-  Input,
   FormControl,
   FormErrorMessage,
   FormLabel,
   FormLabelProps,
-  InputProps,
-  Icon,
-  HStack,
+  Textarea,
+  TextareaProps,
 } from '@chakra-ui/react';
 
-interface Props extends InputProps {
+interface Props extends TextareaProps {
   error: string;
-  icon?: FunctionComponent<SVGProps<SVGAElement>>;
   label: string;
-  labelStyle?: FormLabelProps;
   name: string;
   onChange: (e: ChangeEvent) => void;
+  labelStyle?: FormLabelProps;
 }
 
-export const FormInput: FC<Props> = ({
+export const FormTextarea: FC<Props> = ({
   error,
   label,
   labelStyle,
-  icon,
   onChange,
   name,
   ...rest
@@ -33,14 +29,7 @@ export const FormInput: FC<Props> = ({
       <FormLabel mt={5} htmlFor={name} fontSize={17} {...labelStyle}>
         {label}
       </FormLabel>
-      {icon ? (
-        <HStack>
-          <Icon as={icon} />
-          <Input name={name} onChange={onChange} {...rest} />
-        </HStack>
-      ) : (
-        <Input name={name} onChange={onChange} {...rest} />
-      )}
+      <Textarea name={name} onChange={onChange} {...rest} />
       <FormErrorMessage> {error} </FormErrorMessage>
     </FormControl>
   );

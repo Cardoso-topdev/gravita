@@ -10,7 +10,7 @@ import {
   useToast,
 } from '@chakra-ui/react';
 import { insertVote } from 'lib/base/client';
-import { definitions } from 'lib/types';
+import { definitions } from 'lib/base/types';
 import { useAuthContext } from 'context/AuthContext';
 import { StatWrapper } from './StatWrapper';
 import { VoteOptions } from './VoteOptions';

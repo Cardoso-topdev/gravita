@@ -1,8 +1,9 @@
 import { useState, useCallback } from 'react';
+import * as R from 'ramda';
 import { ObjectSchema, ValidationError } from 'yup';
 import { ChangeEvent, FormEvent } from 'react';
-import * as R from 'ramda';
-import { firstCapDataLike, debounce } from '../utils/common';
+import { firstCapDataLike } from '../utils/common';
+import { formatPhoneNumber } from 'utils/common';
 
 type Fields = Record<string, any>;
 
@@ -53,7 +54,14 @@ export const useFormValidation = <T, K extends { [key: string]: any }>(
         if (error instanceof ValidationError) {
           setErrors((prevValues) => ({
             ...prevValues,
-            [error.path]: R.pipe(R.head, firstCapDataLike)(error.errors),
+            [error.path]: R.pipe(
+              R.head,
+              R.split(/(?=[A-Z])/),
+              R.join(' '),
+              R.toLower,
+              firstCapDataLike,
+              R.replace('_', ' ')
+            )(error.errors),
           }));
         }
       }
@@ -61,25 +69,29 @@ export const useFormValidation = <T, K extends { [key: string]: any }>(
     [schema, handleValidateAll],
   );
 
-  const handleChange = debounce(
-    async ({ target }: ChangeEvent<HTMLInputElement>) => {
-      setIsDirty(true);
+  const handleChange = ({ target }: ChangeEvent<HTMLInputElement>) => {
+    setIsDirty(true);
 
-      setErrors((prevValues) => ({
-        ...prevValues,
-        [target.name]: '',
-      }));
+    setErrors((prevValues) => ({
+      ...prevValues,
+      [target.name]: R.empty(''),
+    }));
 
-      setValues((prevValues) => {
-        const newValues = { ...prevValues, [target.name]: target.value };
+    setValues((prevValues) => {
+      const newValues = { ...prevValues, [target.name]: target.value };
 
-        handleValidateOne(target.name, newValues);
+      if(/(?=phone)/.test(target.name)) {
+        const updatedValues = R.mergeRight(newValues, { [target.name]: formatPhoneNumber(target.value)}); 
 
-        return newValues;
-      });
-    },
-    500,
-  );
+        handleValidateOne(target.name, updatedValues);
+
+        return updatedValues as T;
+      }
+      handleValidateOne(target.name, newValues);
+
+      return newValues;
+    });
+  };
 
   const handleSubmit = (onSubmit: OnSubmitFunc) => async (e: FormEvent) => {
     e.preventDefault();
