@@ -1,11 +1,14 @@
 import { supabase } from './client';
 import { definitions } from './types';
 
-type ProfileParams = {
-  id: string;
-  first_name?: string;
-  last_name?: string;
-  email: string;
+export type Profile = definitions['profiles'];
+
+export const getAllProfiles = async () => {
+  const { data, error } = await supabase
+    .from<definitions['profiles']>('profiles')
+    .select('*');
+
+  return { data, error };
 };
 
 export const getUserProfile = async (id: string) => {
@@ -17,10 +20,10 @@ export const getUserProfile = async (id: string) => {
   return { data, error };
 };
 
-export const updateProfile = async (profile: ProfileParams) => {
+export const updateProfile = async (profile: Profile) => {
   const { data, error } = await supabase
     .from<definitions['profiles']>('profiles')
-    .upsert(profile); 
+    .upsert(profile);
 
   return { data, error };
 };

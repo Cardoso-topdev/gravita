@@ -2,10 +2,7 @@ import { FC, PropsWithChildren, useMemo, useState, useEffect } from 'react';
 import { Session } from '@supabase/supabase-js';
 import { supabase } from 'lib/base/client';
 import { createCtx } from 'utils/context';
-import { getUserProfile } from 'lib/base/profiles';
-import { definitions } from 'lib/base/types';
-
-type Profile = definitions['profiles'] | null;
+import { getUserProfile, Profile } from 'lib/base/profiles';
 
 interface AuthContext {
   profile: Profile;

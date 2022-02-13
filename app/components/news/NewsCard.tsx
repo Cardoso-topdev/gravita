@@ -12,11 +12,11 @@ interface Props extends BoxProps {
 export const NewsCard: FC<Props> = ({ title, content, createdAt, ...rest }) => {
   return (
     <Flex bg="secondaryDark" color="white" flexDir="column" {...rest}>
-      <Text alignSelf="flex-end" color="primaryGray" {...typography.titleSM}>
+      <Text alignSelf="flex-end" color="primaryGray" {...typography.paragraph}>
         {format(new Date(createdAt), 'MMM d yyyy')}
       </Text>
       <Heading {...typography.heading}>{title}</Heading>
-      <Text {...typography.titleSM}> {content} </Text>
+      <Text {...typography.paragraph}> {content} </Text>
     </Flex>
   );
 };
