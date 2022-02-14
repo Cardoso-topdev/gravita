@@ -143,7 +143,7 @@ export const VoteCard: FC<Props> = ({
       bg="gray.700"
       borderRadius={20}
       h={200}
-      w={325}
+      w={300}
       p={5}
       position="relative"
     >

@@ -1,6 +1,6 @@
 import React from 'react';
 import { SearchIcon } from '@chakra-ui/icons';
-import { Box, useColorMode } from '@chakra-ui/react';
+import { Box } from '@chakra-ui/react';
 import { FiPlus } from 'react-icons/fi';
 import { NavCenterTabItem } from './NavCenterTabItem';
 import styles from './styles.module.css';
@@ -33,7 +33,9 @@ const navTabList = [
 ];
 
 export const CenterNavBar = (): JSX.Element => {
+
   const [navTabs, updateNavTabList] = React.useState(navTabList);
+
   const removeItemWithTitle = (title) => {
     for (let idx = 0; idx < navTabs.length; idx++) {
       const tab = navTabs[idx];
@@ -47,6 +49,7 @@ export const CenterNavBar = (): JSX.Element => {
     }
     updateNavTabList([...navTabs]);
   };
+
   const clickTabItem = (title) => {
     for (let idx = 0; idx < navTabs.length; idx++) {
       const tab = navTabs[idx];
@@ -58,7 +61,7 @@ export const CenterNavBar = (): JSX.Element => {
     }
     updateNavTabList([...navTabs]);
   };
-  const { colorMode } = useColorMode();
+
   return (
     <Box className={styles.centerNavbarContainer} borderColor="whiteAlpha.300">
       <Box d="flex">

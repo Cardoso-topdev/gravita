@@ -179,7 +179,7 @@ const iconObject = {
 
 export const EventCard: FC<Props> = ({ title, description }): JSX.Element => {
   return (
-    <Box className={styles.eventCardContainer} my={3} mx={3}>
+    <Box className={styles.eventCardContainer} my={3} mx={1}>
       <Box className={styles.eventCardTitleWrapper}>
         {iconObject[title]}
         <Box as="h4" className={styles.eventCardTitle}>

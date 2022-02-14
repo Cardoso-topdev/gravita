@@ -5,6 +5,7 @@ import styles from './styles.module.css';
 
 export const LeftNavBar = (): JSX.Element => {
   const { colorMode } = useColorMode();
+  
   return (
     <Box
       className={styles.logoContainer}
