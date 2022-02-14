@@ -1,11 +1,5 @@
 import { FC } from 'react';
-import {
-  Divider,
-  Flex,
-  Text,
-  VStack,
-  StackProps,
-} from '@chakra-ui/react';
+import { Divider, Flex, Text, VStack, StackProps } from '@chakra-ui/react';
 import { typography } from 'theme/typography';
 
 interface Props extends StackProps {}
@@ -13,20 +7,20 @@ interface Props extends StackProps {}
 export const ProfileStats: FC<Props> = (props) => {
   return (
     <VStack {...props} pr={5}>
-      <VStack w="100%" alignSelf='flex-start'>
-        <Flex w="100%" justify="space-between">
+      <VStack w='100%' alignSelf='flex-start'>
+        <Flex w='100%' justify='space-between'>
           <Text {...typography.h4}> All </Text>
           <Text> 500 </Text>
         </Flex>
-        <Flex w="100%" justify="space-between">
+        <Flex w='100%' justify='space-between'>
           <Text {...typography.h4}> Talents </Text>
           <Text> 300 </Text>
         </Flex>
-        <Flex w="100%" justify="space-between">
+        <Flex w='100%' justify='space-between'>
           <Text {...typography.h4}> Businesses </Text>
           <Text> 100 </Text>
         </Flex>
-        <Flex w="100%" justify="space-between">
+        <Flex w='100%' justify='space-between'>
           <Text {...typography.h4}> Rooms </Text>
           <Text> 100 </Text>
         </Flex>

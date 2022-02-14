@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, ChangeEvent } from 'react';
 import { HStack, Select, Text, StackProps } from '@chakra-ui/react';
 
 type Option = {
@@ -10,12 +10,14 @@ interface Props {
   options: Option[];
   placeholder: string;
   containerStyle?: StackProps;
+  onChange?: (e: ChangeEvent<HTMLSelectElement>) => void;
 }
 
 export const SortSelector: FC<Props> = ({
   options,
   placeholder,
   containerStyle,
+  onChange
 }) => {
   return (
     <HStack alignSelf='flex-start' {...containerStyle}>
@@ -26,6 +28,7 @@ export const SortSelector: FC<Props> = ({
         placeholder={placeholder}
         variant="unstyled"
         w={100}
+        onChange={onChange}
       >
         {options.map((option) => (
           <option key={option.value} value={option.value}>

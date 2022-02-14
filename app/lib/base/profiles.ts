@@ -3,12 +3,17 @@ import { definitions } from './types';
 
 export type Profile = definitions['profiles'];
 
-export const getAllProfiles = async () => {
-  const { data, error } = await supabase
-    .from<definitions['profiles']>('profiles')
-    .select('*');
+export type OrderFilter = {
+  ascending: boolean
+}
 
-  return { data, error };
+export const getAllProfiles = async (orderBy: OrderFilter = { ascending: true}) => {
+  const { data, error, count } = await supabase
+    .from<definitions['profiles']>('profiles')
+    .select('*', { count: 'exact' })
+    .order('first_name', orderBy)
+
+  return { data, error, count };
 };
 
 export const getUserProfile = async (id: string) => {
