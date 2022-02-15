@@ -303,6 +303,18 @@ export interface definitions {
     /** Format: character varying */
     phone?: string;
   };
+  navStatus: {
+    /** Nav tab title */
+    title: string;
+    /** Image source url for un-focused status tab icon */
+    normalImgSrc: string;
+    /** Image source url for focused status tab icon */
+    focusImgSrc: string;
+    /** Navigation path for nav tab */
+    navPath: string;
+    /** Focus status for nav tab */
+    focus: boolean;
+  };
 }
 
 export interface parameters {

@@ -12,7 +12,6 @@ import { useFilterVotes } from 'hooks/useFilterVotes';
 import { VoteCard } from './VoteCard';
 import { Loader } from '../Loader';
 import { typography } from 'theme/typography';
-import { CenterNavBar } from 'components/navbar/CenterNavBar';
 
 export const VotesWrapper: FC = () => {
   const { loading, votes, setFilter, Filter } = useFilterVotes();
@@ -39,37 +38,34 @@ export const VotesWrapper: FC = () => {
   }
 
   return (
-    <Box className="main-container">
-      <CenterNavBar />
-      <Box p={{ base: 5, lg: 10 }}>
-        <Heading {...typography.pageHeading} mb={5}>
-          Voting
-        </Heading>
-        <Tabs
-          index={tabIndex}
-          mb={5}
-          colorScheme="teal"
-          onChange={handleTabsChange}
-        >
-          <TabList>
-            <Tab>All</Tab>
-            <Tab>Open</Tab>
-            <Tab>Closed</Tab>
-          </TabList>
-        </Tabs>
-        <Wrap spacing={10}>
-          {votes.map((vote) => (
-            <WrapItem key={vote.sys.id}>
-              <VoteCard
-                voteId={vote.sys.id}
-                createdAt={vote.createdAt}
-                status={vote.status}
-                title={vote.title}
-              />
-            </WrapItem>
-          ))}
-        </Wrap>
-      </Box>
+    <Box p={{ base: 5, lg: 10 }}>
+      <Heading {...typography.pageHeading} mb={5}>
+        Voting
+      </Heading>
+      <Tabs
+        index={tabIndex}
+        mb={5}
+        colorScheme="teal"
+        onChange={handleTabsChange}
+      >
+        <TabList>
+          <Tab>All</Tab>
+          <Tab>Open</Tab>
+          <Tab>Closed</Tab>
+        </TabList>
+      </Tabs>
+      <Wrap spacing={10}>
+        {votes.map((vote) => (
+          <WrapItem key={vote.sys.id}>
+            <VoteCard
+              voteId={vote.sys.id}
+              createdAt={vote.createdAt}
+              status={vote.status}
+              title={vote.title}
+            />
+          </WrapItem>
+        ))}
+      </Wrap>
     </Box>
   );
 };

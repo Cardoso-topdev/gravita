@@ -6,11 +6,14 @@ import { getUserProfile } from 'lib/base/profiles';
 import { definitions } from 'lib/base/types';
 
 type Profile = definitions['profiles'] | null;
+type NavStatus = definitions['navStatus'];
 
 interface AuthContext {
   profile: Profile;
   session: Session;
   loading: boolean;
+  navStatus: NavStatus[];
+  setNavStatus: Function;
 }
 
 export const [useAuthContext, AuthContext] = createCtx<AuthContext>();
@@ -25,6 +28,8 @@ export const AuthContextProvider: FC<PropsWithChildren<{}>> = ({
   const [session, setSession] = useState<Session | null>(() =>
     supabase.auth.session(),
   );
+
+  const [navStatus, setNavStatus] = useState<NavStatus[]>([])
 
   useEffect(() => {
     if (!session) {
@@ -46,8 +51,8 @@ export const AuthContextProvider: FC<PropsWithChildren<{}>> = ({
   }, [setSession]);
 
   const value = useMemo<AuthContext>(
-    () => ({ session, loading, profile }),
-    [session, loading, profile],
+    () => ({ session, loading, profile, navStatus, setNavStatus }),
+    [session, loading, profile, navStatus],
   );
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
