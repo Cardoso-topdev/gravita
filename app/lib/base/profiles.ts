@@ -10,15 +10,18 @@ export type OrderFilter = {
 
 export const getAllProfiles = async (
   orderBy: OrderFilter = { ascending: true },
-  firstName?: string,
+  name?: string,
 ) => {
   let query = supabase
     .from<definitions['profiles']>('profiles')
     .select('*', { count: 'exact' })
     .order('first_name', orderBy);
 
-  if (firstName) {
-    query = query.eq('first_name', textToCapitalizeWord(firstName));
+  if (name) {
+    const capName = textToCapitalizeWord(name);
+    query = query.or(
+      `first_name.eq.${capName},last_name.eq.${capName}`,
+    );
   }
   const { data, error, count } = await query;
 

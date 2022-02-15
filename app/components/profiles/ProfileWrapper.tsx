@@ -12,7 +12,7 @@ export const ProfileWrapper: FC = () => {
     setQuery(e.target.value);
   };
 
-  const debounceHandleChange = useMemo(() => debounce(handleChange, 500), []);
+  const debounceHandleChange = useMemo(() => debounce(handleChange, 600), []);
 
   useEffect(() => {
     return () => {
