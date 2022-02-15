@@ -1,8 +1,9 @@
-import { GridItem, SimpleGrid } from '@chakra-ui/react';
+import { Box, GridItem, SimpleGrid } from '@chakra-ui/react';
 import { ChatApp } from 'components/chat/ChatApp';
 import { LeftSidebar, RightSidebar } from 'components/sidebar';
 import { Drawer } from '../Drawer';
 import { sizes } from 'theme/sizes';
+import { CenterNavBar } from 'components/navbar/CenterNavBar';
 
 export default function MainLayout({ children }) {
   return (
@@ -11,7 +12,12 @@ export default function MainLayout({ children }) {
         <GridItem colSpan={1}>
           <LeftSidebar />
         </GridItem>
-        <GridItem colSpan={4}>{children}</GridItem>
+        <GridItem colSpan={4}>
+          <Box className="main-container">
+            <CenterNavBar />
+            {children}
+          </Box>
+        </GridItem>
         <GridItem colSpan={1}>
           <RightSidebar />
         </GridItem>
