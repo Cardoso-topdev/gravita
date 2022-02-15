@@ -6,7 +6,7 @@
     "start": "next start",
     "lint": "next lint",
     "codegen": "npm-run-all generate:*",
-    "generate:supabase": "dotenv cross-var openapi-typescript https://xydyjvrofvitnztsncav.supabase.co/rest/v1/?apikey=%SUPABASE_ANON_KEY% --output ./lib/types.ts",
+    "generate:supabase": "dotenv cross-var openapi-typescript https://xydyjvrofvitnztsncav.supabase.co/rest/v1/?apikey=%SUPABASE_ANON_KEY% --output ./lib/base/types.ts",
     "generate:contentful": "graphql-codegen -r dotenv/config"
   },
   "dependencies": {

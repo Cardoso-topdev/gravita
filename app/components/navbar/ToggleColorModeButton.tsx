@@ -4,6 +4,7 @@ import styles from './styles.module.css';
 
 export const ToggleColorModeButton = (): JSX.Element => {
   const { colorMode, toggleColorMode } = useColorMode();
+  
   if (colorMode === 'light') {
     return (
       <Icon

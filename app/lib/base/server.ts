@@ -1,12 +1,13 @@
 import { createClient } from '@supabase/supabase-js';
-import { definitions } from '../types';
+import { definitions } from './types';
 
+
+//DO NOT CALL ON THE FRONTEND, ONLY ON THE BACKEND!! 
 const supabase = createClient(
   process.env.SUPABASE_URL,
   process.env.SUPABASE_SECRET_KEY,
 );
 
-export default supabase;
 
 export const getVotesCount = async (title: string) => {
   const { error, count } = await supabase

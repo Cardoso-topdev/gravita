@@ -11,7 +11,7 @@ interface Props {
   items: NewsQuery['newsCollection'];
 }
 
-export default function News({ items }: Props) {
+export default function NewsPage({ items }: Props) {
   return (
     <MainLayout>
       <PrivateNewsPage news={items} />

@@ -1,5 +1,5 @@
 import { createClient } from '@supabase/supabase-js';
-import { definitions } from '../types';
+import { definitions } from './types';
 
 export const supabase = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_URL,

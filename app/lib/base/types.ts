@@ -115,8 +115,14 @@ export interface paths {
     get: {
       parameters: {
         query: {
-          id?: parameters['rowFilter.profiles.id'];
-          email?: parameters['rowFilter.profiles.email'];
+          id?: parameters["rowFilter.profiles.id"];
+          first_name?: parameters["rowFilter.profiles.first_name"];
+          last_name?: parameters["rowFilter.profiles.last_name"];
+          email?: parameters["rowFilter.profiles.email"];
+          bio?: parameters["rowFilter.profiles.bio"];
+          website?: parameters["rowFilter.profiles.website"];
+          github?: parameters["rowFilter.profiles.github"];
+          phone?: parameters["rowFilter.profiles.phone"];
           /** Filtering Columns */
           select?: parameters['select'];
           /** Ordering */
@@ -167,8 +173,14 @@ export interface paths {
     delete: {
       parameters: {
         query: {
-          id?: parameters['rowFilter.profiles.id'];
-          email?: parameters['rowFilter.profiles.email'];
+          id?: parameters["rowFilter.profiles.id"];
+          first_name?: parameters["rowFilter.profiles.first_name"];
+          last_name?: parameters["rowFilter.profiles.last_name"];
+          email?: parameters["rowFilter.profiles.email"];
+          bio?: parameters["rowFilter.profiles.bio"];
+          website?: parameters["rowFilter.profiles.website"];
+          github?: parameters["rowFilter.profiles.github"];
+          phone?: parameters["rowFilter.profiles.phone"];
         };
         header: {
           /** Preference */
@@ -183,8 +195,14 @@ export interface paths {
     patch: {
       parameters: {
         query: {
-          id?: parameters['rowFilter.profiles.id'];
-          email?: parameters['rowFilter.profiles.email'];
+          id?: parameters["rowFilter.profiles.id"];
+          first_name?: parameters["rowFilter.profiles.first_name"];
+          last_name?: parameters["rowFilter.profiles.last_name"];
+          email?: parameters["rowFilter.profiles.email"];
+          bio?: parameters["rowFilter.profiles.bio"];
+          website?: parameters["rowFilter.profiles.website"];
+          github?: parameters["rowFilter.profiles.github"];
+          phone?: parameters["rowFilter.profiles.phone"];
         };
         body: {
           /** profiles */
@@ -201,97 +219,7 @@ export interface paths {
       };
     };
   };
-  '/test': {
-    get: {
-      parameters: {
-        query: {
-          email?: parameters['rowFilter.test.email'];
-          num?: parameters['rowFilter.test.num'];
-          /** Filtering Columns */
-          select?: parameters['select'];
-          /** Ordering */
-          order?: parameters['order'];
-          /** Limiting and Pagination */
-          offset?: parameters['offset'];
-          /** Limiting and Pagination */
-          limit?: parameters['limit'];
-        };
-        header: {
-          /** Limiting and Pagination */
-          Range?: parameters['range'];
-          /** Limiting and Pagination */
-          'Range-Unit'?: parameters['rangeUnit'];
-          /** Preference */
-          Prefer?: parameters['preferCount'];
-        };
-      };
-      responses: {
-        /** OK */
-        200: {
-          schema: definitions['test'][];
-        };
-        /** Partial Content */
-        206: unknown;
-      };
-    };
-    post: {
-      parameters: {
-        body: {
-          /** test */
-          test?: definitions['test'];
-        };
-        query: {
-          /** Filtering Columns */
-          select?: parameters['select'];
-        };
-        header: {
-          /** Preference */
-          Prefer?: parameters['preferReturn'];
-        };
-      };
-      responses: {
-        /** Created */
-        201: unknown;
-      };
-    };
-    delete: {
-      parameters: {
-        query: {
-          email?: parameters['rowFilter.test.email'];
-          num?: parameters['rowFilter.test.num'];
-        };
-        header: {
-          /** Preference */
-          Prefer?: parameters['preferReturn'];
-        };
-      };
-      responses: {
-        /** No Content */
-        204: never;
-      };
-    };
-    patch: {
-      parameters: {
-        query: {
-          email?: parameters['rowFilter.test.email'];
-          num?: parameters['rowFilter.test.num'];
-        };
-        body: {
-          /** test */
-          test?: definitions['test'];
-        };
-        header: {
-          /** Preference */
-          Prefer?: parameters['preferReturn'];
-        };
-      };
-      responses: {
-        /** No Content */
-        204: never;
-      };
-    };
-  };
-  '/rpc/handle_new_user': {
+  "/rpc/handle_new_user": {
     post: {
       parameters: {
         body: {
@@ -360,14 +288,20 @@ export interface definitions {
      * This is a Primary Key.<pk/>
      */
     id: string;
+    /** Format: character varying */
+    first_name?: string;
+    /** Format: character varying */
+    last_name?: string;
+    /** Format: character varying */
+    email: string;
     /** Format: text */
-    email?: string;
-  };
-  test: {
-    /** Format: text */
-    email?: string;
-    /** Format: integer */
-    num?: number;
+    bio?: string;
+    /** Format: character varying */
+    website?: string;
+    /** Format: character varying */
+    github?: string;
+    /** Format: character varying */
+    phone?: string;
   };
 }
 
@@ -419,15 +353,21 @@ export interface parameters {
   /** @description profiles */
   'body.profiles': definitions['profiles'];
   /** Format: uuid */
-  'rowFilter.profiles.id': string;
+  "rowFilter.profiles.id": string;
+  /** Format: character varying */
+  "rowFilter.profiles.first_name": string;
+  /** Format: character varying */
+  "rowFilter.profiles.last_name": string;
+  /** Format: character varying */
+  "rowFilter.profiles.email": string;
   /** Format: text */
-  'rowFilter.profiles.email': string;
-  /** @description test */
-  'body.test': definitions['test'];
-  /** Format: text */
-  'rowFilter.test.email': string;
-  /** Format: integer */
-  'rowFilter.test.num': string;
+  "rowFilter.profiles.bio": string;
+  /** Format: character varying */
+  "rowFilter.profiles.website": string;
+  /** Format: character varying */
+  "rowFilter.profiles.github": string;
+  /** Format: character varying */
+  "rowFilter.profiles.phone": string;
 }
 
 export interface operations {}
