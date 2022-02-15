@@ -1,17 +1,26 @@
 import { supabase } from './client';
 import { definitions } from './types';
+import { textToCapitalizeWord } from 'utils/common';
 
 export type Profile = definitions['profiles'];
 
 export type OrderFilter = {
-  ascending: boolean
-}
+  ascending: boolean;
+};
 
-export const getAllProfiles = async (orderBy: OrderFilter = { ascending: true}) => {
-  const { data, error, count } = await supabase
+export const getAllProfiles = async (
+  orderBy: OrderFilter = { ascending: true },
+  firstName?: string,
+) => {
+  let query = supabase
     .from<definitions['profiles']>('profiles')
     .select('*', { count: 'exact' })
-    .order('first_name', orderBy)
+    .order('first_name', orderBy);
+
+  if (firstName) {
+    query = query.eq('first_name', textToCapitalizeWord(firstName));
+  }
+  const { data, error, count } = await query;
 
   return { data, error, count };
 };

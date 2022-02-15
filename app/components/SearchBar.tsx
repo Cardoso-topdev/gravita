@@ -1,20 +1,17 @@
-import { FC } from 'react';
-import {
-  Input,
-  InputGroup,
-  InputProps,
-  InputRightAddon,
-} from '@chakra-ui/react';
+import { ChangeEvent, FC, } from 'react';
+import { Input, InputGroup, InputRightAddon, InputGroupProps } from '@chakra-ui/react';
 import { SearchIcon } from '@chakra-ui/icons';
 
-interface Props extends InputProps {
+interface Props {
   placeholder: string;
+  onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
+  containerStyle?: InputGroupProps;
 }
 
-export const SearchBar: FC<Props> = ({ placeholder, ...rest }) => {
+export const SearchBar: FC<Props> = ({ containerStyle, placeholder, onChange }) => {
   return (
-    <InputGroup {...rest}>
-      <Input placeholder={placeholder} />
+    <InputGroup {...containerStyle}>
+      <Input placeholder={placeholder} onChange={onChange} />
       <InputRightAddon bg='teal'>
         <SearchIcon color='black' />
       </InputRightAddon>

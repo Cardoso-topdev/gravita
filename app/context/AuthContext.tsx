@@ -17,7 +17,7 @@ export const AuthContextProvider: FC<PropsWithChildren<{}>> = ({
 }) => {
   const [loading, setLoading] = useState<boolean>(true);
 
-  const [profile, setProfile] = useState<Profile>(null);
+  const [profile, setProfile] = useState<Profile>();
 
   const [session, setSession] = useState<Session | null>(() =>
     supabase.auth.session(),
