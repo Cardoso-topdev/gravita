@@ -32,7 +32,7 @@ export const CenterNavBar = (): JSX.Element => {
     }
   }
 
-  const removeItemWithTitle = (title) => {
+  const removeItemWithTitle: Function = (title: string) => {
     for (let idx = 0; idx < navStatus.length; idx++) {
       const tab = navStatus[idx];
       if (title === tab.title) {
