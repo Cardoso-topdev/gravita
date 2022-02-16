@@ -3,14 +3,14 @@ import { SearchIcon } from '@chakra-ui/icons';
 import { Box } from '@chakra-ui/react';
 import { FiPlus } from 'react-icons/fi';
 import { NavCenterTabItem } from './NavCenterTabItem';
-import { useAuthContext } from 'context/AuthContext';
 import { useRouter } from 'next/router';
 import { navTabList } from 'utils/const';
 import styles from './styles.module.css';
+import { useNavContext } from 'context/NavContext';
 
 export const CenterNavBar = (): JSX.Element => {
 
-  const { navStatus, setNavStatus } = useAuthContext();
+  const { navStatus, setNavStatus } = useNavContext();
 
   const router = useRouter();
 
