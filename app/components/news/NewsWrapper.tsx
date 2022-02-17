@@ -12,7 +12,10 @@ import {
 import { NewsQuery } from 'generated/graphql';
 import { NewsCard } from './NewsCard';
 import { typography } from 'theme/typography';
-import { CenterNavBar } from 'components/navbar/CenterNavBar';
+import { CenterNavBar } from '../navbar/CenterNavBar';
+import { SortSelector } from '../SortSelector';
+
+const options = [{ value: 'option1', label: 'Option 1'}]
 
 interface Props {
   news: NewsQuery['newsCollection'];
@@ -25,18 +28,7 @@ export const NewsWrapper: FC<Props> = ({ news }) => {
       <Box p={{ base: 5, lg: 10 }}>
         <Flex align="center" justify="space-between" mb={5}>
           <Heading {...typography.pageHeading}>News & Updates</Heading>
-          <HStack>
-            <Text fontSize={14}>Sort by:</Text>
-            <Select
-              fontSize={14}
-              fontWeight={700}
-              placeholder="Recent"
-              variant="unstyled"
-              w={100}
-            >
-              <option value="option1">Recent</option>
-            </Select>
-          </HStack>
+          <SortSelector placeholder='Recent' options={options} />
         </Flex>
         {news.items.map((item) => (
           <NewsCard
@@ -50,7 +42,11 @@ export const NewsWrapper: FC<Props> = ({ news }) => {
           />
         ))}
         <Center>
-          <Button variant="outline" color="primaryGray" {...typography.titleSM}>
+          <Button
+            variant="outline"
+            color="primaryGray"
+            {...typography.paragraph}
+          >
             SEE MORE
           </Button>
         </Center>

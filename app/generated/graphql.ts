@@ -2,15 +2,9 @@ import gql from 'graphql-tag';
 import * as Urql from 'urql';
 export type Maybe<T> = T | null;
 export type InputMaybe<T> = Maybe<T>;
-export type Exact<T extends { [key: string]: unknown }> = {
-  [K in keyof T]: T[K];
-};
-export type MakeOptional<T, K extends keyof T> = Omit<T, K> & {
-  [SubKey in K]?: Maybe<T[SubKey]>;
-};
-export type MakeMaybe<T, K extends keyof T> = Omit<T, K> & {
-  [SubKey in K]: Maybe<T[SubKey]>;
-};
+export type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] };
+export type MakeOptional<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]?: Maybe<T[SubKey]> };
+export type MakeMaybe<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]: Maybe<T[SubKey]> };
 export type Omit<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>;
 /** All built-in and custom scalars, mapped to their actual values */
 export type Scalars = {
@@ -52,46 +46,55 @@ export type Asset = {
   width?: Maybe<Scalars['Int']>;
 };
 
+
 /** Represents a binary file in a space. An asset can be any file type. */
 export type AssetContentTypeArgs = {
   locale?: InputMaybe<Scalars['String']>;
 };
+
 
 /** Represents a binary file in a space. An asset can be any file type. */
 export type AssetDescriptionArgs = {
   locale?: InputMaybe<Scalars['String']>;
 };
 
+
 /** Represents a binary file in a space. An asset can be any file type. */
 export type AssetFileNameArgs = {
   locale?: InputMaybe<Scalars['String']>;
 };
+
 
 /** Represents a binary file in a space. An asset can be any file type. */
 export type AssetHeightArgs = {
   locale?: InputMaybe<Scalars['String']>;
 };
 
+
 /** Represents a binary file in a space. An asset can be any file type. */
 export type AssetLinkedFromArgs = {
   allowedLocales?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
 };
+
 
 /** Represents a binary file in a space. An asset can be any file type. */
 export type AssetSizeArgs = {
   locale?: InputMaybe<Scalars['String']>;
 };
 
+
 /** Represents a binary file in a space. An asset can be any file type. */
 export type AssetTitleArgs = {
   locale?: InputMaybe<Scalars['String']>;
 };
+
 
 /** Represents a binary file in a space. An asset can be any file type. */
 export type AssetUrlArgs = {
   locale?: InputMaybe<Scalars['String']>;
   transform?: InputMaybe<ImageTransformOptions>;
 };
+
 
 /** Represents a binary file in a space. An asset can be any file type. */
 export type AssetWidthArgs = {
@@ -180,6 +183,7 @@ export type AssetLinkingCollections = {
   entryCollection?: Maybe<EntryCollection>;
 };
 
+
 export type AssetLinkingCollectionsEntryCollectionArgs = {
   limit?: InputMaybe<Scalars['Int']>;
   locale?: InputMaybe<Scalars['String']>;
@@ -207,7 +211,7 @@ export enum AssetOrder {
   UrlAsc = 'url_ASC',
   UrlDesc = 'url_DESC',
   WidthAsc = 'width_ASC',
-  WidthDesc = 'width_DESC',
+  WidthDesc = 'width_DESC'
 }
 
 export type ContentfulMetadata = {
@@ -264,7 +268,7 @@ export enum EntryOrder {
   SysPublishedAtAsc = 'sys_publishedAt_ASC',
   SysPublishedAtDesc = 'sys_publishedAt_DESC',
   SysPublishedVersionAsc = 'sys_publishedVersion_ASC',
-  SysPublishedVersionDesc = 'sys_publishedVersion_DESC',
+  SysPublishedVersionDesc = 'sys_publishedVersion_DESC'
 }
 
 export enum ImageFormat {
@@ -286,7 +290,7 @@ export enum ImageFormat {
    */
   Png8 = 'PNG8',
   /** WebP image format. */
-  Webp = 'WEBP',
+  Webp = 'WEBP'
 }
 
 export enum ImageResizeFocus {
@@ -311,7 +315,7 @@ export enum ImageResizeFocus {
   /** Focus the resizing on the top left. */
   TopLeft = 'TOP_LEFT',
   /** Focus the resizing on the top right. */
-  TopRight = 'TOP_RIGHT',
+  TopRight = 'TOP_RIGHT'
 }
 
 export enum ImageResizeStrategy {
@@ -329,7 +333,7 @@ export enum ImageResizeStrategy {
   /** Resizes the image to the specified dimensions, changing the original aspect ratio if needed. */
   Scale = 'SCALE',
   /** Creates a thumbnail from the image. */
-  Thumb = 'THUMB',
+  Thumb = 'THUMB'
 }
 
 export type ImageTransformOptions = {
@@ -372,15 +376,18 @@ export type LandingPage = Entry & {
   welcomeText?: Maybe<Scalars['String']>;
 };
 
+
 /** Fields for landing page [See type definition](https://app.contentful.com/spaces/61crxrrbpkjj/content_types/landingPage) */
 export type LandingPageLinkedFromArgs = {
   allowedLocales?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
 };
 
+
 /** Fields for landing page [See type definition](https://app.contentful.com/spaces/61crxrrbpkjj/content_types/landingPage) */
 export type LandingPageSubmitButtonTextArgs = {
   locale?: InputMaybe<Scalars['String']>;
 };
+
 
 /** Fields for landing page [See type definition](https://app.contentful.com/spaces/61crxrrbpkjj/content_types/landingPage) */
 export type LandingPageWelcomeTextArgs = {
@@ -421,6 +428,7 @@ export type LandingPageLinkingCollections = {
   entryCollection?: Maybe<EntryCollection>;
 };
 
+
 export type LandingPageLinkingCollectionsEntryCollectionArgs = {
   limit?: InputMaybe<Scalars['Int']>;
   locale?: InputMaybe<Scalars['String']>;
@@ -438,7 +446,7 @@ export enum LandingPageOrder {
   SysPublishedAtAsc = 'sys_publishedAt_ASC',
   SysPublishedAtDesc = 'sys_publishedAt_DESC',
   SysPublishedVersionAsc = 'sys_publishedVersion_ASC',
-  SysPublishedVersionDesc = 'sys_publishedVersion_DESC',
+  SysPublishedVersionDesc = 'sys_publishedVersion_DESC'
 }
 
 /** [See type definition](https://app.contentful.com/spaces/61crxrrbpkjj/content_types/news) */
@@ -452,20 +460,24 @@ export type News = Entry & {
   title?: Maybe<Scalars['String']>;
 };
 
+
 /** [See type definition](https://app.contentful.com/spaces/61crxrrbpkjj/content_types/news) */
 export type NewsContentArgs = {
   locale?: InputMaybe<Scalars['String']>;
 };
+
 
 /** [See type definition](https://app.contentful.com/spaces/61crxrrbpkjj/content_types/news) */
 export type NewsCreatedAtArgs = {
   locale?: InputMaybe<Scalars['String']>;
 };
 
+
 /** [See type definition](https://app.contentful.com/spaces/61crxrrbpkjj/content_types/news) */
 export type NewsLinkedFromArgs = {
   allowedLocales?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
 };
+
 
 /** [See type definition](https://app.contentful.com/spaces/61crxrrbpkjj/content_types/news) */
 export type NewsTitleArgs = {
@@ -515,6 +527,7 @@ export type NewsLinkingCollections = {
   entryCollection?: Maybe<EntryCollection>;
 };
 
+
 export type NewsLinkingCollectionsEntryCollectionArgs = {
   limit?: InputMaybe<Scalars['Int']>;
   locale?: InputMaybe<Scalars['String']>;
@@ -536,7 +549,7 @@ export enum NewsOrder {
   SysPublishedVersionAsc = 'sys_publishedVersion_ASC',
   SysPublishedVersionDesc = 'sys_publishedVersion_DESC',
   TitleAsc = 'title_ASC',
-  TitleDesc = 'title_DESC',
+  TitleDesc = 'title_DESC'
 }
 
 export type Query = {
@@ -552,11 +565,13 @@ export type Query = {
   votesCollection?: Maybe<VotesCollection>;
 };
 
+
 export type QueryAssetArgs = {
   id: Scalars['String'];
   locale?: InputMaybe<Scalars['String']>;
   preview?: InputMaybe<Scalars['Boolean']>;
 };
+
 
 export type QueryAssetCollectionArgs = {
   limit?: InputMaybe<Scalars['Int']>;
@@ -567,6 +582,7 @@ export type QueryAssetCollectionArgs = {
   where?: InputMaybe<AssetFilter>;
 };
 
+
 export type QueryEntryCollectionArgs = {
   limit?: InputMaybe<Scalars['Int']>;
   locale?: InputMaybe<Scalars['String']>;
@@ -576,11 +592,13 @@ export type QueryEntryCollectionArgs = {
   where?: InputMaybe<EntryFilter>;
 };
 
+
 export type QueryLandingPageArgs = {
   id: Scalars['String'];
   locale?: InputMaybe<Scalars['String']>;
   preview?: InputMaybe<Scalars['Boolean']>;
 };
+
 
 export type QueryLandingPageCollectionArgs = {
   limit?: InputMaybe<Scalars['Int']>;
@@ -591,11 +609,13 @@ export type QueryLandingPageCollectionArgs = {
   where?: InputMaybe<LandingPageFilter>;
 };
 
+
 export type QueryNewsArgs = {
   id: Scalars['String'];
   locale?: InputMaybe<Scalars['String']>;
   preview?: InputMaybe<Scalars['Boolean']>;
 };
+
 
 export type QueryNewsCollectionArgs = {
   limit?: InputMaybe<Scalars['Int']>;
@@ -606,11 +626,13 @@ export type QueryNewsCollectionArgs = {
   where?: InputMaybe<NewsFilter>;
 };
 
+
 export type QueryVotesArgs = {
   id: Scalars['String'];
   locale?: InputMaybe<Scalars['String']>;
   preview?: InputMaybe<Scalars['Boolean']>;
 };
+
 
 export type QueryVotesCollectionArgs = {
   limit?: InputMaybe<Scalars['Int']>;
@@ -681,30 +703,36 @@ export type Votes = Entry & {
   title?: Maybe<Scalars['String']>;
 };
 
+
 /** [See type definition](https://app.contentful.com/spaces/61crxrrbpkjj/content_types/votes) */
 export type VotesContentArgs = {
   locale?: InputMaybe<Scalars['String']>;
 };
+
 
 /** [See type definition](https://app.contentful.com/spaces/61crxrrbpkjj/content_types/votes) */
 export type VotesCreatedAtArgs = {
   locale?: InputMaybe<Scalars['String']>;
 };
 
+
 /** [See type definition](https://app.contentful.com/spaces/61crxrrbpkjj/content_types/votes) */
 export type VotesExpiresAtArgs = {
   locale?: InputMaybe<Scalars['String']>;
 };
+
 
 /** [See type definition](https://app.contentful.com/spaces/61crxrrbpkjj/content_types/votes) */
 export type VotesLinkedFromArgs = {
   allowedLocales?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
 };
 
+
 /** [See type definition](https://app.contentful.com/spaces/61crxrrbpkjj/content_types/votes) */
 export type VotesStatusArgs = {
   locale?: InputMaybe<Scalars['String']>;
 };
+
 
 /** [See type definition](https://app.contentful.com/spaces/61crxrrbpkjj/content_types/votes) */
 export type VotesTitleArgs = {
@@ -791,6 +819,7 @@ export type VotesLinkingCollections = {
   entryCollection?: Maybe<EntryCollection>;
 };
 
+
 export type VotesLinkingCollectionsEntryCollectionArgs = {
   limit?: InputMaybe<Scalars['Int']>;
   locale?: InputMaybe<Scalars['String']>;
@@ -814,45 +843,17 @@ export enum VotesOrder {
   SysPublishedVersionAsc = 'sys_publishedVersion_ASC',
   SysPublishedVersionDesc = 'sys_publishedVersion_DESC',
   TitleAsc = 'title_ASC',
-  TitleDesc = 'title_DESC',
+  TitleDesc = 'title_DESC'
 }
 
-export type LandingPageItemFragment = {
-  __typename?: 'LandingPage';
-  welcomeText?: string | null | undefined;
-  submitButtonText?: string | null | undefined;
-  sys: { __typename?: 'Sys'; id: string };
-};
+export type LandingPageItemFragment = { __typename?: 'LandingPage', welcomeText?: string | null | undefined, submitButtonText?: string | null | undefined, sys: { __typename?: 'Sys', id: string } };
 
-export type LandingPageQueryVariables = Exact<{ [key: string]: never }>;
+export type LandingPageQueryVariables = Exact<{ [key: string]: never; }>;
 
-export type LandingPageQuery = {
-  __typename?: 'Query';
-  landingPageCollection?:
-    | {
-        __typename?: 'LandingPageCollection';
-        items: Array<
-          | {
-              __typename?: 'LandingPage';
-              welcomeText?: string | null | undefined;
-              submitButtonText?: string | null | undefined;
-              sys: { __typename?: 'Sys'; id: string };
-            }
-          | null
-          | undefined
-        >;
-      }
-    | null
-    | undefined;
-};
 
-export type NewsItemFragment = {
-  __typename?: 'News';
-  title?: string | null | undefined;
-  content?: string | null | undefined;
-  createdAt?: any | null | undefined;
-  sys: { __typename?: 'Sys'; id: string };
-};
+export type LandingPageQuery = { __typename?: 'Query', landingPageCollection?: { __typename?: 'LandingPageCollection', items: Array<{ __typename?: 'LandingPage', welcomeText?: string | null | undefined, submitButtonText?: string | null | undefined, sys: { __typename?: 'Sys', id: string } } | null | undefined> } | null | undefined };
+
+export type NewsItemFragment = { __typename?: 'News', title?: string | null | undefined, content?: string | null | undefined, createdAt?: any | null | undefined, sys: { __typename?: 'Sys', id: string } };
 
 export type NewsQueryVariables = Exact<{
   limit?: InputMaybe<Scalars['Int']>;
@@ -860,40 +861,14 @@ export type NewsQueryVariables = Exact<{
   order?: InputMaybe<Array<InputMaybe<NewsOrder>> | InputMaybe<NewsOrder>>;
 }>;
 
-export type NewsQuery = {
-  __typename?: 'Query';
-  newsCollection?:
-    | {
-        __typename?: 'NewsCollection';
-        items: Array<
-          | {
-              __typename?: 'News';
-              title?: string | null | undefined;
-              content?: string | null | undefined;
-              createdAt?: any | null | undefined;
-              sys: { __typename?: 'Sys'; id: string };
-            }
-          | null
-          | undefined
-        >;
-      }
-    | null
-    | undefined;
-};
 
-export type SysFragment = { __typename?: 'Sys'; id: string };
+export type NewsQuery = { __typename?: 'Query', newsCollection?: { __typename?: 'NewsCollection', items: Array<{ __typename?: 'News', title?: string | null | undefined, content?: string | null | undefined, createdAt?: any | null | undefined, sys: { __typename?: 'Sys', id: string } } | null | undefined> } | null | undefined };
 
-export type ContentFragment = { __typename?: 'VotesContent'; json: any };
+export type SysFragment = { __typename?: 'Sys', id: string };
 
-export type VoteItemFragment = {
-  __typename?: 'Votes';
-  createdAt?: any | null | undefined;
-  expiresAt?: any | null | undefined;
-  status?: string | null | undefined;
-  title?: string | null | undefined;
-  sys: { __typename?: 'Sys'; id: string };
-  content?: { __typename?: 'VotesContent'; json: any } | null | undefined;
-};
+export type ContentFragment = { __typename?: 'VotesContent', json: any };
+
+export type VoteItemFragment = { __typename?: 'Votes', createdAt?: any | null | undefined, expiresAt?: any | null | undefined, status?: string | null | undefined, title?: string | null | undefined, sys: { __typename?: 'Sys', id: string }, content?: { __typename?: 'VotesContent', json: any } | null | undefined };
 
 export type VotesQueryVariables = Exact<{
   limit?: InputMaybe<Scalars['Int']>;
@@ -901,127 +876,89 @@ export type VotesQueryVariables = Exact<{
   order?: InputMaybe<Array<InputMaybe<VotesOrder>> | InputMaybe<VotesOrder>>;
 }>;
 
-export type VotesQuery = {
-  __typename?: 'Query';
-  votesCollection?:
-    | {
-        __typename?: 'VotesCollection';
-        items: Array<
-          | {
-              __typename?: 'Votes';
-              createdAt?: any | null | undefined;
-              expiresAt?: any | null | undefined;
-              status?: string | null | undefined;
-              title?: string | null | undefined;
-              sys: { __typename?: 'Sys'; id: string };
-              content?:
-                | { __typename?: 'VotesContent'; json: any }
-                | null
-                | undefined;
-            }
-          | null
-          | undefined
-        >;
-      }
-    | null
-    | undefined;
-};
+
+export type VotesQuery = { __typename?: 'Query', votesCollection?: { __typename?: 'VotesCollection', items: Array<{ __typename?: 'Votes', createdAt?: any | null | undefined, expiresAt?: any | null | undefined, status?: string | null | undefined, title?: string | null | undefined, sys: { __typename?: 'Sys', id: string }, content?: { __typename?: 'VotesContent', json: any } | null | undefined } | null | undefined> } | null | undefined };
 
 export const SysFragmentDoc = gql`
-  fragment Sys on Sys {
-    id
-  }
-`;
+    fragment Sys on Sys {
+  id
+}
+    `;
 export const LandingPageItemFragmentDoc = gql`
-  fragment LandingPageItem on LandingPage {
-    sys {
-      ...Sys
-    }
-    welcomeText
-    submitButtonText
+    fragment LandingPageItem on LandingPage {
+  sys {
+    ...Sys
   }
-  ${SysFragmentDoc}
-`;
+  welcomeText
+  submitButtonText
+}
+    ${SysFragmentDoc}`;
 export const NewsItemFragmentDoc = gql`
-  fragment NewsItem on News {
-    sys {
-      ...Sys
-    }
-    title
-    content
-    createdAt
+    fragment NewsItem on News {
+  sys {
+    ...Sys
   }
-  ${SysFragmentDoc}
-`;
+  title
+  content
+  createdAt
+}
+    ${SysFragmentDoc}`;
 export const ContentFragmentDoc = gql`
-  fragment Content on VotesContent {
-    json
-  }
-`;
+    fragment Content on VotesContent {
+  json
+}
+    `;
 export const VoteItemFragmentDoc = gql`
-  fragment VoteItem on Votes {
-    sys {
-      ...Sys
-    }
-    content {
-      ...Content
-    }
-    createdAt
-    expiresAt
-    status
-    title
+    fragment VoteItem on Votes {
+  sys {
+    ...Sys
   }
-  ${SysFragmentDoc}
-  ${ContentFragmentDoc}
-`;
+  content {
+    ...Content
+  }
+  createdAt
+  expiresAt
+  status
+  title
+}
+    ${SysFragmentDoc}
+${ContentFragmentDoc}`;
 export const LandingPageDocument = gql`
-  query LandingPage {
-    landingPageCollection {
-      items {
-        ...LandingPageItem
-      }
+    query LandingPage {
+  landingPageCollection {
+    items {
+      ...LandingPageItem
     }
   }
-  ${LandingPageItemFragmentDoc}
-`;
-
-export function useLandingPageQuery(
-  options: Omit<Urql.UseQueryArgs<LandingPageQueryVariables>, 'query'> = {},
-) {
-  return Urql.useQuery<LandingPageQuery>({
-    query: LandingPageDocument,
-    ...options,
-  });
 }
+    ${LandingPageItemFragmentDoc}`;
+
+export function useLandingPageQuery(options: Omit<Urql.UseQueryArgs<LandingPageQueryVariables>, 'query'> = {}) {
+  return Urql.useQuery<LandingPageQuery>({ query: LandingPageDocument, ...options });
+};
 export const NewsDocument = gql`
-  query News($limit: Int, $where: NewsFilter, $order: [NewsOrder]) {
-    newsCollection(limit: $limit, where: $where, order: $order) {
-      items {
-        ...NewsItem
-      }
+    query News($limit: Int, $where: NewsFilter, $order: [NewsOrder]) {
+  newsCollection(limit: $limit, where: $where, order: $order) {
+    items {
+      ...NewsItem
     }
   }
-  ${NewsItemFragmentDoc}
-`;
+}
+    ${NewsItemFragmentDoc}`;
 
-export function useNewsQuery(
-  options: Omit<Urql.UseQueryArgs<NewsQueryVariables>, 'query'> = {},
-) {
+export function useNewsQuery(options: Omit<Urql.UseQueryArgs<NewsQueryVariables>, 'query'> = {}) {
   return Urql.useQuery<NewsQuery>({ query: NewsDocument, ...options });
-}
+};
 export const VotesDocument = gql`
-  query Votes($limit: Int, $where: VotesFilter, $order: [VotesOrder]) {
-    votesCollection(limit: $limit, where: $where, order: $order) {
-      items {
-        ...VoteItem
-      }
+    query Votes($limit: Int, $where: VotesFilter, $order: [VotesOrder]) {
+  votesCollection(limit: $limit, where: $where, order: $order) {
+    items {
+      ...VoteItem
     }
   }
-  ${VoteItemFragmentDoc}
-`;
-
-export function useVotesQuery(
-  options: Omit<Urql.UseQueryArgs<VotesQueryVariables>, 'query'> = {},
-) {
-  return Urql.useQuery<VotesQuery>({ query: VotesDocument, ...options });
 }
+    ${VoteItemFragmentDoc}`;
+
+export function useVotesQuery(options: Omit<Urql.UseQueryArgs<VotesQueryVariables>, 'query'> = {}) {
+  return Urql.useQuery<VotesQuery>({ query: VotesDocument, ...options });
+};
