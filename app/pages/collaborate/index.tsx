@@ -1,13 +1,13 @@
-import { WithAuthentication } from 'hoc/WithAuthentication';
-import { Collaborate } from 'components/collaborate';
+import { ProfileWrapper } from 'components/profiles/ProfileWrapper';
 import MainLayout from 'components/layout/MainLayout';
+import { WithAuthentication } from 'hoc/WithAuthentication';
 
-const PrivateCollaborate = WithAuthentication(Collaborate);
+const PrivateCollaboratePage = WithAuthentication(ProfileWrapper);
 
-export default function Dashboard() {
+export default function CollaboratePage() {
   return (
     <MainLayout>
-      <PrivateCollaborate />
+      <PrivateCollaboratePage />
     </MainLayout>
   );
 }

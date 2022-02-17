@@ -2,18 +2,12 @@ import { FC, PropsWithChildren, useMemo, useState, useEffect } from 'react';
 import { Session } from '@supabase/supabase-js';
 import { supabase } from 'lib/base/client';
 import { createCtx } from 'utils/context';
-import { getUserProfile } from 'lib/base/profiles';
-import { definitions } from 'lib/base/types';
-
-type Profile = definitions['profiles'] | null;
-type NavStatus = definitions['navStatus'];
+import { getUserProfile, Profile } from 'lib/base/profiles';
 
 interface AuthContext {
   profile: Profile;
   session: Session;
   loading: boolean;
-  navStatus: NavStatus[];
-  setNavStatus: Function;
 }
 
 export const [useAuthContext, AuthContext] = createCtx<AuthContext>();
@@ -23,13 +17,11 @@ export const AuthContextProvider: FC<PropsWithChildren<{}>> = ({
 }) => {
   const [loading, setLoading] = useState<boolean>(true);
 
-  const [profile, setProfile] = useState<Profile>(null);
+  const [profile, setProfile] = useState<Profile>();
 
   const [session, setSession] = useState<Session | null>(() =>
     supabase.auth.session(),
   );
-
-  const [navStatus, setNavStatus] = useState<NavStatus[]>([])
 
   useEffect(() => {
     if (!session) {
@@ -51,8 +43,8 @@ export const AuthContextProvider: FC<PropsWithChildren<{}>> = ({
   }, [setSession]);
 
   const value = useMemo<AuthContext>(
-    () => ({ session, loading, profile, navStatus, setNavStatus }),
-    [session, loading, profile, navStatus],
+    () => ({ session, loading, profile }),
+    [session, loading, profile],
   );
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
