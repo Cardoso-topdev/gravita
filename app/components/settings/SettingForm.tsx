@@ -17,6 +17,7 @@ interface Form {
   phone: string;
   email: string;
   bio: string;
+  job: string;
   website?: string;
   github?: string;
 }
@@ -26,6 +27,7 @@ const DEFAULT: Form = {
   last_name: '',
   phone: null,
   email: '',
+  job: '',
   bio: '',
   website: '',
   github: '',
@@ -36,6 +38,7 @@ const SCHEMA: SchemaOf<Form> = object({
   last_name: string().required(),
   email: string().required().email(),
   phone: string().min(10).required(),
+  job: string().required(),
   bio: string().required(),
   website: string(),
   github: string(),
@@ -97,7 +100,7 @@ export const SettingsForm: FC<Props> = (props) => {
           name="first_name"
           type="text"
           variant="flushed"
-          labelStyle={typography.titleSM}
+          labelStyle={typography.paragraph}
         />
         <FormInput
           autoComplete="off"
@@ -110,7 +113,7 @@ export const SettingsForm: FC<Props> = (props) => {
           name="last_name"
           type="text"
           variant="flushed"
-          labelStyle={typography.titleSM}
+          labelStyle={typography.paragraph}
         />
       </HStack>
       <FormInput
@@ -124,7 +127,7 @@ export const SettingsForm: FC<Props> = (props) => {
         name="email"
         type="email"
         variant="flushed"
-        labelStyle={typography.titleSM}
+        labelStyle={typography.paragraph}
       />
       <FormInput
         autoComplete="off"
@@ -137,7 +140,7 @@ export const SettingsForm: FC<Props> = (props) => {
         type="text"
         variant="flushed"
         value={values.phone ?? profile?.phone}
-        labelStyle={typography.titleSM}
+        labelStyle={typography.paragraph}
       />
       <FormTextarea
         autoComplete="off"
@@ -149,7 +152,19 @@ export const SettingsForm: FC<Props> = (props) => {
         label="PROFILE DETAILS"
         name="bio"
         variant="flushed"
-        labelStyle={typography.titleSM}
+        labelStyle={typography.paragraph}
+      />
+      <FormInput
+        autoComplete="off"
+        defaultValue={profile?.job}
+        id="job"
+        error={errors.job}
+        onChange={handleChange}
+        onBlur={handleOnBlur}
+        label="PROFESSION"
+        name="job"
+        variant="flushed"
+        labelStyle={typography.paragraph}
       />
       <Box mt={10}>
         <Heading as="h3" {...typography.h3}>
@@ -166,7 +181,7 @@ export const SettingsForm: FC<Props> = (props) => {
           name="website"
           type="text"
           variant="flushed"
-          labelStyle={typography.titleSM}
+          labelStyle={typography.paragraph}
           icon={BsGlobe}
         />
         <FormInput
@@ -180,7 +195,7 @@ export const SettingsForm: FC<Props> = (props) => {
           name="github"
           type="text"
           variant="flushed"
-          labelStyle={typography.titleSM}
+          labelStyle={typography.paragraph}
           icon={AiFillGithub}
         />
       </Box>

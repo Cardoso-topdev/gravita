@@ -10,10 +10,10 @@ export const useData = <T>(query: Query<T>, deps?: unknown) => {
 
   const ref = useRef(query);
 
-  const loadData = useCallback(async () => {
+  const loadData = useCallback(async (newQuery?: Query<T>) => {
     setLoading(true);
 
-    const queryResult = await ref.current();
+    const queryResult = (await newQuery?.()) || (await ref.current());
 
     setData(queryResult);
 

@@ -2,7 +2,7 @@ import { useState, useCallback } from 'react';
 import * as R from 'ramda';
 import { ObjectSchema, ValidationError } from 'yup';
 import { ChangeEvent, FormEvent } from 'react';
-import { firstCapDataLike } from '../utils/common';
+import { textToCapitalizeWord } from '../utils/common';
 import { formatPhoneNumber } from 'utils/common';
 
 type Fields = Record<string, any>;
@@ -59,7 +59,7 @@ export const useFormValidation = <T, K extends { [key: string]: any }>(
               R.split(/(?=[A-Z])/),
               R.join(' '),
               R.toLower,
-              firstCapDataLike,
+              textToCapitalizeWord,
               R.replace('_', ' ')
             )(error.errors),
           }));
