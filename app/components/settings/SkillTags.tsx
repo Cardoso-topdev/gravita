@@ -52,7 +52,7 @@ export const SkillTags: FC<Props> = (props) => {
               color={tagMap.get(id) === id ? 'teal' : ''}
               as={tagMap.get(id) === id ? AiFillStar : AiOutlineStar}
             />
-            <TagLabel >{name}</TagLabel>
+            <TagLabel>{name}</TagLabel>
           </Tag>
         ))}
         <Input borderWidth={0} _focus={{ borderColor: 'none' }} />
