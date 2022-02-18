@@ -22,7 +22,7 @@ interface Props {
 export const DetailVote: FC<Props> = ({ vote, count }) => {
   return (
     <Box p={30}>
-      <Heading {...typography.pageHeading} mb={5}>
+      <Heading as='h2' mb={5}>
         {vote.title}
       </Heading>
       <HStack mb={5} spacing={5}>

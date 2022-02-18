@@ -44,3 +44,61 @@
 .statItemContainer {
   margin: 10px;
 }
+
+.joinCommunityItem {
+  background-image: linear-gradient(143.49deg, #1E1F2B -9.97%, #263841 121%);
+  width: 160px;
+  height: 200px;
+  cursor: pointer;
+  border-radius: 20px;
+  padding: 20px;
+  margin: 10px;
+}
+
+.joinCommunityItemText {
+  font-size: 15px;
+  line-height: 25px;
+  font-weight: bold;
+}
+
+.joinCommunityItemWrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.visionSection {
+  display: flex;
+  margin-bottom: 40px;
+  margin-top: 65px;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.visionItem {
+  width: 40%;
+  margin-top: 40px;
+  margin-right: 20px;
+}
+
+.visionImg {
+  object-fit: contain;
+  width: 400px;
+  height: 400px;
+  flex: 1;
+  margin: 20px;
+  min-width: 400px;
+}
+
+.visionContainer {
+  flex: 1;
+  margin: 20px;
+  min-width: 400px;
+}
+
+.visionsWrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}

@@ -15,7 +15,9 @@ export default function MainLayout({ children }) {
         <GridItem colSpan={4}>
           <Box className="main-container">
             <CenterNavBar />
-            {children}
+            <Box className="main-content-wrapper">
+              {children}
+            </Box>
           </Box>
         </GridItem>
         <GridItem colSpan={1}>
