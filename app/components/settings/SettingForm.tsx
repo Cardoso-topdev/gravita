@@ -6,6 +6,7 @@ import { AiFillGithub } from 'react-icons/ai';
 import { FormInput } from '../FormInput';
 import { FormTextarea } from '../FormTextarea';
 import { Loader } from 'components/Loader';
+import { SkillTags } from './SkillTags';
 import { useFormValidation } from 'hooks/useFormValidation';
 import { useAuthContext } from 'context/AuthContext';
 import { updateProfile } from 'lib/base/profiles';
@@ -90,111 +91,117 @@ export const SettingsForm: FC<Props> = (props) => {
       <Heading {...typography.heading}> Basic details </Heading>
       <HStack>
         <FormInput
-          autoComplete="off"
+          autoComplete='off'
           defaultValue={profile?.first_name}
-          id="firstName"
+          id='firstName'
           error={errors.first_name}
           onChange={handleChange}
           onBlur={handleOnBlur}
-          label="FIRST NAME"
-          name="first_name"
-          type="text"
-          variant="flushed"
+          label='FIRST NAME'
+          name='first_name'
+          type='text'
+          variant='flushed'
           labelStyle={typography.paragraph}
         />
         <FormInput
-          autoComplete="off"
+          autoComplete='off'
           defaultValue={profile?.last_name}
-          id="lastName"
+          id='lastName'
           error={errors.last_name}
           onChange={handleChange}
           onBlur={handleOnBlur}
-          label="LAST NAME"
-          name="last_name"
-          type="text"
-          variant="flushed"
+          label='LAST NAME'
+          name='last_name'
+          type='text'
+          variant='flushed'
           labelStyle={typography.paragraph}
         />
       </HStack>
       <FormInput
-        autoComplete="off"
+        autoComplete='off'
         defaultValue={profile?.email}
-        id="email"
+        id='email'
         error={errors.email}
         onChange={handleChange}
         onBlur={handleOnBlur}
-        label="EMAIL ADDRESS"
-        name="email"
-        type="email"
-        variant="flushed"
+        label='EMAIL ADDRESS'
+        name='email'
+        type='email'
+        variant='flushed'
         labelStyle={typography.paragraph}
       />
       <FormInput
-        autoComplete="off"
-        id="phone"
+        autoComplete='off'
+        id='phone'
         error={errors.phone}
         onChange={handleChange}
         onBlur={handleOnBlur}
-        label="PHONE NUMBER"
-        name="phone"
-        type="text"
-        variant="flushed"
+        label='PHONE NUMBER'
+        name='phone'
+        type='text'
+        variant='flushed'
         value={values.phone ?? profile?.phone}
         labelStyle={typography.paragraph}
       />
       <FormTextarea
-        autoComplete="off"
+        autoComplete='off'
         defaultValue={profile?.bio}
-        id="bio"
+        id='bio'
         error={errors.bio}
         onChange={handleChange}
         onBlur={handleOnBlur}
-        label="PROFILE DETAILS"
-        name="bio"
-        variant="flushed"
+        label='PROFILE DETAILS'
+        name='bio'
+        variant='flushed'
         labelStyle={typography.paragraph}
       />
       <FormInput
-        autoComplete="off"
+        autoComplete='off'
         defaultValue={profile?.job}
-        id="job"
+        id='job'
         error={errors.job}
         onChange={handleChange}
         onBlur={handleOnBlur}
-        label="PROFESSION"
-        name="job"
-        variant="flushed"
+        label='PROFESSION'
+        name='job'
+        variant='flushed'
         labelStyle={typography.paragraph}
       />
       <Box mt={10}>
-        <Heading as="h3" {...typography.h3}>
+        <Heading as='h3' {...typography.h3}>
+          Skills
+        </Heading>
+        <SkillTags mt={3} />
+      </Box>
+      <Box mt={10}>
+        <Heading as='h3' {...typography.h3}>
           Links
         </Heading>
         <FormInput
-          autoComplete="off"
+          autoComplete='off'
           defaultValue={profile?.website}
-          id="website"
+          id='website'
           error={errors.website}
           onChange={handleChange}
           onBlur={handleOnBlur}
-          label="WEBSITE/PORTFOLIO"
-          name="website"
-          type="text"
-          variant="flushed"
+          label='WEBSITE/PORTFOLIO'
+          name='website'
+          type='text'
+          variant='flushed'
           labelStyle={typography.paragraph}
           icon={BsGlobe}
         />
         <FormInput
-          autoComplete="off"
+          autoComplete='off'
           defaultValue={profile?.github}
-          id="github"
+          id='github'
           error={errors.github}
           onChange={handleChange}
           onBlur={handleOnBlur}
-          label="GITHUB"
-          name="github"
-          type="text"
-          variant="flushed"
+          label='GITHUB'
+          name='github'
+          type='text'
+          variant='flushed'
           labelStyle={typography.paragraph}
           icon={AiFillGithub}
         />

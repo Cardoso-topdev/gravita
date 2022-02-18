@@ -222,6 +222,99 @@ export interface paths {
       };
     };
   };
+  "/skill_tags": {
+    get: {
+      parameters: {
+        query: {
+          id?: parameters["rowFilter.skill_tags.id"];
+          name?: parameters["rowFilter.skill_tags.name"];
+          created_at?: parameters["rowFilter.skill_tags.created_at"];
+          /** Filtering Columns */
+          select?: parameters["select"];
+          /** Ordering */
+          order?: parameters["order"];
+          /** Limiting and Pagination */
+          offset?: parameters["offset"];
+          /** Limiting and Pagination */
+          limit?: parameters["limit"];
+        };
+        header: {
+          /** Limiting and Pagination */
+          Range?: parameters["range"];
+          /** Limiting and Pagination */
+          "Range-Unit"?: parameters["rangeUnit"];
+          /** Preference */
+          Prefer?: parameters["preferCount"];
+        };
+      };
+      responses: {
+        /** OK */
+        200: {
+          schema: definitions["skill_tags"][];
+        };
+        /** Partial Content */
+        206: unknown;
+      };
+    };
+    post: {
+      parameters: {
+        body: {
+          /** skill_tags */
+          skill_tags?: definitions["skill_tags"];
+        };
+        query: {
+          /** Filtering Columns */
+          select?: parameters["select"];
+        };
+        header: {
+          /** Preference */
+          Prefer?: parameters["preferReturn"];
+        };
+      };
+      responses: {
+        /** Created */
+        201: unknown;
+      };
+    };
+    delete: {
+      parameters: {
+        query: {
+          id?: parameters["rowFilter.skill_tags.id"];
+          name?: parameters["rowFilter.skill_tags.name"];
+          created_at?: parameters["rowFilter.skill_tags.created_at"];
+        };
+        header: {
+          /** Preference */
+          Prefer?: parameters["preferReturn"];
+        };
+      };
+      responses: {
+        /** No Content */
+        204: never;
+      };
+    };
+    patch: {
+      parameters: {
+        query: {
+          id?: parameters["rowFilter.skill_tags.id"];
+          name?: parameters["rowFilter.skill_tags.name"];
+          created_at?: parameters["rowFilter.skill_tags.created_at"];
+        };
+        body: {
+          /** skill_tags */
+          skill_tags?: definitions["skill_tags"];
+        };
+        header: {
+          /** Preference */
+          Prefer?: parameters["preferReturn"];
+        };
+      };
+      responses: {
+        /** No Content */
+        204: never;
+      };
+    };
+  };
   "/rpc/handle_new_user": {
     post: {
       parameters: {
@@ -308,6 +401,21 @@ export interface definitions {
     /** Format: character varying */
     job?: string;
   };
+  skill_tags: {
+    /**
+     * Format: integer
+     * @description Note:
+     * This is a Primary Key.<pk/>
+     */
+    id: number;
+    /** Format: character varying */
+    name: string;
+    /**
+     * Format: timestamp with time zone
+     * @default CURRENT_TIMESTAMP
+     */
+    created_at?: string;
+  };
 }
 
 export interface parameters {
@@ -375,6 +483,14 @@ export interface parameters {
   "rowFilter.profiles.phone": string;
   /** Format: character varying */
   "rowFilter.profiles.job": string;
+  /** @description skill_tags */
+  "body.skill_tags": definitions["skill_tags"];
+  /** Format: integer */
+  "rowFilter.skill_tags.id": string;
+  /** Format: character varying */
+  "rowFilter.skill_tags.name": string;
+  /** Format: timestamp with time zone */
+  "rowFilter.skill_tags.created_at": string;
 }
 
 export interface operations {}
