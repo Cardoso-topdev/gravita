@@ -1,10 +1,17 @@
-import { Box, Text } from "@chakra-ui/react";
-import { FC } from "react";
+import { FC } from 'react';
+import { Box } from '@chakra-ui/react';
+import { HeroSection } from './HeroSection';
+import { StatSection } from './StatSection';
+import { JoinCommunitySection } from './JoinCommunitySection';
+import { VisionSection } from './VisionSection';
 
-export const Discover: FC = (): JSX.Element => {
+export const Discover: FC = () => {
   return (
     <Box>
-      <Text>Discover</Text>
+      <HeroSection />
+      <StatSection />
+      <JoinCommunitySection />
+      <VisionSection />
     </Box>
-  )
-}
+  );
+};

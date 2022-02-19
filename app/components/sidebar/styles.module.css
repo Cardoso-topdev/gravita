@@ -1,0 +1,4 @@
+.leftSideMenu {
+  overflow-y: scroll;
+  height: calc(100% - 65px);
+}

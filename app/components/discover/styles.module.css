@@ -1,0 +1,104 @@
+.heroSectionContainer {
+  height: 364px;
+  background-image: url('../../public/images/discover-hero-bg.png');
+  background-size: cover;
+  background-position: center;
+  text-align: center;
+  padding: 10px 100px;
+  top: 50%;
+  position: relative;
+}
+
+.heroSection {
+  top: 50%;
+  position: absolute;
+  width: calc(100% - 200px);
+  transform: translateY(-50%);
+}
+
+.whatIsGravita {
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 17px;
+  line-height: 140%;
+}
+
+.btnInviteMembers {
+  color: black;
+  font-size: 12px!important;
+  font-weight: bold!important;
+}
+
+.statSectionContainer {
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.statContent {
+  display: flex;
+  text-align: center;
+}
+
+.statItemContainer {
+  margin: 10px;
+}
+
+.joinCommunityItem {
+  background-image: linear-gradient(143.49deg, #1E1F2B -9.97%, #263841 121%);
+  width: 160px;
+  height: 200px;
+  cursor: pointer;
+  border-radius: 20px;
+  padding: 20px;
+  margin: 10px;
+}
+
+.joinCommunityItemText {
+  font-size: 15px;
+  line-height: 25px;
+  font-weight: bold;
+}
+
+.joinCommunityItemWrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.visionSection {
+  display: flex;
+  margin-bottom: 40px;
+  margin-top: 65px;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.visionItem {
+  width: 40%;
+  margin-top: 40px;
+  margin-right: 20px;
+}
+
+.visionImg {
+  object-fit: contain;
+  width: 400px;
+  height: 400px;
+  flex: 1;
+  margin: 20px;
+  min-width: 400px;
+}
+
+.visionContainer {
+  flex: 1;
+  margin: 20px;
+  min-width: 400px;
+}
+
+.visionsWrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
