@@ -41,6 +41,7 @@ export const VisionSection: FC = () => {
       <Box className={styles.visionContainer}>
         <Heading
           as="h2"
+          fontSize={27}
         >
           Vision
         </Heading>

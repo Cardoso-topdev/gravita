@@ -39,7 +39,7 @@ export const VotesWrapper: FC = () => {
 
   return (
     <Box p={{ base: 5, lg: 10 }}>
-      <Heading as='h2' mb={5}>
+      <Heading {...typography.pageHeading} mb={5}>
         Voting
       </Heading>
       <Tabs
