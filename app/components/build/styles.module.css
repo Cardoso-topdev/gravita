@@ -1,0 +1,53 @@
+.title {
+  margin-top: 60px;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.description {
+  text-align: center;
+}
+
+.coreGraph {
+  width: 700px;
+  height: 700px;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.evolveContainer,
+.identityContainer,
+.wealthContainer,
+.operateContainer,
+.impactContainer {
+  position: absolute;
+  text-align: center;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.evolveContainer {
+  top: 150px;
+  left: 75px;
+}
+
+.identityContainer {
+  top: 150px;
+  right: 75px;
+}
+
+.wealthContainer {
+  bottom: 125px;
+  left: 75px;
+}
+
+.operateContainer {
+  bottom: 125px;
+  right: 75px;
+}
+
+.impactContainer {
+  bottom: -70px;
+  left: 290px;
+}

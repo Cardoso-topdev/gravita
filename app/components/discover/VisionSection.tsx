@@ -1,7 +1,6 @@
 import { FC } from 'react';
 import { Box, Heading, Image, Text } from '@chakra-ui/react';
 import styles from './styles.module.css';
-import { typography } from 'theme/typography';
 
 const joinCommunities = [
   {
