@@ -19,4 +19,24 @@ export const typography = {
     fontSize: 27,
     fontWeight: 700,
   },
+  LargeBold: {
+    fontSize: 17,
+    fontWeight: 700,
+  },
+  RegularBold: {
+    fontSize: 14,
+    fontWeight: 700,
+  },
+  xSmallBold: {
+    fontSize: 10,
+    fontWeight: 700,
+  },
+  xSmallRegular: {
+    fontSize: 10,
+    fontWeight: 400,
+  },
+  SmallRegular: {
+    fontSize: 12,
+    fontWeight: 400,
+  },
 };

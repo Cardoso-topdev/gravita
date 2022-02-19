@@ -51,3 +51,29 @@
   bottom: -70px;
   left: 290px;
 }
+
+.identityDescriptionContainer {
+  position: relative;
+}
+
+.identityDescription {
+  position: absolute;
+  top: -270px;
+  right: -275px;
+  width: 250px;
+  border-radius: 10px;
+  text-align: left;
+  padding: 15px;
+  z-index: 100;
+}
+
+.userAvatar {
+  position: absolute!important;
+}
+
+.membersCnt {
+  margin-left: 130px;
+  height: 30px;
+  padding-top: 7px;
+  margin-bottom: 10px;
+}
