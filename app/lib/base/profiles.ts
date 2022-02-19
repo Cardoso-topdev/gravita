@@ -4,6 +4,8 @@ import { textToCapitalizeWord } from 'utils/common';
 
 export type Profile = definitions['profiles'];
 
+export type SkillTag = definitions['skill_tags'];
+
 export type OrderFilter = {
   ascending: boolean;
 };
@@ -44,3 +46,17 @@ export const updateProfile = async (profile: Profile) => {
 
   return { data, error };
 };
+
+
+export const getAllTags = async (limit?: number) => {
+  let query = supabase.from<SkillTag>('skill_tags').select('*');
+
+  if (limit) {
+    query = query.limit(limit);
+  }
+
+  const { data, error } = await query;
+
+  return { data, error };
+};
+

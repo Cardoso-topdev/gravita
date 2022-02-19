@@ -27,7 +27,7 @@ export const NewsWrapper: FC<Props> = ({ news }) => {
       <CenterNavBar />
       <Box p={{ base: 5, lg: 10 }}>
         <Flex align="center" justify="space-between" mb={5}>
-          <Heading {...typography.pageHeading}>News & Updates</Heading>
+          <Heading {...typography.pageHeading}>Announcements</Heading>
           <SortSelector placeholder='Recent' options={options} />
         </Flex>
         {news.items.map((item) => (

@@ -7,8 +7,9 @@ import {
   TagLeftIcon,
   TagLabel,
 } from '@chakra-ui/react';
-import { getAllTags } from 'lib/base/tags';
+import { getAllTags } from 'lib/base/profiles';
 import { useData } from 'hooks/useData';
+import { useAuthContext } from 'context/AuthContext';
 import { Loader } from '../Loader';
 import { AiOutlineStar, AiFillStar } from 'react-icons/ai';
 
@@ -18,6 +19,8 @@ export const SkillTags: FC<Props> = (props) => {
   const [tags, loading] = useData(getAllTags);
 
   const [tagMap, setTagMap] = useState<Map<number, number>>(new Map());
+
+  const { profile } = useAuthContext();
 
   const handleTagClick = (id: number): void => {
     setTagMap((prev) => {
