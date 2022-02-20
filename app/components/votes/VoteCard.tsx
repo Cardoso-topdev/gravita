@@ -35,6 +35,7 @@ export const VoteCard: FC<Props> = ({
   title,
   status,
   voteId,
+  createdAt,
   ...rest
 }): JSX.Element => {
   const [view, setView] = useState<Screen | null>(defaultView);

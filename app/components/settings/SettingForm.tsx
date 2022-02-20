@@ -47,7 +47,7 @@ const SCHEMA: SchemaOf<Form> = object({
 
 interface Props extends BoxProps {}
 
-export const SettingsForm: FC<Props> = (props) => {
+export const SettingsForm: FC<Props> = (props): JSX.Element => {
   const { loading, profile } = useAuthContext();
 
   const { errors, values, handleChange } = useFormValidation(DEFAULT, SCHEMA);

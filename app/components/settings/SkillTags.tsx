@@ -1,4 +1,4 @@
-import { FC, useState } from 'react';
+import { FC } from 'react';
 import {
   Box,
   BoxProps,
@@ -7,29 +7,38 @@ import {
   TagLeftIcon,
   TagLabel,
 } from '@chakra-ui/react';
+import * as R from 'ramda';
 import { getAllTags } from 'lib/base/profiles';
 import { useData } from 'hooks/useData';
 import { useAuthContext } from 'context/AuthContext';
+import { createSkills, deleteSkill, Skill } from 'lib/base/profiles';
 import { Loader } from '../Loader';
 import { AiOutlineStar, AiFillStar } from 'react-icons/ai';
+import { useSkillTags } from 'hooks/useSkillTags';
 
 interface Props extends BoxProps {}
 
-export const SkillTags: FC<Props> = (props) => {
+export const SkillTags: FC<Props> = (props): JSX.Element => {
   const [tags, loading] = useData(getAllTags);
 
-  const [tagMap, setTagMap] = useState<Map<number, number>>(new Map());
+  const { keys, setKeys } = useSkillTags();
 
   const { profile } = useAuthContext();
 
-  const handleTagClick = (id: number): void => {
-    setTagMap((prev) => {
-      if (prev.get(id) === id) {
-        tagMap.delete(id);
-        return new Map(prev);
+  const handleTagClick = (key: number): void => {
+    setKeys((prevKeys) => {
+      if (prevKeys.includes(key)) {
+        deleteSkill(key);
+
+        return R.reject(R.equals(R.__, key), prevKeys);
       }
-      tagMap.set(id, id);
-      return new Map(prev);
+      const skill: Skill[] = [
+        { id: key, skill_tag_id: key, profile_id: profile.id },
+      ];
+      
+      createSkills(skill);
+
+      return R.append(key, prevKeys);
     });
   };
 
@@ -44,16 +53,16 @@ export const SkillTags: FC<Props> = (props) => {
           <Tag
             m={1}
             key={id}
-            onClick={handleTagClick.bind(null, id)}
+            onClick={handleTagClick.bind(null, id)} 
             variant='outline'
             borderRadius='full'
-            borderWidth={tagMap.get(id) === id ? 0.5 : 0}
-            borderColor='teal'
-            color={tagMap.get(id) === id ? 'teal' : ''}
+            borderWidth={keys.includes(id) ? 0.5 : 0}
+            borderColor={keys.includes(id) ? 'teal' : null}
+            color={keys.includes(id) ? 'teal' : null}
           >
             <TagLeftIcon
-              color={tagMap.get(id) === id ? 'teal' : ''}
-              as={tagMap.get(id) === id ? AiFillStar : AiOutlineStar}
+              color={keys.includes(id) ? 'teal' : null}
+              as={keys.includes(id) ? AiFillStar : AiOutlineStar}
             />
             <TagLabel>{name}</TagLabel>
           </Tag>
