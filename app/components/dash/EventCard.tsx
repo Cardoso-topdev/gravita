@@ -1,10 +1,12 @@
 import { FC } from 'react';
 import styles from './dash.module.css';
 import { Box, Icon, Text } from '@chakra-ui/react';
+import Link from 'next/link';
 
 interface Props {
   title: string;
   description: string;
+  path: string;
 }
 
 const iconObject = {
@@ -177,16 +179,18 @@ const iconObject = {
   ),
 };
 
-export const EventCard: FC<Props> = ({ title, description }): JSX.Element => {
+export const EventCard: FC<Props> = ({ title, description, path }): JSX.Element => {
   return (
-    <Box className={styles.eventCardContainer} my={3} mx={1}>
-      <Box className={styles.eventCardTitleWrapper}>
-        {iconObject[title]}
-        <Box as="h4" className={styles.eventCardTitle}>
-          {title}
+    <Link href={path} passHref>
+      <Box className={styles.eventCardContainer} my={3} mx={1}>
+        <Box className={styles.eventCardTitleWrapper}>
+          {iconObject[title]}
+          <Box as="h4" className={styles.eventCardTitle}>
+            {title}
+          </Box>
         </Box>
+        <Text className={styles.eventCardContent}>{description}</Text>
       </Box>
-      <Text className={styles.eventCardContent}>{description}</Text>
-    </Box>
+    </Link>
   );
 };
