@@ -1,8 +1,10 @@
 import { FC } from 'react';
 import { useNewsQuery } from 'generated/graphql';
-import { Heading, Text, Box } from '@chakra-ui/react';
+import { Heading, Text, Box, BoxProps } from '@chakra-ui/react';
 
-export const News: FC = () => {
+interface Props extends BoxProps {}
+
+export const News: FC<Props> = (props) => {
   const [result] = useNewsQuery({
     requestPolicy: 'cache-and-network',
     variables: { limit: 3 },
@@ -17,7 +19,7 @@ export const News: FC = () => {
     <>
       {data.newsCollection.items.map((news) => {
         return (
-          <Box key={news.sys.id} mb={5} color="white">
+          <Box key={news.sys.id} mb={5} color='white' {...props}>
             <Heading fontWeight={700} fontSize={20}>
               {news.title}
             </Heading>

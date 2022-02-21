@@ -10,7 +10,7 @@ import {
 
 interface Props extends TextareaProps {
   error: string;
-  label: string;
+  label?: string;
   name: string;
   onChange: (e: ChangeEvent) => void;
   labelStyle?: FormLabelProps;

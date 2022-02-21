@@ -2,7 +2,7 @@ import { Box, Avatar, Flex, HStack, Heading } from '@chakra-ui/react';
 import { SettingsForm } from './SettingForm';
 import { typography } from 'theme/typography';
 
-export const Settings = () => {
+export const Settings = (): JSX.Element => {
   return (
     <Box p={5}>
       <Heading mb={5} {...typography.heading}>

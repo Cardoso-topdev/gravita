@@ -111,6 +111,102 @@ export interface paths {
       };
     };
   };
+  "/profile_skills": {
+    get: {
+      parameters: {
+        query: {
+          id?: parameters["rowFilter.profile_skills.id"];
+          created_at?: parameters["rowFilter.profile_skills.created_at"];
+          profile_id?: parameters["rowFilter.profile_skills.profile_id"];
+          skill_tag_id?: parameters["rowFilter.profile_skills.skill_tag_id"];
+          /** Filtering Columns */
+          select?: parameters["select"];
+          /** Ordering */
+          order?: parameters["order"];
+          /** Limiting and Pagination */
+          offset?: parameters["offset"];
+          /** Limiting and Pagination */
+          limit?: parameters["limit"];
+        };
+        header: {
+          /** Limiting and Pagination */
+          Range?: parameters["range"];
+          /** Limiting and Pagination */
+          "Range-Unit"?: parameters["rangeUnit"];
+          /** Preference */
+          Prefer?: parameters["preferCount"];
+        };
+      };
+      responses: {
+        /** OK */
+        200: {
+          schema: definitions["profile_skills"][];
+        };
+        /** Partial Content */
+        206: unknown;
+      };
+    };
+    post: {
+      parameters: {
+        body: {
+          /** profile_skills */
+          profile_skills?: definitions["profile_skills"];
+        };
+        query: {
+          /** Filtering Columns */
+          select?: parameters["select"];
+        };
+        header: {
+          /** Preference */
+          Prefer?: parameters["preferReturn"];
+        };
+      };
+      responses: {
+        /** Created */
+        201: unknown;
+      };
+    };
+    delete: {
+      parameters: {
+        query: {
+          id?: parameters["rowFilter.profile_skills.id"];
+          created_at?: parameters["rowFilter.profile_skills.created_at"];
+          profile_id?: parameters["rowFilter.profile_skills.profile_id"];
+          skill_tag_id?: parameters["rowFilter.profile_skills.skill_tag_id"];
+        };
+        header: {
+          /** Preference */
+          Prefer?: parameters["preferReturn"];
+        };
+      };
+      responses: {
+        /** No Content */
+        204: never;
+      };
+    };
+    patch: {
+      parameters: {
+        query: {
+          id?: parameters["rowFilter.profile_skills.id"];
+          created_at?: parameters["rowFilter.profile_skills.created_at"];
+          profile_id?: parameters["rowFilter.profile_skills.profile_id"];
+          skill_tag_id?: parameters["rowFilter.profile_skills.skill_tag_id"];
+        };
+        body: {
+          /** profile_skills */
+          profile_skills?: definitions["profile_skills"];
+        };
+        header: {
+          /** Preference */
+          Prefer?: parameters["preferReturn"];
+        };
+      };
+      responses: {
+        /** No Content */
+        204: never;
+      };
+    };
+  };
   "/profiles": {
     get: {
       parameters: {
@@ -222,6 +318,99 @@ export interface paths {
       };
     };
   };
+  "/skill_tags": {
+    get: {
+      parameters: {
+        query: {
+          id?: parameters["rowFilter.skill_tags.id"];
+          name?: parameters["rowFilter.skill_tags.name"];
+          created_at?: parameters["rowFilter.skill_tags.created_at"];
+          /** Filtering Columns */
+          select?: parameters["select"];
+          /** Ordering */
+          order?: parameters["order"];
+          /** Limiting and Pagination */
+          offset?: parameters["offset"];
+          /** Limiting and Pagination */
+          limit?: parameters["limit"];
+        };
+        header: {
+          /** Limiting and Pagination */
+          Range?: parameters["range"];
+          /** Limiting and Pagination */
+          "Range-Unit"?: parameters["rangeUnit"];
+          /** Preference */
+          Prefer?: parameters["preferCount"];
+        };
+      };
+      responses: {
+        /** OK */
+        200: {
+          schema: definitions["skill_tags"][];
+        };
+        /** Partial Content */
+        206: unknown;
+      };
+    };
+    post: {
+      parameters: {
+        body: {
+          /** skill_tags */
+          skill_tags?: definitions["skill_tags"];
+        };
+        query: {
+          /** Filtering Columns */
+          select?: parameters["select"];
+        };
+        header: {
+          /** Preference */
+          Prefer?: parameters["preferReturn"];
+        };
+      };
+      responses: {
+        /** Created */
+        201: unknown;
+      };
+    };
+    delete: {
+      parameters: {
+        query: {
+          id?: parameters["rowFilter.skill_tags.id"];
+          name?: parameters["rowFilter.skill_tags.name"];
+          created_at?: parameters["rowFilter.skill_tags.created_at"];
+        };
+        header: {
+          /** Preference */
+          Prefer?: parameters["preferReturn"];
+        };
+      };
+      responses: {
+        /** No Content */
+        204: never;
+      };
+    };
+    patch: {
+      parameters: {
+        query: {
+          id?: parameters["rowFilter.skill_tags.id"];
+          name?: parameters["rowFilter.skill_tags.name"];
+          created_at?: parameters["rowFilter.skill_tags.created_at"];
+        };
+        body: {
+          /** skill_tags */
+          skill_tags?: definitions["skill_tags"];
+        };
+        header: {
+          /** Preference */
+          Prefer?: parameters["preferReturn"];
+        };
+      };
+      responses: {
+        /** No Content */
+        204: never;
+      };
+    };
+  };
   "/rpc/handle_new_user": {
     post: {
       parameters: {
@@ -284,6 +473,31 @@ export interface definitions {
     /** Format: text */
     title: string;
   };
+  profile_skills: {
+    /**
+     * Format: bigint
+     * @description Note:
+     * This is a Primary Key.<pk/>
+     */
+    id: number;
+    /**
+     * Format: timestamp with time zone
+     * @default CURRENT_TIMESTAMP
+     */
+    created_at?: string;
+    /**
+     * Format: uuid
+     * @description Note:
+     * This is a Foreign Key to `profiles.id`.<fk table='profiles' column='id'/>
+     */
+    profile_id: string;
+    /**
+     * Format: integer
+     * @description Note:
+     * This is a Foreign Key to `skill_tags.id`.<fk table='skill_tags' column='id'/>
+     */
+    skill_tag_id: number;
+  };
   profiles: {
     /**
      * Format: uuid
@@ -307,6 +521,21 @@ export interface definitions {
     phone?: string;
     /** Format: character varying */
     job?: string;
+  };
+  skill_tags: {
+    /**
+     * Format: integer
+     * @description Note:
+     * This is a Primary Key.<pk/>
+     */
+    id: number;
+    /** Format: character varying */
+    name: string;
+    /**
+     * Format: timestamp with time zone
+     * @default CURRENT_TIMESTAMP
+     */
+    created_at?: string;
   };
 }
 
@@ -355,6 +584,16 @@ export interface parameters {
   "rowFilter.card_votes.user_id": string;
   /** Format: text */
   "rowFilter.card_votes.title": string;
+  /** @description profile_skills */
+  "body.profile_skills": definitions["profile_skills"];
+  /** Format: bigint */
+  "rowFilter.profile_skills.id": string;
+  /** Format: timestamp with time zone */
+  "rowFilter.profile_skills.created_at": string;
+  /** Format: uuid */
+  "rowFilter.profile_skills.profile_id": string;
+  /** Format: integer */
+  "rowFilter.profile_skills.skill_tag_id": string;
   /** @description profiles */
   "body.profiles": definitions["profiles"];
   /** Format: uuid */
@@ -375,6 +614,14 @@ export interface parameters {
   "rowFilter.profiles.phone": string;
   /** Format: character varying */
   "rowFilter.profiles.job": string;
+  /** @description skill_tags */
+  "body.skill_tags": definitions["skill_tags"];
+  /** Format: integer */
+  "rowFilter.skill_tags.id": string;
+  /** Format: character varying */
+  "rowFilter.skill_tags.name": string;
+  /** Format: timestamp with time zone */
+  "rowFilter.skill_tags.created_at": string;
 }
 
 export interface operations {}
