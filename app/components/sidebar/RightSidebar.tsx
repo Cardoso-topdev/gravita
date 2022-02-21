@@ -37,6 +37,7 @@ export const RightSidebar: FC = () => {
             status={firstVote.status}
             title={firstVote.title}
             voteId={firstVote.sys.id}
+            mt={1}
           />
         </Box>
         <Link href="/votes" passHref>
@@ -45,8 +46,8 @@ export const RightSidebar: FC = () => {
           </Text>
         </Link>
         <Box mt={5}>
-          <Title title="NEWS & UPDATES" />
-          <News />
+          <Title title="Announcements" />
+          <News mt={1} />
           <Link href="/news" passHref>
             <Text color="teal" mt={2} fontSize={14} cursor="pointer">
               See all news

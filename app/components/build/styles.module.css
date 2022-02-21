@@ -1,0 +1,122 @@
+.title {
+  margin-top: 60px;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.description {
+  text-align: center;
+}
+
+.coreGraph {
+  width: 700px;
+  height: 700px;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.evolveContainer,
+.identityContainer,
+.wealthContainer,
+.operateContainer,
+.impactContainer {
+  position: absolute;
+  text-align: center;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.evolveContainer {
+  top: 150px;
+  left: 75px;
+}
+
+.identityContainer {
+  top: 150px;
+  right: 75px;
+}
+
+.wealthContainer {
+  bottom: 125px;
+  left: 75px;
+}
+
+.operateContainer {
+  bottom: 125px;
+  right: 75px;
+}
+
+.impactContainer {
+  bottom: -70px;
+  left: 290px;
+}
+
+.identityDescriptionContainer {
+  position: relative;
+}
+
+.identityDescription {
+  position: absolute;
+  width: 250px;
+  border-radius: 10px;
+  text-align: left;
+  padding: 15px;
+  z-index: 100;
+}
+
+.descriptionRight {
+  left: -275px;
+  top: -270px;
+}
+
+.descriptionLeft {
+  left: 145px;
+  top: -270px;
+}
+
+.descriptionTop {
+  bottom: 170px;
+  left: -60px;
+}
+
+.descriptionTop::before {
+  content: "";
+  background: #2D3748;
+  padding: 10px;
+  position: absolute;
+  transform: rotate(45deg);
+  bottom: -10px;
+  left: 110px;
+}
+
+.descriptionRight::after {
+  content: "";
+  background: #2D3748;
+  padding: 10px;
+  position: absolute;
+  right: -10px;
+  top: 50%;
+  transform: rotate(45deg);
+}
+
+.descriptionLeft::before {
+  content: "";
+  background: #2D3748;
+  padding: 10px;
+  position: absolute;
+  left: -10px;
+  top: 50%;
+  transform: rotate(45deg);
+}
+
+.userAvatar {
+  position: absolute!important;
+}
+
+.membersCnt {
+  margin-left: 130px;
+  height: 30px;
+  padding-top: 7px;
+  margin-bottom: 10px;
+}

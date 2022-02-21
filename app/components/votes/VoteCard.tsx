@@ -4,6 +4,7 @@ import {
   Button,
   Divider,
   Flex,
+  FlexProps,
   HStack,
   Tag,
   Text,
@@ -15,7 +16,7 @@ import { useAuthContext } from 'context/AuthContext';
 import { StatWrapper } from './StatWrapper';
 import { VoteOptions } from './VoteOptions';
 
-interface Props {
+interface Props extends FlexProps {
   voteId: string;
   title: string;
   status: string;
@@ -34,6 +35,8 @@ export const VoteCard: FC<Props> = ({
   title,
   status,
   voteId,
+  createdAt,
+  ...rest
 }): JSX.Element => {
   const [view, setView] = useState<Screen | null>(defaultView);
 
@@ -83,18 +86,18 @@ export const VoteCard: FC<Props> = ({
           <>
             <VoteOptions handleVote={handleVote} spacing={39} />
             <Divider />
-            <HStack justify="center">
+            <HStack justify='center'>
               <Button
                 fontSize={12}
-                variant="link"
+                variant='link'
                 onClick={handleView.bind(null)}
-                color="red1"
+                color='red1'
               >
                 Cancel
               </Button>
               <Button
                 fontSize={12}
-                variant="link"
+                variant='link'
                 onClick={handleView.bind(null, 2)}
               >
                 Stats
@@ -109,7 +112,7 @@ export const VoteCard: FC<Props> = ({
             <Divider />
             <Button
               fontSize={12}
-              variant="link"
+              variant='link'
               _focus={{ boxShadow: 'none' }}
               onClick={handleView.bind(null, 1)}
             >
@@ -120,13 +123,13 @@ export const VoteCard: FC<Props> = ({
       default:
         return (
           <HStack>
-            <Button bg="teal" onClick={handleView.bind(null, 1)} w={165}>
+            <Button bg='teal' onClick={handleView.bind(null, 1)} w={165}>
               Vote
             </Button>
             <Button
-              color="white"
+              color='white'
               onClick={handleRouteToVoteDetail}
-              variant="outline"
+              variant='outline'
               w={165}
             >
               Details
@@ -138,25 +141,26 @@ export const VoteCard: FC<Props> = ({
 
   return (
     <Flex
-      flexDir="column"
-      justify="space-evenly"
-      bg="gray.700"
+      flexDir='column'
+      justify='space-evenly'
+      bg='gray.700'
       borderRadius={20}
       h={200}
       w={300}
       p={5}
-      position="relative"
+      position='relative'
+      {...rest}
     >
       <Tag
-        alignSelf="flex-end"
+        alignSelf='flex-end'
         borderRadius={40}
         bg={status === 'closed' ? 'gray.500' : 'secondaryGreen'}
-        position="absolute"
+        position='absolute'
         top={3}
       >
         {status}
       </Tag>
-      <Text color="white" fontSize={20} fontWeight={700} mt={2}>
+      <Text color='white' fontSize={20} fontWeight={700} mt={2}>
         {title}
       </Text>
       {renderView(view)}
