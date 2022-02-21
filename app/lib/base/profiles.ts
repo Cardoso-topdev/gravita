@@ -8,9 +8,14 @@ export type OrderFilter = {
   ascending: boolean;
 };
 
+export type ProfileParams = {
+  orderBy?: OrderFilter;
+  name?: string;
+  limit?: number;
+};
+
 export const getAllProfiles = async (
-  orderBy: OrderFilter = { ascending: true },
-  name?: string,
+  { orderBy, name, limit }: ProfileParams = { orderBy: { ascending: true } },
 ) => {
   let query = supabase
     .from<definitions['profiles']>('profiles')
@@ -19,10 +24,13 @@ export const getAllProfiles = async (
 
   if (name) {
     const capName = textToCapitalizeWord(name);
-    query = query.or(
-      `first_name.eq.${capName},last_name.eq.${capName}`,
-    );
+
+    query = query.or(`first_name.eq.${capName},last_name.eq.${capName}`);
   }
+  if (limit) {
+    query = query.limit(limit);
+  }
+
   const { data, error, count } = await query;
 
   return { data, error, count };
@@ -43,4 +51,8 @@ export const updateProfile = async (profile: Profile) => {
     .upsert(profile);
 
   return { data, error };
+};
+
+export const getProfileUserSkills = async () => {
+  const { data, error } = await supabase.from('profile_skills').select(`id`);
 };

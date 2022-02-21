@@ -18,22 +18,24 @@ const options = [
 ];
 
 interface Props {
-  query?: string;
+  name?: string;
 }
 
-export const Profiles: FC<Props> = ({ query }) => {
+export const Profiles: FC<Props> = ({ name }) => {
   const [profiles, loading, reloadData] = useData(() => getAllProfiles());
 
   const [sortOrder, setSortOrder] = useState<boolean>(true);
 
   useEffect(() => {
-    reloadData(() => getAllProfiles({ ascending: sortOrder }, query));
-  }, [query, sortOrder, reloadData]);
+    reloadData(() =>
+      getAllProfiles({ orderBy: { ascending: sortOrder }, name }),
+    );
+  }, [name, sortOrder, reloadData]);
 
   const handleOrderSort = (e: ChangeEvent<HTMLSelectElement>): void => {
     const sortOrder = e.target.value === Sort.Asc ? true : false;
 
-    reloadData(() => getAllProfiles({ ascending: sortOrder }));
+    reloadData(() => getAllProfiles({ orderBy: { ascending: sortOrder } }));
 
     setSortOrder(sortOrder);
   };
