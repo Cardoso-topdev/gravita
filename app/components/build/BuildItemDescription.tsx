@@ -5,6 +5,7 @@ import styles from './styles.module.css';
 
 interface Props {
   visibility: boolean;
+  position: string;
   itemDescription: {
     title: string;
     description: string;
@@ -15,13 +16,13 @@ interface Props {
   };
 }
 
-export const BuildItemDescription: FC<Props> = ({ visibility, itemDescription }): JSX.Element => {
+export const BuildItemDescription: FC<Props> = ({ visibility, itemDescription, position }): JSX.Element => {
   return (
     <Box
       className={styles.identityDescriptionContainer}
       display={visibility ? 'block' : 'none'}
     >
-      <Box className={styles.identityDescription} bg='gray.700'>
+      <Box className={styles.identityDescription + ' ' + (position === 'right' && styles.descriptionRight) + ' ' + (position === 'left' && styles.descriptionLeft) + ' ' + (position === 'top' && styles.descriptionTop)} bg='gray.700'>
         <Text {...typography.LargeBold} pb={'9px'}>
           {itemDescription.title}
         </Text>

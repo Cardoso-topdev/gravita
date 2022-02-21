@@ -1,43 +1,42 @@
 import { Box, Heading, Image, Text } from "@chakra-ui/react";
-import React from "react";
-import { FC } from "react";
+import React, { FC, useState } from "react";
 import { BuildItemDescription } from "./BuildItemDescription";
 import styles from './styles.module.css';
 
 export const Build: FC = (): JSX.Element => {
-  const [showIdentity, setShowIdentity] = React.useState(false);
-  function identityOver(e) {
+  const [showIdentity, setShowIdentity] = useState(false);
+  function identityOver() {
     setShowIdentity(true);
   }
-  function identityOut(e) {
+  function identityOut() {
     setShowIdentity(false);
   }
-  const [showEvolve, setShowEvolve] = React.useState(false);
-  function evolveOver(e) {
+  const [showEvolve, setShowEvolve] = useState(false);
+  function evolveOver() {
     setShowEvolve(true);
   }
-  function evolveOut(e) {
+  function evolveOut() {
     setShowEvolve(false);
   }
-  const [showWealth, setShowWealth] = React.useState(false);
-  function wealthOver(e) {
+  const [showWealth, setShowWealth] = useState(false);
+  function wealthOver() {
     setShowWealth(true);
   }
-  function wealthOut(e) {
+  function wealthOut() {
     setShowWealth(false);
   }
-  const [showOperate, setShowOperate] = React.useState(false);
-  function operateOver(e) {
+  const [showOperate, setShowOperate] = useState(false);
+  function operateOver() {
     setShowOperate(true);
   }
-  function operateOut(e) {
+  function operateOut() {
     setShowOperate(false);
   }
-  const [showImpact, setShowImpact] = React.useState(false);
-  function impactOver(e) {
+  const [showImpact, setShowImpact] = useState(false);
+  function impactOver() {
     setShowImpact(true);
   }
-  function impactOut(e) {
+  function impactOut() {
     setShowImpact(false);
   }
 
@@ -72,6 +71,7 @@ export const Build: FC = (): JSX.Element => {
           <Text>EVOLVE</Text>
           <BuildItemDescription 
             visibility={showEvolve}
+            position={'left'}
             itemDescription={identityDescription}
           />
         </Box>
@@ -87,6 +87,7 @@ export const Build: FC = (): JSX.Element => {
           <Text>IDENTITY</Text>
           <BuildItemDescription 
             visibility={showIdentity}
+            position={'right'}
             itemDescription={identityDescription}
           />
         </Box>
@@ -102,6 +103,7 @@ export const Build: FC = (): JSX.Element => {
           <Text>WEALTH</Text>
           <BuildItemDescription 
             visibility={showWealth}
+            position={'left'}
             itemDescription={identityDescription}
           />
         </Box>
@@ -117,6 +119,7 @@ export const Build: FC = (): JSX.Element => {
           <Text>OPERATE</Text>
           <BuildItemDescription 
             visibility={showOperate}
+            position={'right'}
             itemDescription={identityDescription}
           />
         </Box>
@@ -132,6 +135,7 @@ export const Build: FC = (): JSX.Element => {
           <Text>IMPACT</Text>
           <BuildItemDescription 
             visibility={showImpact}
+            position={'top'}
             itemDescription={identityDescription}
           />
         </Box>

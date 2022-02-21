@@ -58,13 +58,56 @@
 
 .identityDescription {
   position: absolute;
-  top: -270px;
-  right: -275px;
   width: 250px;
   border-radius: 10px;
   text-align: left;
   padding: 15px;
   z-index: 100;
+}
+
+.descriptionRight {
+  left: -275px;
+  top: -270px;
+}
+
+.descriptionLeft {
+  left: 145px;
+  top: -270px;
+}
+
+.descriptionTop {
+  bottom: 170px;
+  left: -60px;
+}
+
+.descriptionTop::before {
+  content: "";
+  background: #2D3748;
+  padding: 10px;
+  position: absolute;
+  transform: rotate(45deg);
+  bottom: -10px;
+  left: 110px;
+}
+
+.descriptionRight::after {
+  content: "";
+  background: #2D3748;
+  padding: 10px;
+  position: absolute;
+  right: -10px;
+  top: 50%;
+  transform: rotate(45deg);
+}
+
+.descriptionLeft::before {
+  content: "";
+  background: #2D3748;
+  padding: 10px;
+  position: absolute;
+  left: -10px;
+  top: 50%;
+  transform: rotate(45deg);
 }
 
 .userAvatar {
