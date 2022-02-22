@@ -13,6 +13,10 @@ const theme = extendTheme({
   typography: typography,
   initialColorMode: 'dark',
   useSystemColorMode: false,
+  fonts: {
+    heading: 'Inter',
+    body: 'Inter',
+  },
 });
 
 export default function App({ Component, pageProps }) {

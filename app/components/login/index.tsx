@@ -77,6 +77,10 @@ export const Login = (): JSX.Element => {
             name="email"
             type="email"
             variant="flushed"
+            color={'white'}
+            labelStyle={{
+              color: 'white'
+            }}
           />
           <FormControl isInvalid={Boolean(errors.password)}>
             <FormLabel
@@ -98,9 +102,9 @@ export const Login = (): JSX.Element => {
               />
               <InputRightElement width="3rem">
                 {showPassword ? (
-                  <ViewIcon onClick={handlePasswordVisibility} />
+                  <ViewIcon onClick={handlePasswordVisibility} color='white'/>
                 ) : (
-                  <ViewOffIcon onClick={handlePasswordVisibility} />
+                  <ViewOffIcon onClick={handlePasswordVisibility} color='white' />
                 )}
               </InputRightElement>
             </InputGroup>
