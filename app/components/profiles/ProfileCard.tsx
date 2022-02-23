@@ -9,10 +9,10 @@ import {
   VStack,
 } from '@chakra-ui/react';
 import { useRouter } from 'next/router';
-import { Profile } from 'lib/base/profiles';
+import { ProfileTable } from 'lib/base/profiles';
 import { typography } from 'theme/typography';
 
-interface Props extends Profile {
+interface Props extends ProfileTable {
   containerStyle?: FlexProps;
 }
 
@@ -44,6 +44,7 @@ export const ProfileCard: FC<Props> = ({
       p={2}
       onClick={handleRedirect}
       _hover={{ bg: '#252634' }}
+      cursor='pointer'
       {...containerStyle}
     >
       <Avatar name={fullName} src='https://bit.ly/dan-abramov' />

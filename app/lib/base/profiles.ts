@@ -18,6 +18,17 @@ export type ProfileParams = {
   limit?: number;
 };
 
+export type ProfileToSkillTags = {
+  id: number;
+  profile: {
+    first_name: string;
+    last_name: string;
+    bio: string | null;
+  };
+
+  skills: { name: string };
+};
+
 export type TProfile = {
   first_name: string;
   last_name: string;
@@ -106,22 +117,18 @@ export const findSkillKeys = async (profileId: string) => {
 
 export const getProfileAndSkills = async (profileId: string) => {
   const { data, error } = await supabase
-    .from<SkillTable>('profile_skills')
+    .from<SkillTable & ProfileToSkillTags>('profile_skills')
     .select(
       `id, profile: profile_id (first_name, last_name, bio), skills: skill_tag_id(name)`,
     )
     .eq('profile_id', profileId);
 
-  const profile: TProfile = R.reduce(
-    (result: TProfile, item: any) => {
-      if (R.isEmpty(result)) {
-        return { ...item.profile, skills: R.append(item.skills.name, []) };
-      }
-      return {
-        ...R.over(R.lensProp('skills'), R.append(item.skills.name), result),
-      };
-    },
-    {},
+  const profile = R.reduce(
+    (result: TProfile, item: ProfileToSkillTags) =>
+      R.isEmpty(result)
+        ? { ...item.profile, skills: R.append(item.skills.name, []) }
+        : R.over(R.lensProp('skills'), R.append(item.skills.name), result),
+    {} as TProfile,
     data,
   );
 

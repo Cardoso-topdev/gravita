@@ -168,13 +168,13 @@ export const SettingsForm: FC<Props> = (props): JSX.Element => {
         labelStyle={typography.paragraph}
       />
       <Box mt={10}>
-        <Heading as='h3' {...typography.h3}>
+        <Heading {...typography.h2}>
           Skills
         </Heading>
         <SkillTags mt={3} />
       </Box>
       <Box mt={10}>
-        <Heading as='h3' {...typography.h3}>
+        <Heading {...typography.h2}>
           Links
         </Heading>
         <FormInput
