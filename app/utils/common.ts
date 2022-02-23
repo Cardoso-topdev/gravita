@@ -3,7 +3,7 @@ import { getHours, getMinutes } from 'date-fns';
 
 export const getEndTime = (date: string) =>
   R.converge(
-    (hours, minutes) => `${hours}:${minutes}`,
+    (hours, minutes) => `${hours}h ${minutes}m`,
     [getHours, getMinutes],
   )(new Date(date));
 
