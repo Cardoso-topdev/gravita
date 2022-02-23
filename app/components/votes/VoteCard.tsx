@@ -108,7 +108,7 @@ export const VoteCard: FC<Props> = ({
       case 2:
         return (
           <>
-            <StatWrapper w={370} statWidth={70} title={title} />
+            <StatWrapper statWidth={70} title={title} />
             <Divider />
             <Button
               fontSize={12}
@@ -123,13 +123,14 @@ export const VoteCard: FC<Props> = ({
       default:
         return (
           <HStack>
-            <Button bg='teal' onClick={handleView.bind(null, 1)} w={165}>
+            <Button bg='teal' onClick={handleView.bind(null, 1)} w={165} h={37} color="gray.800">
               Vote
             </Button>
             <Button
               color='white'
               onClick={handleRouteToVoteDetail}
               variant='outline'
+              h={37}
               w={165}
             >
               Details
@@ -145,21 +146,12 @@ export const VoteCard: FC<Props> = ({
       justify='space-evenly'
       bg='gray.700'
       borderRadius={20}
-      h={200}
-      w={300}
+      h={167}
+      w={280}
       p={5}
       position='relative'
       {...rest}
     >
-      <Tag
-        alignSelf='flex-end'
-        borderRadius={40}
-        bg={status === 'closed' ? 'gray.500' : 'secondaryGreen'}
-        position='absolute'
-        top={3}
-      >
-        {status}
-      </Tag>
       <Text color='white' fontSize={20} fontWeight={700} mt={2}>
         {title}
       </Text>
