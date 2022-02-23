@@ -33,7 +33,7 @@ export const ProfileWrapper: FC = () => {
         <ProfileStats />
       </GridItem>
       <GridItem colSpan={3}>
-        <Profiles query={query} />
+        <Profiles name={query} />
       </GridItem>
     </Grid>
   );

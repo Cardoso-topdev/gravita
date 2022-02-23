@@ -11,32 +11,30 @@ import * as R from 'ramda';
 import { getAllTags } from 'lib/base/profiles';
 import { useData } from 'hooks/useData';
 import { useAuthContext } from 'context/AuthContext';
-import { createSkills, deleteSkill, Skill } from 'lib/base/profiles';
+import { createSkill, deleteSkill } from 'lib/base/profiles';
 import { Loader } from '../Loader';
 import { AiOutlineStar, AiFillStar } from 'react-icons/ai';
-import { useSkillTags } from 'hooks/useSkillTags';
+import { useUserSkillKeys } from 'hooks/useSkillTags';
 
 interface Props extends BoxProps {}
 
 export const SkillTags: FC<Props> = (props): JSX.Element => {
   const [tags, loading] = useData(getAllTags);
 
-  const { keys, setKeys } = useSkillTags();
+  const { keys, setKeys } = useUserSkillKeys();
 
   const { profile } = useAuthContext();
 
   const handleTagClick = (key: number): void => {
     setKeys((prevKeys) => {
       if (prevKeys.includes(key)) {
-        deleteSkill(key);
+
+        deleteSkill(key, profile.id);
 
         return R.reject(R.equals(R.__, key), prevKeys);
       }
-      const skill: Skill[] = [
-        { id: key, skill_tag_id: key, profile_id: profile.id },
-      ];
-      
-      createSkills(skill);
+
+      createSkill({ skill_tag_id: key, profile_id: profile.id });
 
       return R.append(key, prevKeys);
     });

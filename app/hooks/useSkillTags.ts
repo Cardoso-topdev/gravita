@@ -7,7 +7,7 @@ const getCache = createCache(async (profileId: string) =>
   findSkillKeys(profileId),
 );
 
-export const useSkillTags = () => {
+export const useUserSkillKeys = () => {
   const { profile } = useAuthContext();
 
   const [keys, setKeys] = useState<number[]>([]);

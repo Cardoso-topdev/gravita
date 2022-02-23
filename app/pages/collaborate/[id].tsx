@@ -4,20 +4,34 @@ import {
   GetStaticPropsContext,
   GetStaticProps,
 } from 'next';
-import { Box } from '@chakra-ui/react';
 import { useRouter } from 'next/router';
 import { Loader } from 'components/Loader';
-import { getAllProfiles } from 'lib/base/profiles';
+import { DetailProfile } from 'components/profiles/DetailProfile';
+import {
+  getAllProfiles,
+  getProfileAndSkills,
+  TProfile,
+} from 'lib/base/profiles';
+import MainLayout from 'components/layout/MainLayout';
+import { WithAuthentication } from 'hoc/WithAuthentication';
 
-interface Props {}
+const PrivateDetailProfile = WithAuthentication(DetailProfile);
 
-export default function DetailedProfilePage({}: Props) {
+interface Props {
+  profile: TProfile;
+}
+
+export default function DetailProfilePage({ profile }: Props) {
   const router = useRouter();
 
   if (router.isFallback) {
     return <Loader />;
   }
-  return <Box> I am detailed profile page</Box>;
+  return (
+    <MainLayout>
+      <PrivateDetailProfile profile={profile} />
+    </MainLayout>
+  );
 }
 
 export const getStaticPaths: GetStaticPaths = async (
@@ -36,21 +50,14 @@ export const getStaticPaths: GetStaticPaths = async (
 export const getStaticProps: GetStaticProps<Props, undefined> = async (
   ctx: GetStaticPropsContext,
 ) => {
-  const profileId = ctx.params.id;
-  /* 
-    const { data } = await client
-      .query<VotesQuery>(VotesDocument, { where: { sys: { id: sysId } } })
-      .toPromise();
-  
-    const vote = data.votesCollection.items[0];
-  
-    const { count } = await getVotesCount(vote.title);
-  
-    return {
-      props: {
-        vote,
-        count,
-      },
-      revalidate: 10,
-    }; */
+  const profileId = ctx.params.id as string;
+
+  const { profile } = await getProfileAndSkills(profileId);
+
+  return {
+    props: {
+      profile,
+    },
+    revalidate: 10,
+  };
 };

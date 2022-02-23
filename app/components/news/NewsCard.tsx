@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import { Box, BoxProps, Flex, Heading, Text } from '@chakra-ui/react';
+import { BoxProps, Flex, Heading, Text } from '@chakra-ui/react';
 import { typography } from 'theme/typography';
 import { format } from 'date-fns';
 
