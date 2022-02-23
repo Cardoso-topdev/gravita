@@ -26,7 +26,6 @@ export const CenterNavBar = (): JSX.Element => {
   }
 
   if (!hasContainTab && (router.pathname !== '/dashboard')) {
-    console.log('===> router.pathname', router.pathname)
     const idx = router.pathname.indexOf('[');
     const pathName = router.pathname.substring(0, idx != -1 ? (idx - 1) : router.pathname.length);
     if (navTabList[pathName]) {
