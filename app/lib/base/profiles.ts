@@ -4,6 +4,7 @@ import { textToCapitalizeWord } from 'utils/common';
 import * as R from 'ramda';
 
 export type ProfileTable = definitions['profiles'];
+export type Profile = definitions['profiles'];
 export type SkillTagTable = definitions['skill_tags'];
 export type SkillTable = definitions['profile_skills'];
 export type Skill = Pick<SkillTable, 'profile_id' | 'skill_tag_id'>;

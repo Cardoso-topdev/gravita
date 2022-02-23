@@ -9,10 +9,10 @@ import {
   VStack,
 } from '@chakra-ui/react';
 import { useRouter } from 'next/router';
-import { ProfileTable } from 'lib/base/profiles';
+import { Profile } from 'lib/base/profiles';
 import { typography } from 'theme/typography';
 
-interface Props extends ProfileTable {
+interface Props extends Profile {
   containerStyle?: FlexProps;
 }
 
