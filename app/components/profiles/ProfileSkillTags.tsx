@@ -5,12 +5,12 @@ interface Props {
   skills: string[] | null;
 }
 
-export const ProfileSkillTags: FC<Props> = ({ skills }) => {
-  return (
-    <Wrap>
-      {skills?.map((skill) => (
-        <Tag key={skill} mr={2} variant='outline' borderRadius='full'> {skill} </Tag>
-      ))}
-    </Wrap>
-  );
-};
+export const ProfileSkillTags: FC<Props> = ({ skills }) => (
+  <Wrap>
+    {skills?.map((skill) => (
+      <Tag borderRadius='full' key={skill} mr={2} variant='outline'>
+        {skill}
+      </Tag>
+    ))}
+  </Wrap>
+);
