@@ -3,7 +3,7 @@ export const typography = {
     fontSize: 20,
     fontWeight: 700,
   },
-  h3: {
+  h2: {
     fontSize: 24,
     fontWeight: 700,
   },

@@ -4,7 +4,7 @@ import { Box, Flex, Text, useColorMode } from '@chakra-ui/react';
 import { VoteCard } from '../votes/VoteCard';
 import { useVotesQuery } from 'generated/graphql';
 import { News } from './News';
-import { Title } from 'components/Title';
+import { Title } from '../Title';
 import { RightNavBar } from 'components/navbar/RightNavBar';
 
 export const RightSidebar: FC = () => {
