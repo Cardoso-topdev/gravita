@@ -1,6 +1,7 @@
 import { Box, Avatar, Flex, HStack, Heading } from '@chakra-ui/react';
 import { SettingsForm } from './SettingForm';
 import { typography } from 'theme/typography';
+import { ImageUploader } from '../ImageUploader';
 
 export const Settings = (): JSX.Element => {
   return (
@@ -10,6 +11,7 @@ export const Settings = (): JSX.Element => {
       </Heading>
       <Flex justify="center" mr={10}>
         <HStack spacing={5}>
+          <ImageUploader />
           <Avatar
             name="Dan Abrahmov"
             src="https://bit.ly/dan-abramov"
