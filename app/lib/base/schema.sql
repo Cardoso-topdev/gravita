@@ -13,11 +13,12 @@ create table profiles (
   first_name varchar(50), 
   last_name varchar(50), 
   email varchar(50) unique not null, 
-  job varchar(50),
+  job varchar(25),
   phone varchar(50),
   bio text, 
   website varchar(50), 
-  github varchar(50)
+  github varchar(50),
+  image_url text
 );  
 
 create table profile_skills (

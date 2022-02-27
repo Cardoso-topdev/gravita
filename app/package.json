@@ -19,6 +19,7 @@
     "@stream-io/stream-chat-css": "^2.0.1",
     "@supabase/supabase-js": "^1.29.1",
     "contentful": "^9.1.5",
+    "cuid": "^2.1.8",
     "date-fns": "^2.11.1",
     "framer-motion": "^5.6.0",
     "graphql": "^16.2.0",

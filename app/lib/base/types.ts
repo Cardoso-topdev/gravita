@@ -220,6 +220,7 @@ export interface paths {
           github?: parameters["rowFilter.profiles.github"];
           phone?: parameters["rowFilter.profiles.phone"];
           job?: parameters["rowFilter.profiles.job"];
+          image_url?: parameters["rowFilter.profiles.image_url"];
           /** Filtering Columns */
           select?: parameters["select"];
           /** Ordering */
@@ -279,6 +280,7 @@ export interface paths {
           github?: parameters["rowFilter.profiles.github"];
           phone?: parameters["rowFilter.profiles.phone"];
           job?: parameters["rowFilter.profiles.job"];
+          image_url?: parameters["rowFilter.profiles.image_url"];
         };
         header: {
           /** Preference */
@@ -302,6 +304,7 @@ export interface paths {
           github?: parameters["rowFilter.profiles.github"];
           phone?: parameters["rowFilter.profiles.phone"];
           job?: parameters["rowFilter.profiles.job"];
+          image_url?: parameters["rowFilter.profiles.image_url"];
         };
         body: {
           /** profiles */
@@ -521,6 +524,8 @@ export interface definitions {
     phone?: string;
     /** Format: character varying */
     job?: string;
+    /** Format: text */
+    image_url?: string;
   };
   skill_tags: {
     /**
@@ -614,6 +619,8 @@ export interface parameters {
   "rowFilter.profiles.phone": string;
   /** Format: character varying */
   "rowFilter.profiles.job": string;
+  /** Format: text */
+  "rowFilter.profiles.image_url": string;
   /** @description skill_tags */
   "body.skill_tags": definitions["skill_tags"];
   /** Format: integer */

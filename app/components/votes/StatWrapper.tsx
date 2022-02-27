@@ -2,7 +2,7 @@ import { FC } from 'react';
 import { Text, Wrap, WrapItem, WrapProps } from '@chakra-ui/react';
 import { Stat } from './Stat';
 import { Emoji } from '../Emoji';
-import { getVotePercentages } from 'lib/base/client';
+import { getVotePercentages } from 'lib/base/votes';
 import { useData } from 'hooks/useData';
 import { EmojiMapper } from 'theme/common';
 

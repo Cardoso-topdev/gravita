@@ -14,7 +14,7 @@ import { useAuthContext } from 'context/AuthContext';
 import { createSkill, deleteSkill } from 'lib/base/profiles';
 import { Loader } from '../Loader';
 import { AiOutlineStar, AiFillStar } from 'react-icons/ai';
-import { useUserSkillKeys } from 'hooks/useSkillTags';
+import { useUserSkillKeys } from 'hooks/useUserSkillKeys';
 
 interface Props extends BoxProps {}
 

@@ -53,7 +53,6 @@ export const getAllProfiles = async (
   if (limit) {
     query = query.limit(limit);
   }
-
   const { data, error, count } = await query;
 
   return { data, error, count };
@@ -70,10 +69,19 @@ export const getUserProfile = async (id: string) => {
 
 export const updateProfile = async (profile: ProfileTable) => {
   const { data, error } = await supabase
-    .from<definitions['profiles']>('profiles')
+    .from<ProfileTable>('profiles')
     .upsert(profile);
 
   return { data, error };
+};
+
+export const updateProfileImage = async (imageUrl: string, id: string) => {
+  const { error } = await supabase
+    .from<ProfileTable>('profiles')
+    .update({ image_url: imageUrl})
+    .match({ id });
+
+  return { error };
 };
 
 export const getAllTags = async (limit?: number) => {

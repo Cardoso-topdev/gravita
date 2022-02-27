@@ -16,7 +16,7 @@ export const useUserSkillKeys = () => {
     const result = await getCache(profile.id);
 
     setKeys([...result?.existingKeys]);
-  }, [profile.id]);
+  }, [profile?.id]);
 
   useEffect(() => {
     getCachedResult();

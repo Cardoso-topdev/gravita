@@ -6,11 +6,10 @@ import {
   Flex,
   FlexProps,
   HStack,
-  Tag,
   Text,
   useToast,
 } from '@chakra-ui/react';
-import { insertVote } from 'lib/base/client';
+import { insertVote } from 'lib/base/votes';
 import { definitions } from 'lib/base/types';
 import { useAuthContext } from 'context/AuthContext';
 import { StatWrapper } from './StatWrapper';

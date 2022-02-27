@@ -1,6 +1,6 @@
 import { FC, PropsWithChildren, useMemo, useState, useEffect } from 'react';
 import { Session } from '@supabase/supabase-js';
-import { supabase } from 'lib/base/client';
+import { supabase, getSession } from 'lib/base/client';
 import { createCtx } from 'utils/context';
 import { getUserProfile, Profile } from 'lib/base/profiles';
 
@@ -19,9 +19,7 @@ export const AuthContextProvider: FC<PropsWithChildren<{}>> = ({
 
   const [profile, setProfile] = useState<Profile>();
 
-  const [session, setSession] = useState<Session | null>(() =>
-    supabase.auth.session(),
-  );
+  const [session, setSession] = useState<Session | null>(() => getSession());
 
   useEffect(() => {
     if (!session) {
