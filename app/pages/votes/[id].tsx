@@ -9,18 +9,16 @@ import client from 'lib/contentful/gqlService';
 import { VotesDocument, VotesQuery, VoteItemFragment } from 'generated/graphql';
 import { DetailVote } from 'components/votes/DetailVote';
 import { Loader } from 'components/Loader';
-import { getVotesCount } from 'lib/base/server';
 import MainLayout from 'components/layout/MainLayout';
 import { WithAuthentication } from 'hoc/WithAuthentication';
 
-const PrivateDetailVotePage = WithAuthentication(DetailVote);
+const PrivateDetailVote = WithAuthentication(DetailVote);
 
 interface Props {
   vote: VoteItemFragment;
-  count: number;
 }
 
-export default function DetailVotePage({ vote, count }: Props) {
+export default function DetailVotePage({ vote }: Props) {
   const router = useRouter();
 
   if (router.isFallback) {
@@ -29,7 +27,7 @@ export default function DetailVotePage({ vote, count }: Props) {
 
   return (
     <MainLayout>
-      <PrivateDetailVotePage vote={vote} count={count} />
+      <PrivateDetailVote vote={vote} />
     </MainLayout>
   );
 }
@@ -60,12 +58,9 @@ export const getStaticProps: GetStaticProps<Props, undefined> = async (
 
   const vote = data.votesCollection.items[0];
 
-  const { count } = await getVotesCount(vote.title);
-
   return {
     props: {
       vote,
-      count,
     },
     revalidate: 10,
   };

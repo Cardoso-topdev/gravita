@@ -25,3 +25,12 @@ export const insertVote = async (
 
   return { data, error };
 };
+export const getVotesCount = async (title: string) => {
+  const { error, count } = await supabase
+    .from<definitions['card_votes']>('card_votes')
+    .select('*', { count: 'exact', head: true })
+    .eq('title', title);
+
+  return { error, count };
+};
+

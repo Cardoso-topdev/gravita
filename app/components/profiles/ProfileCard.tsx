@@ -21,6 +21,7 @@ export const ProfileCard: FC<Props> = ({
   first_name,
   last_name,
   job,
+  image_url,
   containerStyle,
 }) => {
   const router = useRouter();
@@ -47,7 +48,7 @@ export const ProfileCard: FC<Props> = ({
       cursor='pointer'
       {...containerStyle}
     >
-      <Avatar name={fullName} src='https://bit.ly/dan-abramov' />
+      <Avatar name={fullName} src={image_url} />
       <VStack spacing={0}>
         <Heading {...typography.h4}>{fullName} </Heading>
         <Text {...typography.paragraph}> {job} </Text>

@@ -29,8 +29,8 @@ export const DetailProfile: FC<Props> = ({ profile }) => {
         <Flex align='center' justify='space-between'>
           <HStack>
             <Avatar
-              name='Dan Abrahmov'
-              src='https://bit.ly/dan-abramov'
+              name={profile?.first_name + profile?.last_name}
+              //src={profile} to do get profile image
               size='lg'
               mr={2}
             />

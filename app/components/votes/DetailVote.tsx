@@ -1,29 +1,24 @@
 import { FC } from 'react';
-import {
-  Box,
-  Heading,
-  Text,
-  HStack,
-  SimpleGrid,
-  VStack,
-  Tag,
-} from '@chakra-ui/react';
+import { Box, Heading, Text, HStack, VStack, Tag } from '@chakra-ui/react';
 import { VoteItemFragment } from 'generated/graphql';
 import { typography } from 'theme/typography';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 import { getEndTime } from 'utils/common';
 import { VoteCard } from 'components/votes/VoteCard';
 import { OpenVotes } from './OpenVotes';
+import { getVotesCount } from 'lib/base/votes';
+import { useData } from 'hooks/useData';
 
 interface Props {
   vote: VoteItemFragment;
-  count: number;
 }
 
-export const DetailVote: FC<Props> = ({ vote, count }) => {
+export const DetailVote: FC<Props> = ({ vote }) => {
+  const [votes] = useData(() => getVotesCount(vote.title));
+
   return (
-    <Box p={30} d="flex" flexDirection={'row-reverse'}>
-      <VStack spacing={5} align="left" w={280} ml={10}>
+    <Box p={30} d='flex' flexDirection='row-reverse'>
+      <VStack spacing={5} align='left' w={280} ml={10}>
         <VoteCard
           defaultView={1}
           title={vote.title}
@@ -33,7 +28,7 @@ export const DetailVote: FC<Props> = ({ vote, count }) => {
         />
         <OpenVotes />
       </VStack>
-      <VStack spacing={5} align="left" w='full'>
+      <VStack spacing={5} align='left' w='full'>
         <Heading {...typography.pageHeading} mb={5}>
           {vote.title}
         </Heading>
@@ -55,7 +50,7 @@ export const DetailVote: FC<Props> = ({ vote, count }) => {
           </HStack>
           <HStack>
             <Text>Total votes:</Text>
-            <Text fontWeight={700}> {count} </Text>
+            <Text fontWeight={700}> {votes?.count} </Text>
           </HStack>
         </HStack>
         <Box>

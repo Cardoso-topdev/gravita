@@ -1,4 +1,4 @@
-export const createCache = <K, O>(processor: (arg: K) => O) => {
+export const createCache = <K, O>(processor: (arg: K) => O | undefined) => {
   const cache = new Map<K, O>();
 
   const getCache = async (key: K) => {

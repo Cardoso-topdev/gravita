@@ -17,7 +17,7 @@ import { supabase } from 'lib/base/client';
 import styles from './styles.module.css';
 
 export const RightNavBar = (): JSX.Element => {
-  const { session } = useAuthContext();
+  const { session, profile } = useAuthContext();
 
   const onNotificationClick = () => {
     console.log('onNotificationClicked');
@@ -52,9 +52,9 @@ export const RightNavBar = (): JSX.Element => {
             <Menu>
               <MenuButton className={styles.navMenuBtn} as={Button}>
                 <Avatar
-                  name="Dan Abrahmov"
+                  name={profile?.first_name}
                   className={styles.userAvatar}
-                  src="https://bit.ly/dan-abramov"
+                  src={profile?.image_url}
                 />
               </MenuButton>
               <MenuList>

@@ -119,7 +119,7 @@ export const findSkillKeys = async (profileId: string) => {
     .select('*')
     .eq('profile_id', profileId);
 
-  const existingKeys = data.map((skill) => skill.skill_tag_id);
+  const existingKeys = data?.map((skill) => skill.skill_tag_id);
 
   return { existingKeys, error };
 };

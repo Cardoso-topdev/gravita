@@ -13,9 +13,9 @@ export const useUserSkillKeys = () => {
   const [keys, setKeys] = useState<number[]>([]);
 
   const getCachedResult = useCallback(async () => {
-    const result = await getCache(profile.id);
+    const result = await getCache(profile?.id);
 
-    setKeys([...result?.existingKeys]);
+    setKeys([...result?.existingKeys || []]);
   }, [profile?.id]);
 
   useEffect(() => {
